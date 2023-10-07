@@ -1,1 +1,77 @@
-<div id="navstrip" align="left">&nbsp;<a href="@@prefix/public/index.html">Site Name</a></div>
+<nav class="nav--top">
+    <div id="navstrip" align="left">&nbsp;<a href="@@prefix/public/index.html">Site Name</a></div>
+</nav>
+<nav class="nav--left">
+    <button title="Menu" onClick="toggleMenu(this)" class="button--menu">
+        <i class="ph-bold ph-list"></i>
+        <i class="ph-bold ph-x"></i>
+    </button>
+    <a href="/" title="Home"><i class="ph-bold ph-house"></i></a>
+    <button title="Toggle Light/Dark"><i class="ph-bold ph-moon-stars"></i></button>
+    <button title="Toggle Font Size"><i class="ph-bold ph-magnifying-glass"></i></button>
+    <button data-modal="login" title="Sign In" class="popup guestOnly"><i class="ph-bold ph-sign-in"></i></button>
+    <a href="/" title="Register" class="guestOnly"><i class="ph-bold ph-user-plus"></i></a>
+    <a href="/" title="User CP" class="memOnly"><i class="ph-bold ph-gear-fine"></i></a>
+    <a href="/" title="Inbox (0)" data-new="0" class="memOnly nav--msg"><i class="ph-bold ph-envelope"></i></a>
+    <a href="/" title="Alerts (0)" data-new="0" class="memOnly nav--alert"><i class="ph-bold ph-bell"></i></a>
+    <button data-modal="switch" title="Switch Accounts" class="popup memOnly"><i class="ph-bold ph-user-switch"></i></button>
+    <a href="/" title="Logout" class="memOnly"><i class="ph-bold ph-power"></i></a>
+</nav>
+<div class="nav--scroll-to">
+    <a href="#top"><i class="ph-bold ph-caret-up"></i></a>
+    <a href="#bottom"><i class="ph-bold ph-caret-down"></i></a>
+</div>
+<div class="nav--avatar">
+   <a href="@@prefix/public/profile.html" title="View Profile"><img src="http://picsum.photos/200" /></a>
+</div>
+<nav class="nav--popout">
+    <div class="scroll">
+        <div class="info--panel"><div class="scroll">
+            <b>about</b> <span>we are a character-driven, low-key powers site set in bellingham washington, with a focus on <i>fairhaven apartments</i>, a complex welcoming to those with <i>abilities</i>. featuring jcink premium, no word count, a profile app and relaxed activity requirements, we hope to be a welcoming community for all writers <i>18+</i>.</span>
+        </div></div>
+        <a href="/">Guidebook</a>
+        <a href="/">Claims</a>
+        <a href="/">Profile Guide</a>
+        <a href="/">Requests</a>
+        <a href="/">Development</a>
+        <a href="/">Templates</a>
+        <a href="/">Badges</a>
+    </div>
+</nav>
+
+<div class="git--test">
+    <button onClick="toggleTesting(this)" class="git--test-toggle">Toggle Testing Menu</button>
+    <div class="git--test-box">
+        <b>Testing Menu</b>
+        <label>
+            <b>Group</b><br>
+            <select class="git--test-group">
+                <option value="g-4">Admin</option>
+                <option value="g-1">Validating</option>
+                <option value="g-2">Guest</option>
+                <option value="g-3">Member</option>
+                <option value="g-5">Banned</option>
+                <option value="g-6">Kinetic</option>
+                <option value="g-7">Psychic</option>
+                <option value="g-8">Enhanced</option>
+                <option value="g-9">Summoning</option>
+                <option value="g-10">Mutation</option>
+                <option value="g-11">Alchemical</option>
+            </select>
+        </label>
+        <label>
+            <b>Messages</b><br>
+            <select class="git--test-msg">
+                <option value="0">Read</option>
+                <option value="1">Unread</option>
+            </select>
+        </label>
+        <label>
+            <b>Alerts</b><br>
+            <select class="git--test-alert">
+                <option value="0">Read</option>
+                <option value="1">Unread</option>
+            </select>
+        </label>
+    </div>
+</div>

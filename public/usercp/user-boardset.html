@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Site Name</title>
+      <title>Coastline</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Styles-->
@@ -10,12 +10,13 @@
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kristi&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
 <!--Icons-->
 <link href="https://dawneggleton.github.io/css/all.css" rel="stylesheet" />
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 <!--Script Libraries-->
 <script type='text/javascript' src='https://files.jcink.net/html/jquery-1.7.2.min.js'></script>
@@ -28,10 +29,88 @@
 <link rel="stylesheet" href="../../dist/css/settings.css" />   
   </head>
     <body id="UserCP" class="dark g-4 code-04">
-      <header>
+      <a name="top"></a>
+<div class="invisibleEl"></div>
+<header>
     <a href="../../public/index.html"><h1>Site Name</h1></a>
 </header>
-      <div id="navstrip" align="left">&nbsp;<a href="../../public/index.html">Site Name</a></div>
+      <nav class="nav--top">
+    <div id="navstrip" align="left">&nbsp;<a href="../../public/index.html">Site Name</a></div>
+</nav>
+<nav class="nav--left">
+    <button title="Menu" onClick="toggleMenu(this)" class="button--menu">
+        <i class="ph-bold ph-list"></i>
+        <i class="ph-bold ph-x"></i>
+    </button>
+    <a href="/" title="Home"><i class="ph-bold ph-house"></i></a>
+    <button title="Toggle Light/Dark"><i class="ph-bold ph-moon-stars"></i></button>
+    <button title="Toggle Font Size"><i class="ph-bold ph-magnifying-glass"></i></button>
+    <button data-modal="login" title="Sign In" class="popup guestOnly"><i class="ph-bold ph-sign-in"></i></button>
+    <a href="/" title="Register" class="guestOnly"><i class="ph-bold ph-user-plus"></i></a>
+    <a href="/" title="User CP" class="memOnly"><i class="ph-bold ph-gear-fine"></i></a>
+    <a href="/" title="Inbox (0)" data-new="0" class="memOnly nav--msg"><i class="ph-bold ph-envelope"></i></a>
+    <a href="/" title="Alerts (0)" data-new="0" class="memOnly nav--alert"><i class="ph-bold ph-bell"></i></a>
+    <button data-modal="switch" title="Switch Accounts" class="popup memOnly"><i class="ph-bold ph-user-switch"></i></button>
+    <a href="/" title="Logout" class="memOnly"><i class="ph-bold ph-power"></i></a>
+</nav>
+<div class="nav--scroll-to">
+    <a href="#top"><i class="ph-bold ph-caret-up"></i></a>
+    <a href="#bottom"><i class="ph-bold ph-caret-down"></i></a>
+</div>
+<div class="nav--avatar">
+   <a href="../../public/profile.html" title="View Profile"><img src="http://picsum.photos/200" /></a>
+</div>
+<nav class="nav--popout">
+    <div class="scroll">
+        <div class="info--panel"><div class="scroll">
+            <b>about</b> <span>we are a character-driven, low-key powers site set in bellingham washington, with a focus on <i>fairhaven apartments</i>, a complex welcoming to those with <i>abilities</i>. featuring jcink premium, no word count, a profile app and relaxed activity requirements, we hope to be a welcoming community for all writers <i>18+</i>.</span>
+        </div></div>
+        <a href="/">Guidebook</a>
+        <a href="/">Claims</a>
+        <a href="/">Profile Guide</a>
+        <a href="/">Requests</a>
+        <a href="/">Development</a>
+        <a href="/">Templates</a>
+        <a href="/">Badges</a>
+    </div>
+</nav>
+
+<div class="git--test">
+    <button onClick="toggleTesting(this)" class="git--test-toggle">Toggle Testing Menu</button>
+    <div class="git--test-box">
+        <b>Testing Menu</b>
+        <label>
+            <b>Group</b><br>
+            <select class="git--test-group">
+                <option value="g-4">Admin</option>
+                <option value="g-1">Validating</option>
+                <option value="g-2">Guest</option>
+                <option value="g-3">Member</option>
+                <option value="g-5">Banned</option>
+                <option value="g-6">Kinetic</option>
+                <option value="g-7">Psychic</option>
+                <option value="g-8">Enhanced</option>
+                <option value="g-9">Summoning</option>
+                <option value="g-10">Mutation</option>
+                <option value="g-11">Alchemical</option>
+            </select>
+        </label>
+        <label>
+            <b>Messages</b><br>
+            <select class="git--test-msg">
+                <option value="0">Read</option>
+                <option value="1">Unread</option>
+            </select>
+        </label>
+        <label>
+            <b>Alerts</b><br>
+            <select class="git--test-alert">
+                <option value="0">Read</option>
+                <option value="1">Unread</option>
+            </select>
+        </label>
+    </div>
+</div>
 
         <!--Main Body-->
         <main>
@@ -285,7 +364,30 @@ The one where 23% margin + 100% table = 123% in IE6 o_O
         </div> 
 
         
-        <script src="../../dist/js/functions.js"></script>
-<script src="../../dist/js/scripts.js"></script>   
+        
+<div data-modal-box="switch" class="modal">
+	<div class="modal--close">close</div>
+	<div id="account-switch">
+        <span id='subaccounts_menu'>
+        <form action='https://coves.jcink.net/index.php?&act=Login&CODE=01&CookieDate=1' name='subswitch' method='POST'>
+        <input type='hidden' name='auth_key' value='8edb8fcbc900e0d57613fec89cd6796c'>
+        <input type='hidden' name='UserName' value='subacct'>
+        <input type='hidden' name='PassWord' value='subacct'>
+        <input type='hidden' name='referer' value='' />
+        <select class='forminput' name='sub_id' onchange='this.form.submit()'>
+        <option value='------------' selected='selected'>Switch Account</option>
+        <option value='1'>&nbsp;&nbsp;&raquo; first last </option><option value='2'>&nbsp;&nbsp;&raquo; first last </option><option value='3'>&nbsp;&nbsp;&raquo; first last </option><option value='4'>&nbsp;&nbsp;&raquo; first last </option>
+        </select>
+        </form>
+        </span>
+    </div>
+</div>
+<div id="quick-login-clip" data-modal-box="login" class="modal">
+	<div class="modal--close">close</div>
+</div>
+
+<script src="../../dist/js/functions.js"></script>
+<script src="../../dist/js/scripts.js"></script>
+<a name="bottom"></a>   
     </body>
 </html>

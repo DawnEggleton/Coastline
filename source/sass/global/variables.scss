@@ -2,9 +2,137 @@
     Variables
 ********************************/
 :root {
-    --size-xs: 8px;
-    --size-sm: 10px;
-    --size-md: 12px;
-    --size-lg: 14px;
-    --size-xl: 16px;
+    --font-body: 'Inter', sans-serif;
+    --font-head: 'Noto Serif', serif;
+
+    --size--font-xs: 8px;
+    --size--font-sm: 10px;
+    --size--font-md: 12px;
+    --size--font-lg: 14px;
+    --size--font-xl: 16px;
+
+    --size--menu-max: 30px;
+    --size--menu-width: 250px;
+
+    --hex-1: #377fb0;
+    --hex-2: #a16f38;
+    --rgb-1: 55, 127, 176;
+    --rgb-2: 161, 111, 56;
+    --opacity--bg-gradient: 0.5;
+
+    --white: rgb(245, 245, 245);
+    --offwhite: rgb(230, 230, 230);
+    --grey-xlight: rgb(215, 215, 215);
+    --grey-light: rgb(200, 200, 200);
+    --grey-medium: rgb(175, 175, 175);
+    --grey-mdark: rgb(140, 140, 140);
+    --grey-dark: rgb(100, 100, 100);
+    --grey-xdark: rgb(65, 65, 65);
+    --offblack: rgb(45, 45, 45);
+    --black: rgb(25, 25, 25);
+
+    //lightmode default
+    --bg--primary: var(--white);
+    --bg--secondary: var(--offwhite);
+
+    --border--primary: var(--grey-mdark);
+
+    --text--primary: var(--grey-xdark);
+    --text--red: #ca4747;
+    --text--on-accent: var(--white);
+}
+
+body {
+    &.dark {
+        --bg--primary: var(--black);
+    }
+
+    //Set colors for group override
+    --accent-1: var(--hex-1);
+    --accent-2: var(--hex-2);
+    --accent-1-gradient: rgba(var(--rgb-1), var(--opacity--bg-gradient));
+    --accent-2-gradient: rgba(var(--rgb-2), var(--opacity--bg-gradient));
+    --bg--accent: var(--accent-1);
+    --bg--accent-alt: var(--accent-2);
+    --text--accent: var(--accent-2);
+
+    &.kinetic,
+    .kinetic,
+    &.g-6,
+    .g-6 {
+        --hex-1: #d1b06a;
+        --hex-2: #7cc176;
+        --rgb-1: 209, 176, 106;
+        --rgb-2: 124, 193, 118;
+        --opacity--bg-gradient: 0.5;
+        --text--on-accent: var(--grey-xdark);
+    }
+    &.psychic,
+    .psychic,
+    &.g-7,
+    .g-7 {
+        --hex-1: #e861de;
+        --hex-2: #47a1a7;
+        --rgb-1: 232, 97, 222;
+        --rgb-2: 71, 161, 167;
+        --opacity--bg-gradient: 0.3;
+        --bg--accent: var(--accent-2);
+        --bg--accent-alt: var(--accent-1);
+        --text--on-accent: var(--white);
+    }
+    &.enhanced,
+    .enhanced,
+    &.g-8,
+    .g-8 {
+        --hex-1: #ff8585;
+        --hex-2: #c2b04a;
+        --rgb-1: 255, 133, 133;
+        --rgb-2: 194, 176, 74;
+        --opacity--bg-gradient: 0.4;
+        --text--on-accent: var(--grey-xdark);
+    }
+    &.summoning,
+    .summoning,
+    &.g-9,
+    .g-9 {
+        --hex-1: #7570cb;
+        --hex-2: #23395d;
+        --rgb-1: 117, 112, 203;
+        --rgb-2: 35, 57, 93;
+        --opacity--bg-gradient: 0.3;
+        --text--on-accent: var(--white);
+    }
+    &.mutation,
+    .mutation,
+    &.g-10,
+    .g-10 {
+        --hex-1: #52db8e;
+        --hex-2: #cc7dc8;
+        --rgb-1: 82, 219, 142;
+        --rgb-2: 204, 125, 200;
+        --opacity--bg-gradient: 0.5;
+        --text--on-accent: var(--grey-xdark);
+    }
+    &.alchemical,
+    .alchemical,
+    &.g-11,
+    .g-11 {
+        --hex-1: #a35865;
+        --hex-2: #b076cc;
+        --rgb-1: 163, 88, 101;
+        --rgb-2: 176, 118, 204;
+        --opacity--bg-gradient: 0.4;
+        --text--on-accent: var(--white);
+    }
+    &.admin,
+    .admin,
+    &.g-4,
+    .g-4 {
+        --hex-1: #ffc0cb;
+        --hex-2: #9077b5;
+        --rgb-1: 255, 192, 203;
+        --rgb-2: 144, 119, 181;
+        --opacity--bg-gradient: 0.5;
+        --text--on-accent: var(--grey-xdark);
+    }
 }

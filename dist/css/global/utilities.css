@@ -1,3 +1,8 @@
 /*******************************
     Utilities
 ********************************/
+.scroll {
+  overflow: auto;
+  padding-right: 10px;
+  scrollbar-color: var(--border--primary) transparent;
+  scrollbar-width: thin; }

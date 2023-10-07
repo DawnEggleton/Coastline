@@ -2,7 +2,7 @@
 <html>
     <head>
         @@include('../source/templates/head.html', {
-            "prefix": "../../dist"
+            "prefix": "../dist"
         })   
     </head>
     <body id="idx" class="g-4">
@@ -86,6 +86,15 @@
             </div>
 
             <!--Stats-->
+            <div id="quick-login">
+                <form style='display:inline' action="https://coves.jcink.net/index.php?act=Login&amp;CODE=01&amp;CookieDate=1" method="post">
+                <div align='right'><strong>Quick Log In</strong>
+                <input type="text" class="forminput" size="10" name="UserName" onfocus="this.value=''" value="User Name" />
+                <input type='password' class='forminput' size='10' name='PassWord' onfocus="this.value=''" value='ibfrules' />
+                <input type='submit' class='forminput' value='Go' />
+                </div>
+                </form>
+            </div>
 
             <!--Defaults-->
             <br>
