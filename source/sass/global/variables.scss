@@ -45,6 +45,19 @@
 body {
     &.dark {
         --bg--primary: var(--black);
+        --bg--secondary: var(--offblack);
+    
+        --border--primary: var(--grey-mdark);
+    
+        --text--primary: var(--grey-light);
+    }
+
+    &.lgFont {
+        --size--font-xs: 10px;
+        --size--font-sm: 12px;
+        --size--font-md: 14px;
+        --size--font-lg: 16px;
+        --size--font-xl: 18px;
     }
 
     //Set colors for group override

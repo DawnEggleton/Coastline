@@ -70,7 +70,16 @@ body {
   --bg--accent-alt: var(--accent-2);
   --text--accent: var(--accent-2); }
   body.dark {
-    --bg--primary: var(--black); }
+    --bg--primary: var(--black);
+    --bg--secondary: var(--offblack);
+    --border--primary: var(--grey-mdark);
+    --text--primary: var(--grey-light); }
+  body.lgFont {
+    --size--font-xs: 10px;
+    --size--font-sm: 12px;
+    --size--font-md: 14px;
+    --size--font-lg: 16px;
+    --size--font-xl: 18px; }
   body.kinetic,
   body .kinetic, body.g-6,
   body .g-6 {
@@ -159,7 +168,8 @@ body {
     letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 700;
-    padding: 0 15px; }
+    padding: 0 15px;
+    color: var(--text--primary); }
   .git--test-box {
     display: none;
     position: fixed;
@@ -174,7 +184,8 @@ body {
     font-size: var(--size--font-xs);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    font-weight: 700; }
+    font-weight: 700;
+    color: var(--text--primary); }
     .git--test-box > b {
       -webkit-box-flex: 0;
       -webkit-flex: 0 0 100%;
@@ -199,7 +210,8 @@ body {
   font-size: var(--size--font-md);
   font-family: var(--font-body);
   margin: calc(var(--size--menu-max) + 30px);
-  background-color: var(--bg--primary); }
+  background-color: var(--bg--primary);
+  color: var(--text--primary); }
   body::before {
     content: '';
     position: fixed;

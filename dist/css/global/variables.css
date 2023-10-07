@@ -42,7 +42,16 @@ body {
   --bg--accent-alt: var(--accent-2);
   --text--accent: var(--accent-2); }
   body.dark {
-    --bg--primary: var(--black); }
+    --bg--primary: var(--black);
+    --bg--secondary: var(--offblack);
+    --border--primary: var(--grey-mdark);
+    --text--primary: var(--grey-light); }
+  body.lgFont {
+    --size--font-xs: 10px;
+    --size--font-sm: 12px;
+    --size--font-md: 14px;
+    --size--font-lg: 16px;
+    --size--font-xl: 18px; }
   body.kinetic,
   body .kinetic, body.g-6,
   body .g-6 {
