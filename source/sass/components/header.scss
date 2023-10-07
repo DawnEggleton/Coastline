@@ -3,3 +3,82 @@
 /*******************************
     Header
 ********************************/
+header {
+    body:not(#idx) > & {
+        display: none;
+    }
+
+    min-height: calc(100vh - (var(--size--menu-max) * 3));
+    padding-bottom: var(--size--menu-max);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        @include fluid-type(50, 140, 480, 1920);
+        text-transform: lowercase;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        color: var(--text--accent-alt);
+        text-shadow: 0 0 5px var(--bg--primary);
+        margin: 0;
+        line-height: 100%;
+
+        i {
+            font-family: var(--font-head);
+            letter-spacing: -0.1em;
+            margin-right: -0.2em;
+            color: var(--text--accent);
+        }
+    }
+
+    p {
+        background: var(--bg--primary);
+        font-size: var(--size--font-xs);
+        letter-spacing: 0.2em;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 0 15px;
+        border-radius: 2px;
+    }
+}
+
+
+
+.info {
+    max-width: 750px;
+    margin-top: 30px;
+
+    &--panel {
+        text-align: justify;
+        line-height: 160%;
+        padding: 10px 15px;
+        font-size: var(--size--font-sm);
+        letter-spacing: 0.1em;
+
+        b {
+            font-family: var(--font-head);
+            font-size: 1.6em;
+            font-weight: 900;
+            font-style: italic;
+            align-items: center;
+            float: left;
+            display: flex;
+            color: var(--text--inverse);
+            line-height: 100%;
+            letter-spacing: 0;
+            color: var(--text--accent);
+            text-shadow: 0 0 3px var(--bg--primary), 0 0 5px var(--bg--primary);
+
+            &::after {
+                content: '';
+                width: 20px;
+                height: 1px;
+                background: var(--text--primary);
+                display: inline-block;
+                margin: 3px 10px 0;
+            }
+        }
+    }
+}

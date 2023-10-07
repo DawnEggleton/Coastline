@@ -96,7 +96,7 @@
         right: 0;
         width: calc(var(--size--menu-max) * 2);
         height: calc(var(--size--menu-max) * 2);
-        background: var(--bg--secondary);
+        background: var(--border--primary);
         clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 0, 50% 0);
         display: flex;
         flex-direction: column;
@@ -106,23 +106,33 @@
         padding: calc(var(--size--menu-max) / 4) 0 0 calc(var(--size--menu-max) / 4);
         font-size: var(--size--font-sm);
         z-index: 100;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: calc((var(--size--menu-max) * 2) - 1px);
+            height: calc((var(--size--menu-max) * 2) - 1px);
+            background: var(--bg--secondary);
+            clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 0, 50% 0);
+        }
         
         a {
             color: var(--text--primary);
             border-radius: 50%;
-            border: 1px solid var(--border--primary);
+            border: 1px solid var(--border--secondary);
             width: 16px;
             height: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition-duration: 0.2s;
-            background: transparent;
+            background: var(--bg--primary);
 
             &:hover {
                 width: 18px;
                 height: 18px;
-                background: var(--bg--primary);
             }
         }
     }
@@ -132,20 +142,30 @@
         left: 0;
         width: calc(var(--size--menu-max) * 2);
         height: calc(var(--size--menu-max) * 2);
-        background: var(--bg--secondary);
+        background: var(--border--primary);
         clip-path: polygon(0 0, 0 100%, 50% 100%, 100% 50%, 100% 0);
         transform: scale(1) translate(0, 0);
         transition-duration: 0.3s;
         z-index: 100;
 
-        img {
-            opacity: 0.5;
-            filter: grayscale(1) brightness(1.3) contrast(0.5);
-            mix-blend-mode: luminosity;
+        a {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc((var(--size--menu-max) * 2) - 1px);
+            height: calc((var(--size--menu-max) * 2) - 1px);
+            background: var(--bg--secondary);
+            clip-path: polygon(0 0, 0 100%, 50% 100%, 100% 50%, 100% 0);
+            overflow: hidden;
         }
 
         &:hover {
             transform: scale(1.1) translate(2.5%, 2.5%);
+        }
+
+        img {
+            filter: var(--filter--image);
         }
     }
     &--popout {
@@ -196,34 +216,15 @@
                 color: var(--text--accent);
             }
         }
-    }
-}
 
-.info {
-    &--panel {
-        text-align: justify;
-        line-height: 160%;
-        background: var(--bg--primary);
-        padding: 10px 15px;
 
-        b {
-            font-family: var(--font-head);
-            font-size: 1.5em;
-            font-weight: 900;
-            font-style: italic;
-            align-items: center;
-            float: left;
-            display: flex;
-            color: var(--text--accent);
-            line-height: 100%;
+        .info {
+            &--panel {
+                background: var(--bg--primary);
 
-            &::after {
-                content: '';
-                width: 20px;
-                height: 1px;
-                background: var(--text--primary);
-                display: inline-block;
-                margin: 3px 10px 0;
+                b {
+                    text-shadow: none;
+                }
             }
         }
     }
@@ -243,10 +244,6 @@
 }
 
 .switch {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-
     .switch-block {
         display: grid;
         grid-template-columns: 50px auto;
@@ -254,11 +251,17 @@
         align-items: center;
         gap: 10px;
         background: var(--bg--primary);
+        border: 1px solid var(--bg--primary);
         padding: 5px 10px 5px 5px;
         font-size: var(--size--font-sm);
         text-transform: uppercase;
         letter-spacing: 0.1em;
         cursor: pointer;
+
+        &:hover {
+            border-color: var(--border--primary);
+            letter-spacing: 0.15em;
+        }
 
         input {
             display: none;
@@ -299,6 +302,7 @@
 
                 &[type="submit"] {
                   background: var(--bg--accent);
+                  color: var(--text--on-accent);
                 }
             }
         }

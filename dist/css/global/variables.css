@@ -17,21 +17,24 @@
   --rgb-2: 161, 111, 56;
   --opacity--bg-gradient: 0.5;
   --white: rgb(245, 245, 245);
-  --offwhite: rgb(230, 230, 230);
+  --offwhite: rgb(235, 235, 235);
   --grey-xlight: rgb(215, 215, 215);
   --grey-light: rgb(200, 200, 200);
   --grey-medium: rgb(175, 175, 175);
   --grey-mdark: rgb(140, 140, 140);
   --grey-dark: rgb(100, 100, 100);
   --grey-xdark: rgb(65, 65, 65);
-  --offblack: rgb(45, 45, 45);
+  --offblack: rgb(37, 37, 37);
   --black: rgb(25, 25, 25);
   --bg--primary: var(--white);
   --bg--secondary: var(--offwhite);
-  --border--primary: var(--grey-mdark);
+  --border--primary: var(--grey-light);
+  --border--secondary: var(--grey-medium);
   --text--primary: var(--grey-xdark);
   --text--red: #ca4747;
-  --text--on-accent: var(--white); }
+  --text--on-accent: var(--white);
+  --text--inverse: var(--white);
+  --filter--image: none; }
 
 body {
   --accent-1: var(--hex-1);
@@ -40,18 +43,8 @@ body {
   --accent-2-gradient: rgba(var(--rgb-2), var(--opacity--bg-gradient));
   --bg--accent: var(--accent-1);
   --bg--accent-alt: var(--accent-2);
-  --text--accent: var(--accent-2); }
-  body.dark {
-    --bg--primary: var(--black);
-    --bg--secondary: var(--offblack);
-    --border--primary: var(--grey-mdark);
-    --text--primary: var(--grey-light); }
-  body.lgFont {
-    --size--font-xs: 10px;
-    --size--font-sm: 12px;
-    --size--font-md: 14px;
-    --size--font-lg: 16px;
-    --size--font-xl: 18px; }
+  --text--accent: var(--accent-2);
+  --text--accent-alt: var(--accent-1); }
   body.kinetic,
   body .kinetic, body.g-6,
   body .g-6 {
@@ -117,3 +110,46 @@ body {
     --rgb-2: 144, 119, 181;
     --opacity--bg-gradient: 0.5;
     --text--on-accent: var(--grey-xdark); }
+  body.lgFont {
+    --size--font-xs: 10px;
+    --size--font-sm: 12px;
+    --size--font-md: 14px;
+    --size--font-lg: 16px;
+    --size--font-xl: 18px; }
+  body.dark {
+    --opacity--bg-gradient: 0.3;
+    --bg--primary: var(--black);
+    --bg--secondary: var(--offblack);
+    --border--primary: var(--grey-xdark);
+    --border--secondary: var(--grey-dark);
+    --text--primary: var(--grey-medium);
+    --text--inverse: var(--black);
+    --filter--image: brightness(0.7) contrast(1.2); }
+    body.dark.kinetic,
+    body.dark .kinetic, body.dark.g-6,
+    body.dark .g-6 {
+      --opacity--bg-gradient: 0.3; }
+    body.dark.psychic,
+    body.dark .psychic, body.dark.g-7,
+    body.dark .g-7 {
+      --opacity--bg-gradient: 0.3; }
+    body.dark.enhanced,
+    body.dark .enhanced, body.dark.g-8,
+    body.dark .g-8 {
+      --opacity--bg-gradient: 0.3; }
+    body.dark.summoning,
+    body.dark .summoning, body.dark.g-9,
+    body.dark .g-9 {
+      --opacity--bg-gradient: 0.4; }
+    body.dark.mutation,
+    body.dark .mutation, body.dark.g-10,
+    body.dark .g-10 {
+      --opacity--bg-gradient: 0.2; }
+    body.dark.alchemical,
+    body.dark .alchemical, body.dark.g-11,
+    body.dark .g-11 {
+      --opacity--bg-gradient: 0.3; }
+    body.dark.admin,
+    body.dark .admin, body.dark.g-4,
+    body.dark .g-4 {
+      --opacity--bg-gradient: 0.3; }

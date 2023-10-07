@@ -9,3 +9,80 @@
   scrollbar-color: var(--border--primary) transparent;
   scrollbar-width: thin;
 }
+
+[data-type="grid"] {
+  display: grid;
+  gap: 10px 15px;
+
+  &[data-gap="xs"] {
+    gap: 5px 5px;
+  }
+  &[data-gap="sm"] {
+    gap: 10px 10px;
+  }
+  &[data-gap="md"] {
+    gap: 10px 15px;
+  }
+  &[data-gap="lg"] {
+    gap: 15px 30px;
+  }
+  &[data-gap="xlg"] {
+    gap: 30px 60px;
+  }
+
+  &[data-columns="2"] {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include mq-down(xs) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &[data-columns="3"] {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include mq-down(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq-down(xs) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &[data-columns="4"] {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include mq-down(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mq-down(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq-down(xs) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &[data-columns="5"] {
+    grid-template-columns: repeat(5, 1fr);
+
+    @include mq-down(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include mq-down(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mq-down(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq-down(xs) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

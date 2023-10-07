@@ -94,6 +94,7 @@ button {
 
 input {
   background: var(--bg--alt);
+  color: var(--text--primary);
   border: 1px solid var(--border--primary);
   border-radius: 0; }
   input[type="button"], input[type="submit"] {

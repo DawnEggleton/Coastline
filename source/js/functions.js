@@ -119,7 +119,7 @@ function initModals() {
 }
 function initSwitcher() {
 	let characters = switcher.querySelectorAll('option');
-	let newSwitch = `<div class="switch">`;
+	let newSwitch = `<div class="switch" data-type="grid" data-columns="5" data-gap="sm">`;
 	characters.forEach((character, i) => {
 		if(i !== 0) {
 			let characterName = character.innerText.trim();
