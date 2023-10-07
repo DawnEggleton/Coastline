@@ -57,7 +57,8 @@ header {
         font-size: var(--size--font-sm);
         letter-spacing: 0.1em;
 
-        b {
+        & > b,
+        .scroll > b {
             font-family: var(--font-head);
             font-size: 1.6em;
             font-weight: 900;

@@ -48,7 +48,8 @@ header {
     padding: 10px 15px;
     font-size: var(--size--font-sm);
     letter-spacing: 0.1em; }
-    .info--panel b {
+    .info--panel > b,
+    .info--panel .scroll > b {
       font-family: var(--font-head);
       font-size: 1.6em;
       font-weight: 900;
@@ -61,7 +62,8 @@ header {
       letter-spacing: 0;
       color: var(--text--accent);
       text-shadow: 0 0 3px var(--bg--primary), 0 0 5px var(--bg--primary); }
-      .info--panel b::after {
+      .info--panel > b::after,
+      .info--panel .scroll > b::after {
         content: '';
         width: 20px;
         height: 1px;

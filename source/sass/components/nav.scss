@@ -193,10 +193,6 @@
             gap: 5px;
         }
 
-        .info--panel .scroll {
-            max-height: 125px;
-        }
-
         .scroll > a {
             background: var(--bg--primary);
             text-align: center;
@@ -222,8 +218,12 @@
             &--panel {
                 background: var(--bg--primary);
 
-                b {
-                    text-shadow: none;
+                .scroll {
+                    max-height: 125px;
+
+                    & > b {
+                        text-shadow: none;
+                    }
                 }
             }
         }

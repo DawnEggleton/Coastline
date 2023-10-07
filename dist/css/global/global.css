@@ -105,6 +105,33 @@ input {
     font-size: var(--size--font-sm);
     cursor: pointer; }
 
+u {
+  text-decoration: none;
+  border-bottom: 1px solid var(--text--accent);
+  padding: 1px 2px;
+  text-decoration-color: var(--text--accent); }
+
+i {
+  font-weight: 600;
+  color: var(--text--accent); }
+
+b {
+  font-weight: 800;
+  color: var(--text--accent);
+  font-size: 1.1em; }
+
+a {
+  font-weight: 700;
+  color: var(--text--accent); }
+
+.ph,
+.ph-bold,
+.ph-thin,
+.ph-light,
+.ph-fill,
+.ph-duotone {
+  color: inherit; }
+
 body:not(.g-4) .staffOnly,
 body:not(.g-2) .guestOnly,
 body.g-2 .memOnly {

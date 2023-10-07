@@ -155,8 +155,6 @@
     display: flex;
     flex-direction: column;
     gap: 5px; }
-  .nav--popout .info--panel .scroll {
-    max-height: 125px; }
   .nav--popout .scroll > a {
     background: var(--bg--primary);
     text-align: center;
@@ -175,8 +173,10 @@
       color: var(--text--accent); }
   .nav--popout .info--panel {
     background: var(--bg--primary); }
-    .nav--popout .info--panel b {
-      text-shadow: none; }
+    .nav--popout .info--panel .scroll {
+      max-height: 125px; }
+      .nav--popout .info--panel .scroll > b {
+        text-shadow: none; }
 
 .invisibleEl {
   position: fixed;
