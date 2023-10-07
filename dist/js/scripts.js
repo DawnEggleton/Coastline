@@ -69,6 +69,7 @@ document.querySelectorAll('#post_as_menu option').forEach(account => {
 /********** Initializations **********/
 setTheme();
 setSize();
+setAnnouncement();
 initModals();
 
 /********** Window Click **********/

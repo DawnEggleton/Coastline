@@ -61,6 +61,11 @@ function setSize() {
         localStorage.setItem('size', 'small');
     }
 }
+function setAnnouncement() {
+    if(sessionStorage.getItem('hideAnnouncement') === null || sessionStorage.getItem('hideAnnouncement') !== 'true') {
+        document.querySelector('.announce').classList.add('is-visible');
+    }
+}
 
 /****** Toggles ******/
 function toggleTheme() {
@@ -92,6 +97,10 @@ function toggleMenu(e) {
         e.classList.add('is-open');
 	    document.querySelector('.invisibleEl').classList.add('menu-open');
     }
+}
+function hideAnnouncement(e) {
+    sessionStorage.setItem('hideAnnouncement', 'true');
+    e.parentNode.classList.remove('is-visible');
 }
 
 /****** Initializations ******/

@@ -68,3 +68,27 @@ header {
         background: var(--text--primary);
         display: inline-block;
         margin: 3px 10px 0; }
+
+.announce {
+  display: none;
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: calc(100% + 60px);
+  background: var(--bg--secondary);
+  padding: 7px 10px 7px var(--size--menu-max);
+  gap: 30px;
+  justify-content: space-between;
+  line-height: 120%; }
+  .announce.is-visible {
+    display: flex; }
+  .announce p {
+    background: none;
+    padding: 0;
+    margin: 0; }
+    .announce p b {
+      color: var(--text--accent);
+      font-size: var(--size--font-md);
+      letter-spacing: 0;
+      bottom: calc((var(--size--font-md) - var(--size--font-xs)) / -4);
+      padding-right: 5px; }
