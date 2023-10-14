@@ -117,6 +117,7 @@
       filter: var(--filter--forum-image-new); }
   .forum--stats {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     margin: 2px 0 10px; }
   .forum--stat {

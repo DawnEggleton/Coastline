@@ -1035,6 +1035,9 @@ header {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     gap: 15px;
     margin: 2px 0 10px; }
   .forum--stat {
