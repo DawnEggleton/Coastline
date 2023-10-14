@@ -160,7 +160,7 @@ body {
     --bg--secondary: var(--offblack);
     --border--primary: var(--grey-xdark);
     --border--secondary: var(--grey-dark);
-    --shadow--drop-primary: drop-shadow(0px 0px 4px var(--border--primary));
+    --shadow--drop-primary: drop-shadow(0px 0px 4px var(--black));
     --text--primary: var(--grey-medium);
     --text--inverse: var(--black);
     --filter--image: brightness(0.7) contrast(1.2);
