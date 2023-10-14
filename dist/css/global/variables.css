@@ -11,6 +11,8 @@
   --size--font-xl: 16px;
   --size--menu-max: 30px;
   --size--menu-width: 250px;
+  --size--corner-cut: 20px;
+  --style--cut-corners: polygon(var(--size--corner-cut) 0, 100% 0, 100% calc(100% - var(--size--corner-cut)), calc(100% - var(--size--corner-cut)) 100%, 0 100%, 0 var(--size--corner-cut));
   --hex-1: #377fb0;
   --hex-2: #a16f38;
   --rgb-1: 55, 127, 176;
@@ -26,15 +28,21 @@
   --grey-xdark: rgb(65, 65, 65);
   --offblack: rgb(37, 37, 37);
   --black: rgb(25, 25, 25);
+  --black-25: rgba(25, 25, 25, 0.25);
   --bg--primary: var(--white);
   --bg--secondary: var(--offwhite);
   --border--primary: var(--grey-light);
   --border--secondary: var(--grey-medium);
+  --shadow--drop-primary: drop-shadow(0px 0px 4px var(--black-25));
   --text--primary: var(--grey-xdark);
   --text--red: #ca4747;
   --text--on-accent: var(--white);
   --text--inverse: var(--white);
-  --filter--image: none; }
+  --filter--image: none;
+  --filter--forum-image: grayscale(0.3) brightness(1.2) contrast(0.8) opacity(0.7);
+  --filter--forum-image-new: grayscale(0.3) brightness(1.2) contrast(0.8) opacity(1);
+  --style--border-to-shadow: 0 0 2px var(--black-25);
+  --style--shadow-to-border: 1px solid var(--bg--secondary); }
 
 body {
   --accent-1: var(--hex-1);
@@ -44,7 +52,9 @@ body {
   --bg--accent: var(--accent-1);
   --bg--accent-alt: var(--accent-2);
   --text--accent: var(--accent-2);
-  --text--accent-alt: var(--accent-1); }
+  --text--accent-alt: var(--accent-1);
+  --style--text-shadow: 0 0 5px var(--bg--primary);
+  --style--text-shadow-sm: 0 0 3px var(--bg--primary), 0 0 5px var(--bg--primary); }
   body.kinetic,
   body .kinetic, body.g-6,
   body .g-6 {
@@ -122,9 +132,14 @@ body {
     --bg--secondary: var(--offblack);
     --border--primary: var(--grey-xdark);
     --border--secondary: var(--grey-dark);
+    --shadow--drop-primary: drop-shadow(0px 0px 4px var(--border--primary));
     --text--primary: var(--grey-medium);
     --text--inverse: var(--black);
-    --filter--image: brightness(0.7) contrast(1.2); }
+    --filter--image: brightness(0.7) contrast(1.2);
+    --filter--forum-image: grayscale(0.6) brightness(0.8) contrast(1.2) opacity(0.6);
+    --filter--forum-image-new: grayscale(0.6) brightness(0.8) contrast(1.2) opacity(1);
+    --style--border-to-shadow: none;
+    --style--shadow-to-border: 1px solid var(--border--primary); }
     body.dark.kinetic,
     body.dark .kinetic, body.dark.g-6,
     body.dark .g-6 {

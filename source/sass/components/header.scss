@@ -21,7 +21,7 @@ header {
         font-weight: 900;
         letter-spacing: -0.05em;
         color: var(--text--accent-alt);
-        text-shadow: 0 0 5px var(--bg--primary);
+        text-shadow: var(--style--text-shadow);
         margin: 0;
         line-height: 100%;
 
@@ -70,7 +70,7 @@ header {
             line-height: 100%;
             letter-spacing: 0;
             color: var(--text--accent);
-            text-shadow: 0 0 3px var(--bg--primary), 0 0 5px var(--bg--primary);
+            text-shadow: var(--style--text-shadow-sm);
 
             &::after {
                 content: '';

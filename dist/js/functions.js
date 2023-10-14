@@ -163,10 +163,13 @@ function initQuickLogin() {
 /****** Alerts ******/
 function read_alerts() {
     $('#recent-alerts').fadeOut();
+    document.querySelectorAll('.alerts').forEach(alert => {
+        alert.dataset.new = 0;
+        alert.setAttribute('title', 'Alerts (0)');
+    });
     $.get( "index.php?recent_alerts=1&read=1", function( data ) {
         $( "#recent_alerts_data" ).html( data );
     });
-    document.querySelectorAll('a[title="Alerts"]').forEach(alert => alert.classList.remove('new'));
 }
 function close_alerts() {
     $('#recent-alerts').fadeOut();

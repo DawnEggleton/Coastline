@@ -3,3 +3,198 @@
 /*******************************
    Categories and Forums
 ********************************/
+.category {
+   display: grid;
+   grid-template-columns: 145px 1fr;
+   gap: 30px;
+   max-width: 1200px;
+   margin: 0 auto 60px;
+
+   @include mq-down(sm) {
+      grid-template-columns: 1fr;
+      gap: 15px;
+   }
+
+   &--title {
+      font-size: 60px;
+      font-weight: 900;
+      margin: 0;
+      line-height: 100%;
+      padding: 10px 40px 10px 0;
+      color: var(--text--accent);
+      text-shadow: var(--style--text-shadow);
+      letter-spacing: -0.05em;
+      text-align: right;
+
+      @include mq-down(sm) {
+         padding: 0 10px 30px 10px;
+      }
+
+      &::after {
+         content: '';
+         position: absolute;
+         bottom: 0;
+         right: 0;
+         width: 10px;
+         height: 100%;
+         background: var(--bg--primary);
+         border-radius: 2px;
+
+         @include mq-down(sm) {
+            width: 100%;
+            height: 10px;
+         }
+      }
+   }
+
+   &--container {
+      padding: 15px 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+
+      @include mq-down(lg) {
+         gap: 15px;
+      }
+
+      @include mq-down(md) {
+         grid-template-columns: repeat(1, 1fr);
+      }
+   }
+}
+
+.forum {
+   display: grid;
+   grid-template-columns: 100px calc(100% - 100px);
+   clip-path: var(--style--cut-corners);
+
+   &.redirect {
+      grid-template-columns: 100%;
+   }
+
+   &--wrap {
+      filter: var(--shadow--drop-primary);
+      display: grid;
+
+      &:last-child:nth-child(odd) {
+         @include mq-up(md) {
+            grid-column: 1 / -1;
+   
+            .forum--main {
+               grid-template-columns: calc(100% - 230px) 200px;
+   
+               .forum--latest {
+                  grid-column: 2 / 3;
+                  grid-row: 1 / 3;
+                  justify-content: center;
+               }
+            }
+         }
+      }
+   }
+
+   &--main {
+      display: grid;
+      grid-template-rows: max-content max-content auto;
+      padding: 15px 20px 20px;
+      background: var(--bg--primary);
+
+      h3 {
+         margin: 0;
+         text-transform: uppercase;
+         font-size: 30px;
+         line-height: 160%;
+
+         @include mq-down(sm) {
+            @include fluid-type(16, 30, 480, 786)
+         }
+
+         a {
+            font-weight: 900;
+            color: var(--text--primary);
+         }
+      }
+   }
+   &--latest {
+      display: flex;
+      flex-direction: column;
+
+      & > span {
+         text-transform: uppercase;
+
+         &:first-of-type {
+            font-size: var(--size--font-md);
+            line-height: 160%;
+         }
+         &:nth-of-type(2) {
+            font-size: var(--size--font-sm);
+            letter-spacing: 0.05em;
+            line-height: 160%;
+         }
+         &:last-of-type {
+            font-style: italic;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            line-height: 160%;
+         }
+      }
+   }
+
+   &--marker {
+      width: 100px;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      border-right: 1px solid var(--border--primary);
+      filter: var(--filter--forum-image);
+
+      &.new {
+         filter: var(--filter--forum-image-new);
+      }
+   }
+   
+   &--stats {
+      display: flex;
+      gap: 15px;
+      margin: 2px 0 10px;
+   }
+
+   &--stat {
+      background: var(--bg--secondary);
+      color: var(--text--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: var(--size--font-xs);
+      font-weight: 700;
+      padding: 7px 15px;
+      line-height: 100%;
+      border-radius: 2px;
+      max-width: max-content;
+      box-shadow: var(--style--border-to-shadow);
+      border: var(--style--shadow-to-border);
+
+      b {
+         color: var(--text--accent);
+         font-weight: 900;
+      }
+   }
+
+   &--links {
+      grid-column: span 2;
+      background: var(--bg--secondary);
+      border-top: 1px solid var(--border--primary);
+      padding: 5px 15px;
+      text-transform: uppercase;
+      font-size: var(--size--font-sm);
+
+      &:empty {
+         display: none;
+      }
+
+      .subforums {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 5px 15px;
+      }
+   }
+}

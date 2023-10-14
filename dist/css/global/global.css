@@ -66,7 +66,8 @@ button {
   border: 0;
   background: none;
   padding: 0;
-  cursor: pointer; }
+  cursor: pointer;
+  color: var(--text--primary); }
 
 .modal {
   opacity: 0;
