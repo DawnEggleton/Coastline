@@ -63,6 +63,10 @@ body {
   background-color: var(--bg--primary);
   color: var(--text--primary);
 
+  @include mq-down(xxs) {
+    margin: calc(var(--size--menu-max) + 10px);
+  }
+
   &::before {
       content: '';
       position: fixed;

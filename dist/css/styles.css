@@ -263,6 +263,9 @@ body {
   margin: calc(var(--size--menu-max) + 30px);
   background-color: var(--bg--primary);
   color: var(--text--primary); }
+  @media (max-width: 480px) {
+    body {
+      margin: calc(var(--size--menu-max) + 10px); } }
   body::before {
     content: '';
     position: fixed;
