@@ -96,6 +96,13 @@ header {
     justify-content: space-between;
     line-height: 120%;
 
+    @include mq-down(xs) {
+        top: -10px;
+        left: -10px;
+        width: calc(100% + 20px);
+        gap: 15px;
+    }
+
     &.is-visible {
         display: flex;
     }
@@ -112,5 +119,9 @@ header {
             bottom: calc((var(--size--font-md) - var(--size--font-xs)) / -4);
             padding-right: 5px;
         }
+    }
+
+    &--close {
+        height: max-content;
     }
 }

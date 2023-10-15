@@ -82,6 +82,12 @@ header {
   gap: 30px;
   justify-content: space-between;
   line-height: 120%; }
+  @media (max-width: 600px) {
+    .announce {
+      top: -10px;
+      left: -10px;
+      width: calc(100% + 20px);
+      gap: 15px; } }
   .announce.is-visible {
     display: flex; }
   .announce p {
@@ -94,3 +100,5 @@ header {
       letter-spacing: 0;
       bottom: calc((var(--size--font-md) - var(--size--font-xs)) / -4);
       padding-right: 5px; }
+  .announce--close {
+    height: max-content; }
