@@ -159,6 +159,11 @@ function initQuickLogin() {
         });
     }
 }
+function initIndex() {
+    let topics = document.querySelector('#recent-topics table').outerHTML;
+    document.querySelector('#recent-topics').remove();
+    document.querySelector('.stats--recent-topics').innerHTML = topics;
+}
 
 /****** Alerts ******/
 function read_alerts() {

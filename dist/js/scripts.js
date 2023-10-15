@@ -78,3 +78,8 @@ document.querySelector('.invisibleEl').addEventListener('click', e => {
 	document.querySelector('.button--menu').classList.remove('is-open');
 	e.target.classList.remove('menu-open');
 });
+
+/********** Index & Category **********/
+if(pageType === 'idx' || pageType === 'SC') {
+    initIndex();
+}
