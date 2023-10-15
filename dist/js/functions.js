@@ -162,7 +162,7 @@ function initQuickLogin() {
 function initIndex() {
     let topics = document.querySelector('#recent-topics table').outerHTML;
     document.querySelector('#recent-topics').remove();
-    document.querySelector('.stats--recent-topics').innerHTML = topics;
+    document.querySelector('.stats--recent-topics-clip').innerHTML = topics;
 }
 
 /****** Alerts ******/

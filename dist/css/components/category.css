@@ -140,7 +140,7 @@
     grid-column: span 2;
     background: var(--bg--secondary);
     border-top: 1px solid var(--border--primary);
-    padding: 5px 15px;
+    padding: 5px 30px 5px 15px;
     text-transform: uppercase;
     font-size: var(--size--font-sm); }
     .forum--links:empty {
