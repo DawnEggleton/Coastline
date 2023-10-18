@@ -14,12 +14,17 @@
     clip-path: var(--style--cut-corners);
     padding: 10px 20px; }
     #SF main > table > tbody > tr {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px 20px;
-      justify-content: space-between; }
+      display: grid;
+      gap: 5px 20px; }
+      @media (min-width: 601px) {
+        #SF main > table > tbody > tr {
+          grid-template-columns: auto max-content; } }
       #SF main > table > tbody > tr > td {
-        width: auto; }
+        width: 100%; }
+        #SF main > table > tbody > tr > td:first-child {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px 10px; }
 
 .topic {
   display: grid;
@@ -59,7 +64,7 @@
   .topic--stats {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px 15px;
     margin: 2px 0 10px; }
     .topic--stats label {
       height: max-content;

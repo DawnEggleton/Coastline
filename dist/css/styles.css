@@ -367,6 +367,8 @@ button {
     bottom: 0;
     left: 0;
     border-radius: 2px; }
+  .macro--header:not(:first-child) {
+    margin-top: 20px; }
 
 .macro--button {
   display: -webkit-inline-box;
@@ -400,6 +402,9 @@ button {
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   gap: 2px; }
   .pagination a {
     font-size: var(--size--font-md);
@@ -1525,20 +1530,26 @@ header {
             clip-path: var(--style--cut-corners);
     padding: 10px 20px; }
     #SF main > table > tbody > tr {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-flex-wrap: wrap;
-          -ms-flex-wrap: wrap;
-              flex-wrap: wrap;
-      gap: 5px 20px;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-          -ms-flex-pack: justify;
-              justify-content: space-between; }
+      display: -ms-grid;
+      display: grid;
+      gap: 5px 20px; }
+      @media (min-width: 601px) {
+        #SF main > table > tbody > tr {
+          -ms-grid-columns: auto -webkit-max-content;
+          -ms-grid-columns: auto max-content;
+          grid-template-columns: auto -webkit-max-content;
+          grid-template-columns: auto max-content; } }
       #SF main > table > tbody > tr > td {
-        width: auto; }
+        width: 100%; }
+        #SF main > table > tbody > tr > td:first-child {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-flex-wrap: wrap;
+              -ms-flex-wrap: wrap;
+                  flex-wrap: wrap;
+          gap: 5px 10px; }
 
 .topic {
   display: -ms-grid;
@@ -1602,7 +1613,7 @@ header {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px 15px;
     margin: 2px 0 10px; }
     .topic--stats label {
       height: -webkit-max-content;

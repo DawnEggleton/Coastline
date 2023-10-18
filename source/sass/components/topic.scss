@@ -22,13 +22,21 @@
                 padding: 10px 20px;
 
                 & > tr {
-                    display: flex;
-                    flex-wrap: wrap;
+                    display: grid;
                     gap: 5px 20px;
-                    justify-content: space-between;
+
+                    @include mq-up(xs) {
+                        grid-template-columns: auto max-content;
+                    }
 
                     & > td {
-                        width: auto;
+                        width: 100%;
+
+                        &:first-child {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 5px 10px;
+                        }
                     }
                 }
             }
@@ -91,7 +99,7 @@
     &--stats {
        display: flex;
        flex-wrap: wrap;
-       gap: 15px;
+       gap: 10px 15px;
        margin: 2px 0 10px;
 
         label {

@@ -188,6 +188,10 @@ button {
     left: 0;
     border-radius: 2px;
   }
+  
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
 }
 .macro--button {
   display: inline-flex;
@@ -209,6 +213,7 @@ button {
 .pagination {
   font-size: 0;
   display: inline-flex;
+  flex-wrap: wrap;
   gap: 2px;
 
   a {

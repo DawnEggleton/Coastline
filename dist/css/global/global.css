@@ -138,6 +138,8 @@ button {
     bottom: 0;
     left: 0;
     border-radius: 2px; }
+  .macro--header:not(:first-child) {
+    margin-top: 20px; }
 
 .macro--button {
   display: inline-flex;
@@ -157,6 +159,7 @@ button {
 .pagination {
   font-size: 0;
   display: inline-flex;
+  flex-wrap: wrap;
   gap: 2px; }
   .pagination a {
     font-size: var(--size--font-md);
