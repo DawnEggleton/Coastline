@@ -129,6 +129,32 @@
         <main>
             <a name="top"></a>
 		
+            <!--Category-->
+            <section class="category">
+                <h2 class="category--title">
+                    <i class="ph-fill ph-folder" title="Subforums"></i>
+                </h2>
+                <div class="category--container">
+                    <div class="forum--wrap">
+                        <div class="forum f-1">
+                            <div class="forum--marker"></div>
+                            <div class="forum--main">
+                                <h3><a href="./topiclist.html">Code Bank</a></h3>
+                                <div class="forum--stats">
+                                    <span class="forum--stat"><b>00</b> topics</span>
+                                    <span class="forum--stat"><b>00</b> replies</span>
+                                </div>
+                                <div class="forum--latest">
+                                    <span><a href="./post.html">Thread Title Goes In Here</a></span>
+                                    <span>By <a href="./profile.html">First Last</a></span>
+                                    <span>On October 7, 2023 at 9:01 PM</span>
+                                </div>
+                            </div>
+                            <div class="forum--links"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!--IBF.MODLINK-->
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -159,7 +185,7 @@
                             )</span>
                         </td>
                         <td width="80%" align="right">
-                            <a href="?act=Post&amp;CODE=00&amp;f=1"><span class="macro--button"><i class="fa-solid fa-plus"></i></span></a>
+                            <a href="?act=Post&amp;CODE=00&amp;f=1"><span class="macro--button"><i class="ph-bold ph-plus"></i></span></a>
                         </td>
                     </tr>
                 </tbody>
@@ -168,13 +194,115 @@
             <br>
             
             <form action="?act=modcp&amp;f=1&amp;CODE=topicchoice" name="mod_topics" method="POST">
-                <input type="hidden" id="tact" name="tact" value="close">	
-                
-                <!--Topic List-->
-                <section class="topic"></section>
+                <input type="hidden" id="tact" name="tact" value="close">
+                <section class="category">
+                    <h2 class="category--title">
+                        <i class="ph-fill ph-files" title="Topics"></i>
+                    </h2>
+                    <div class="category--container">
+                        <div class="macro--header">Pinned</div>
+                        <div class="topic--wrap">
+                            <div class="topic">
+                                <div class="topic--main">
+                                    <div class="topic--description">this is a description</div>
+                                    <h3><a href="./post.html">Topic title goes in here it can be long</a></h3>
+                                    <div class="topic--stats">
+                                        <label for="TID_<!-- |tid| -->" class="staffOnly input-wrap">
+                                            <input type="checkbox">
+                                            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+                                        </label>
+                                        <span class="topic--stat"><b>00</b> views</span>
+                                        <span class="topic--stat"><a href="/">00</a> replies</span>
+                                    </div>
+                                    <div class="topic--latest">
+                                        <img src="http://picsum.photos/100" />
+                                        <span>By <a href="./profile.html">First Last</a></span>
+                                        <span>On October 7, 2023 at 9:01 PM</span>
+                                    </div>
+                                </div>
+                                <div class="topic--started">
+                                    Started by <a href="./profile.html">First Last</a>, October 18, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <div class="macro--header">Topics</div>
+                        <div class="topic--wrap">
+                            <div class="topic">
+                                <div class="topic--main">
+                                    <div class="topic--description"></div>
+                                    <h3><a href="./post.html">Topic title goes in here it can be long</a></h3>
+                                    <div class="topic--stats">
+                                        <label for="TID_<!-- |tid| -->" class="staffOnly input-wrap">
+                                            <input type="checkbox">
+                                            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+                                        </label>
+                                        <span class="topic--stat"><b>00</b> views</span>
+                                        <span class="topic--stat"><a href="/">00</a> replies</span>
+                                    </div>
+                                    <div class="topic--latest">
+                                        <img src="http://picsum.photos/100" />
+                                        <span>By <a href="./profile.html">First Last</a></span>
+                                        <span>On October 7, 2023 at 9:01 PM</span>
+                                    </div>
+                                </div>
+                                <div class="topic--started">
+                                    Started by <a href="./profile.html">First Last</a>, October 18, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <div class="topic--wrap">
+                            <div class="topic">
+                                <div class="topic--main">
+                                    <div class="topic--description">this is a description</div>
+                                    <h3><a href="./post.html">Topic title goes in here it can be long</a></h3>
+                                    <div class="topic--stats">
+                                        <label for="TID_<!-- |tid| -->" class="staffOnly input-wrap">
+                                            <input type="checkbox">
+                                            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+                                        </label>
+                                        <span class="topic--stat"><b>00</b> views</span>
+                                        <span class="topic--stat"><a href="/">00</a> replies</span>
+                                    </div>
+                                    <div class="topic--latest">
+                                        <img src="http://picsum.photos/100" />
+                                        <span>By <a href="./profile.html">First Last</a></span>
+                                        <span>On October 7, 2023 at 9:01 PM</span>
+                                    </div>
+                                </div>
+                                <div class="topic--started">
+                                    Started by <a href="./profile.html">First Last</a>, October 18, 2023
+                                </div>
+                            </div>
+                        </div>
+                        <div class="topic--wrap">
+                            <div class="topic">
+                                <div class="topic--main">
+                                    <div class="topic--description">this is a description</div>
+                                    <h3><a href="./post.html">Topic title goes in here it can be long</a></h3>
+                                    <div class="topic--stats">
+                                        <label for="TID_<!-- |tid| -->" class="staffOnly input-wrap">
+                                            <input type="checkbox">
+                                            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+                                        </label>
+                                        <span class="topic--stat"><b>00</b> views</span>
+                                        <span class="topic--stat"><a href="/">00</a> replies</span>
+                                    </div>
+                                    <div class="topic--latest">
+                                        <img src="http://picsum.photos/100" />
+                                        <span>By <a href="./profile.html">First Last</a></span>
+                                        <span>On October 7, 2023 at 9:01 PM</span>
+                                    </div>
+                                </div>
+                                <div class="topic--started">
+                                    Started by <a href="./profile.html">First Last</a>, October 18, 2023
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </form>
 
-            <div class="topiclist--info">
+            <div class="topiclist--wrap"><div class="topiclist--info">
                 <form action="https://victis.jcink.net/index.php?act=SF&amp;f=5&amp;st=" method="post">      
                     <div class="darkrow2" style="padding:4px" align="center">Showing 2 of 2 topics sorted by <select name="sort_key" class="forminput">
             <option value="last_post" selected="selected">last post date</option>
@@ -203,13 +331,12 @@
                 </form>
                 <div class="darkrow2" style="padding:6px">1 User(s) are browsing this forum (0 Guests and 0 Anonymous Users)</div>
                 <div class="row2" style="padding:6px">1 Members: <a href="https://victis.jcink.net/index.php?showuser=1">lux</a></div>
-                <span id="forumName" class="hide">Lux</span>
-            </div>
+            </div></div>
             <br>
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody><tr>
                     <td width="20%" nowrap="nowrap" align="left"><span class="pagination">&nbsp;</span></td>
-                    <td width="80%" align="right"><a href="https://victis.jcink.net/index.php?act=Post&amp;CODE=00&amp;f=5"><div class="button-large">New Topic</div></a></td>
+                    <td width="80%" align="right"><a href="https://victis.jcink.net/index.php?act=Post&amp;CODE=00&amp;f=5"><div class="macro--button"><i class="ph-bold ph-plus"></i></div></a></td>
                 </tr>
             </tbody></table>
             <br>

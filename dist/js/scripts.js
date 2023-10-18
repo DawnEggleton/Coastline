@@ -83,3 +83,8 @@ document.querySelector('.invisibleEl').addEventListener('click', e => {
 if(pageType === 'idx' || pageType === 'SC') {
     initIndex();
 }
+
+/********** Topic List **********/
+if(pageType === 'SF') {
+    initTopicsWrap();
+}

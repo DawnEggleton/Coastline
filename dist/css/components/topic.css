@@ -1,3 +1,142 @@
 /*******************************
     Topic List
 ********************************/
+#SF main > table {
+  display: block;
+  filter: var(--shadow--drop-primary); }
+  #SF main > table:first-of-type {
+    position: sticky;
+    z-index: 10;
+    top: calc(var(--size--menu-max) + 10px); }
+  #SF main > table > tbody {
+    display: block;
+    background: var(--bg--primary);
+    clip-path: var(--style--cut-corners);
+    padding: 10px 20px; }
+    #SF main > table > tbody > tr {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 20px;
+      justify-content: space-between; }
+      #SF main > table > tbody > tr > td {
+        width: auto; }
+
+.topic {
+  display: grid;
+  grid-template-rows: auto max-content;
+  clip-path: var(--style--cut-corners); }
+  .topic--wrap {
+    filter: var(--shadow--drop-primary);
+    display: grid; }
+    @media (min-width: 1025px) {
+      .topic--wrap:last-child:nth-child(odd) {
+        grid-column: 1 / -1; }
+        .topic--wrap:last-child:nth-child(odd) .topic--main {
+          display: grid;
+          grid-template-columns: calc(100% - 295px) 275px;
+          align-items: center; }
+          .topic--wrap:last-child:nth-child(odd) .topic--main .topic--latest {
+            grid-column: 2 / 3;
+            grid-row: 1 / 4;
+            justify-content: center; } }
+  .topic--main {
+    background: var(--bg--primary);
+    padding: 20px; }
+    .topic--main h3 {
+      font-size: var(--size--font-xl);
+      text-transform: uppercase;
+      line-height: 160%;
+      margin: 0; }
+      .topic--main h3 a {
+        font-weight: 900;
+        color: var(--text--primary); }
+  .topic--description {
+    text-transform: uppercase;
+    font-size: var(--size--font-xs);
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    line-height: 160%; }
+  .topic--stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 2px 0 10px; }
+    .topic--stats label {
+      height: max-content;
+      align-self: center; }
+  .topic--stat {
+    background: var(--bg--secondary);
+    color: var(--text--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: var(--size--font-xs);
+    font-weight: 700;
+    padding: 7px 15px;
+    line-height: 100%;
+    border-radius: 2px;
+    max-width: max-content;
+    box-shadow: var(--style--border-to-shadow);
+    border: var(--style--shadow-to-border); }
+    .topic--stat b,
+    .topic--stat a {
+      color: var(--text--accent);
+      font-weight: 900; }
+  .topic--latest {
+    display: grid;
+    grid-template-columns: 65px calc(100% - 80px);
+    grid-template-rows: 1fr 1fr;
+    gap: 0 15px;
+    text-transform: uppercase;
+    line-height: 160%; }
+    .topic--latest img {
+      width: 65px;
+      height: 65px;
+      border-radius: 2px;
+      grid-row: span 2; }
+    .topic--latest span:first-of-type {
+      font-size: var(--size--font-md);
+      line-height: 160%;
+      align-self: end; }
+    .topic--latest span:last-of-type {
+      font-size: var(--size--font-sm);
+      letter-spacing: 0.05em;
+      line-height: 160%;
+      align-self: start; }
+  .topic--started {
+    text-transform: uppercase;
+    background: var(--bg--secondary);
+    text-align: right;
+    font-style: italic;
+    font-size: var(--size--font-xs);
+    letter-spacing: 0.15em;
+    line-height: 160%;
+    border-top: 1px solid var(--border--primary);
+    padding: 5px 30px 5px 15px; }
+
+.topiclist--info {
+  display: grid;
+  grid-template-rows: auto max-content;
+  clip-path: var(--style--cut-corners);
+  background: var(--bg--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: var(--size--font-xs);
+  font-weight: 600;
+  text-align: center; }
+  .topiclist--info form {
+    padding: 10px 0; }
+
+.topiclist--wrap {
+  filter: var(--shadow--drop-primary); }
+
+.topiclist--section {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px; }
+  @media (max-width: 1280px) {
+    .topiclist--section {
+      gap: 15px; } }
+  @media (max-width: 1024px) {
+    .topiclist--section {
+      grid-template-columns: repeat(1, 1fr); } }

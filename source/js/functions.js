@@ -164,6 +164,11 @@ function initIndex() {
     document.querySelector('#recent-topics').remove();
     document.querySelector('.stats--recent-topics-clip').innerHTML = topics;
 }
+function initTopicsWrap() {
+    $(`.macro--header`).each(function (index) {
+        $(this).nextUntil(`.macro--header`).wrapAll(`<div class="topiclist--section"></div>`);
+    });
+}
 
 /****** Alerts ******/
 function read_alerts() {
