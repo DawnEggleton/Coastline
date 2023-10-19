@@ -40,7 +40,9 @@ a {
   --size--menu-max: 30px;
   --size--menu-width: 250px;
   --size--corner-cut: 20px;
+  --size--corner-cut-large: 40px;
   --style--cut-corners: polygon(var(--size--corner-cut) 0, 100% 0, 100% calc(100% - var(--size--corner-cut)), calc(100% - var(--size--corner-cut)) 100%, 0 100%, 0 var(--size--corner-cut));
+  --style--cut-corners-large: polygon(var(--size--corner-cut-large) 0, 100% 0, 100% calc(100% - var(--size--corner-cut-large)), calc(100% - var(--size--corner-cut-large)) 100%, 0 100%, 0 var(--size--corner-cut-large));
   --hex-1: #377fb0;
   --hex-2: #a16f38;
   --rgb-1: 55, 127, 176;
@@ -1514,34 +1516,41 @@ header {
 /*******************************
     Topic List
 ********************************/
-#SF main > table {
+#SF main > table,
+#ST main > table {
   display: block;
   -webkit-filter: var(--shadow--drop-primary);
           filter: var(--shadow--drop-primary); }
-  #SF main > table:first-of-type {
+  #SF main > table:first-of-type,
+  #ST main > table:first-of-type {
     position: -webkit-sticky;
     position: sticky;
     z-index: 10;
     top: calc(var(--size--menu-max) + 10px); }
-  #SF main > table > tbody {
+  #SF main > table > tbody,
+  #ST main > table > tbody {
     display: block;
     background: var(--bg--primary);
     -webkit-clip-path: var(--style--cut-corners);
             clip-path: var(--style--cut-corners);
     padding: 10px 20px; }
-    #SF main > table > tbody > tr {
+    #SF main > table > tbody > tr,
+    #ST main > table > tbody > tr {
       display: -ms-grid;
       display: grid;
       gap: 5px 20px; }
       @media (min-width: 601px) {
-        #SF main > table > tbody > tr {
+        #SF main > table > tbody > tr,
+        #ST main > table > tbody > tr {
           -ms-grid-columns: auto -webkit-max-content;
           -ms-grid-columns: auto max-content;
           grid-template-columns: auto -webkit-max-content;
           grid-template-columns: auto max-content; } }
-      #SF main > table > tbody > tr > td {
+      #SF main > table > tbody > tr > td,
+      #ST main > table > tbody > tr > td {
         width: 100%; }
-        #SF main > table > tbody > tr > td:first-child {
+        #SF main > table > tbody > tr > td:first-child,
+        #ST main > table > tbody > tr > td:first-child {
           display: -webkit-box;
           display: -webkit-flex;
           display: -ms-flexbox;
@@ -1549,7 +1558,11 @@ header {
           -webkit-flex-wrap: wrap;
               -ms-flex-wrap: wrap;
                   flex-wrap: wrap;
-          gap: 5px 10px; }
+          gap: 5px 10px;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+              -ms-flex-align: center;
+                  align-items: center; }
 
 .topic {
   display: -ms-grid;
@@ -1725,6 +1738,135 @@ header {
 /*******************************
     Post Row
 ********************************/
+#ST .maintitle {
+  display: -ms-grid;
+  display: grid;
+  padding: 20px 20px 20px 30px; }
+  #ST .maintitle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background: var(--bg--primary);
+    border-radius: 2px; }
+  #ST .maintitle .topic-title-space {
+    display: none; }
+  #ST .maintitle .topic-title {
+    color: var(--text--accent);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 160%; }
+  #ST .maintitle .topic-desc {
+    font-size: var(--size--font-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-left: 2px; }
+
+#ST .postlinksbar {
+  -webkit-filter: var(--shadow--drop-primary);
+          filter: var(--shadow--drop-primary);
+  margin: 20px 0; }
+  #ST .postlinksbar strong {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 5px;
+    -webkit-clip-path: var(--style--cut-corners);
+            clip-path: var(--style--cut-corners);
+    background: var(--bg--primary);
+    padding: 10px 20px;
+    font-size: 0; }
+    #ST .postlinksbar strong a {
+      background: var(--bg--secondary);
+      border: 1px solid var(--bg--secondary);
+      color: var(--text--primary);
+      font-size: var(--size--font-sm);
+      text-transform: uppercase;
+      padding: 0 10px; }
+      #ST .postlinksbar strong a:hover {
+        background: var(--bg--primary);
+        color: var(--text--accent);
+        border-color: var(--text--accent); }
+
+#ST .activeuser--info {
+  -webkit-clip-path: var(--style--cut-corners);
+          clip-path: var(--style--cut-corners);
+  background: var(--bg--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: var(--size--font-xs);
+  font-weight: 600;
+  text-align: center;
+  padding: 10px; }
+
+#ST .activeuser--wrap {
+  -webkit-filter: var(--shadow--drop-primary);
+          filter: var(--shadow--drop-primary); }
+
+.post {
+  -webkit-filter: var(--shadow--drop-primary);
+          filter: var(--shadow--drop-primary);
+  margin: 20px 0; }
+  .post--wrap {
+    -webkit-clip-path: var(--style--cut-corners-large);
+            clip-path: var(--style--cut-corners-large);
+    background: var(--bg--primary); }
+  .post--header {
+    background: var(--bg--secondary);
+    border-bottom: 1px solid var(--border--primary);
+    padding: 20px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 16px 125px auto;
+    grid-template-columns: 16px 125px auto;
+    gap: 20px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .post--header img {
+      width: 125px;
+      height: 125px;
+      border-radius: 2px;
+      -webkit-clip-path: polygon(var(--size--corner-cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--size--corner-cut));
+              clip-path: polygon(var(--size--corner-cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--size--corner-cut)); }
+    .post--header .fancy-input {
+      background: var(--bg--primary); }
+    .post--header-info {
+      display: -ms-grid;
+      display: grid;
+      gap: 5px;
+      text-transform: uppercase; }
+      .post--header-info span {
+        font-size: var(--size--font-xs);
+        letter-spacing: 0.15em;
+        font-weight: 700; }
+      .post--header-info > a {
+        font-size: 36px;
+        font-weight: 900; }
+  .post--links {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    gap: 5px 15px;
+    font-size: var(--size--font-xs);
+    letter-spacing: 0.15em;
+    font-weight: 700; }
+    .post--links a {
+      color: var(--text--primary); }
+
 /*******************************
     Profile
 ********************************/

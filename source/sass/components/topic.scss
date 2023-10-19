@@ -3,7 +3,8 @@
 /*******************************
     Topic List
 ********************************/
-#SF {
+#SF,
+#ST {
     main {
         & > table {
             display: block;
@@ -36,6 +37,7 @@
                             display: flex;
                             flex-wrap: wrap;
                             gap: 5px 10px;
+                            align-items: center;
                         }
                     }
                 }

@@ -88,3 +88,14 @@ if(pageType === 'idx' || pageType === 'SC') {
 if(pageType === 'SF') {
     initTopicsWrap();
 }
+
+/********** Topic View **********/
+if(pageType === 'ST') {
+    let descript = $('.topic-desc').html();
+    if (descript != undefined) {
+        var newDescript = descript.replace(", ", "");
+        $('.topic-desc').html(newDescript);
+    }
+
+    $('.activeuserstrip').nextUntil('.activeuserstrip').andSelf().wrapAll('<div class="activeuser--wrap"><div class="activeuser--info"></div></div>'); 
+}

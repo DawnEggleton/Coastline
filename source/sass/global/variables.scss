@@ -14,8 +14,10 @@
     --size--menu-max: 30px;
     --size--menu-width: 250px;
     --size--corner-cut: 20px;
+    --size--corner-cut-large: 40px;
 
     --style--cut-corners: polygon(var(--size--corner-cut) 0, 100% 0, 100% calc(100% - var(--size--corner-cut)), calc(100% - var(--size--corner-cut)) 100%, 0 100%, 0 var(--size--corner-cut));
+    --style--cut-corners-large: polygon(var(--size--corner-cut-large) 0, 100% 0, 100% calc(100% - var(--size--corner-cut-large)), calc(100% - var(--size--corner-cut-large)) 100%, 0 100%, 0 var(--size--corner-cut-large));
 
     --hex-1: #377fb0;
     --hex-2: #a16f38;

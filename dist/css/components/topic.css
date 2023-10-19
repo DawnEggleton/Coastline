@@ -1,30 +1,38 @@
 /*******************************
     Topic List
 ********************************/
-#SF main > table {
+#SF main > table,
+#ST main > table {
   display: block;
   filter: var(--shadow--drop-primary); }
-  #SF main > table:first-of-type {
+  #SF main > table:first-of-type,
+  #ST main > table:first-of-type {
     position: sticky;
     z-index: 10;
     top: calc(var(--size--menu-max) + 10px); }
-  #SF main > table > tbody {
+  #SF main > table > tbody,
+  #ST main > table > tbody {
     display: block;
     background: var(--bg--primary);
     clip-path: var(--style--cut-corners);
     padding: 10px 20px; }
-    #SF main > table > tbody > tr {
+    #SF main > table > tbody > tr,
+    #ST main > table > tbody > tr {
       display: grid;
       gap: 5px 20px; }
       @media (min-width: 601px) {
-        #SF main > table > tbody > tr {
+        #SF main > table > tbody > tr,
+        #ST main > table > tbody > tr {
           grid-template-columns: auto max-content; } }
-      #SF main > table > tbody > tr > td {
+      #SF main > table > tbody > tr > td,
+      #ST main > table > tbody > tr > td {
         width: 100%; }
-        #SF main > table > tbody > tr > td:first-child {
+        #SF main > table > tbody > tr > td:first-child,
+        #ST main > table > tbody > tr > td:first-child {
           display: flex;
           flex-wrap: wrap;
-          gap: 5px 10px; }
+          gap: 5px 10px;
+          align-items: center; }
 
 .topic {
   display: grid;
