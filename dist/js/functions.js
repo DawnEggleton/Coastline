@@ -173,12 +173,28 @@ function initAccordion() {
     document.querySelectorAll('.accordion').forEach(accordion => {
         let triggers = accordion.querySelectorAll('.accordion--trigger');
         let contents = accordion.querySelectorAll('.accordion--content');
+        if(window.innerWidth <= 480) {
+            triggers.forEach(trigger => trigger.classList.remove('is-open'));
+            contents.forEach(trigger => trigger.classList.remove('is-open'));
+        }
         triggers.forEach(trigger => {
             trigger.addEventListener('click', e => {
+                let alreadyOpen = false;
+                if(e.currentTarget.classList.contains('is-open')) {
+                    alreadyOpen = true;
+                }
+                console.log(alreadyOpen);
                 triggers.forEach(trigger => trigger.classList.remove('is-open'));
                 contents.forEach(trigger => trigger.classList.remove('is-open'));
-                e.currentTarget.classList.add('is-open');
-                e.currentTarget.nextElementSibling.classList.add('is-open');
+                if(alreadyOpen) {
+                    e.currentTarget.classList.remove('is-open');
+                    e.currentTarget.nextElementSibling.classList.remove('is-open');
+                    alreadyOpen = false;
+                } else {
+                    e.currentTarget.classList.add('is-open');
+                    e.currentTarget.nextElementSibling.classList.add('is-open');
+                }
+                console.log(alreadyOpen);
             });
         })
     })

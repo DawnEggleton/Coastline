@@ -14,8 +14,8 @@
   --size--corner-cut-small: 10px;
   --size--corner-cut: 20px;
   --size--corner-cut-large: 40px;
-  --size--avatar-width: 250px;
-  --size--avatar-height: 450px;
+  --size--avatar-width: calc(100% - 20px);
+  --size--avatar-height: 125px;
   --style--cut-corners-small: polygon(var(--size--corner-cut-small) 0, 100% 0, 100% calc(100% - var(--size--corner-cut-small)), calc(100% - var(--size--corner-cut-small)) 100%, 0 100%, 0 var(--size--corner-cut-small));
   --style--cut-corners-small-alt: polygon(0 0, calc(100% - var(--size--corner-cut-small)) 0, 100% var(--size--corner-cut-small), 100% 100%, var(--size--corner-cut-small) 100%, 0 calc(100% - var(--size--corner-cut-small)));
   --style--cut-corners: polygon(var(--size--corner-cut) 0, 100% 0, 100% calc(100% - var(--size--corner-cut)), calc(100% - var(--size--corner-cut)) 100%, 0 100%, 0 var(--size--corner-cut));
@@ -52,6 +52,14 @@
   --filter--forum-image-new: grayscale(0.3) brightness(1.2) contrast(0.8) opacity(1);
   --style--border-to-shadow: 0 0 2px var(--black-25);
   --style--shadow-to-border: 1px solid var(--bg--secondary); }
+  @media (min-width: 601px) {
+    :root {
+      --size--avatar-width: 175px;
+      --size--avatar-height: 315px; } }
+  @media (min-width: 769px) {
+    :root {
+      --size--avatar-width: 250px;
+      --size--avatar-height: 450px; } }
 
 body {
   --accent-1: var(--hex-1);

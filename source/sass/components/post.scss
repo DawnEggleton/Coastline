@@ -91,26 +91,44 @@
 
     &--wrap {
         display: grid;
-        grid-template-columns: auto calc(var(--size--avatar-width) + 20px);
         clip-path: var(--style--cut-corners-large-alt);
         background: var(--bg--primary);
+
+        @include mq-up(xs) {
+            grid-template-columns: auto calc(var(--size--avatar-width) + 20px);
+        }
     }
 
     &--header {
+        order: 1;
         grid-column: 1 / -1;
         background: var(--bg--secondary);
         border-bottom: 1px solid var(--border--primary);
         padding: 20px;
         display: grid;
-        grid-template-columns: 16px 125px auto;
+        grid-template-columns: 16px auto;
         gap: 20px;
         align-items: center;
 
+        @include mq-up(xs) {
+            grid-template-columns: 16px 65px auto;
+        }
+
+        @include mq-up(sm) {
+            grid-template-columns: 16px 125px auto;
+        }
+
         img {
-            width: 125px;
-            height: 125px;
+            width: 65px;
+            height: 65px;
             border-radius: 2px;
-            clip-path: var(--style--cut-corners-alt);
+            clip-path: var(--style--cut-corners-small-alt);
+
+            @include mq-up(sm) {
+                width: 125px;
+                height: 125px;
+                clip-path: var(--style--cut-corners-alt);
+            }
         }
 
         .fancy-input {
@@ -121,16 +139,23 @@
             display: grid;
             gap: 5px;
             text-transform: uppercase;
+            grid-column: 1 / -1;
+
+            @include mq-up(xs) {
+                grid-column: auto;
+            }
 
             span {
                 font-size: var(--size--font-xs);
                 letter-spacing: 0.15em;
                 font-weight: 700;
+                line-height: 160%;
             }
 
             & > a {
-                font-size: 36px;
+                @include fluid-type(24, 36, 600, 1920);
                 font-weight: 900;
+                line-height: 100%;
             }
         }
     }
@@ -141,6 +166,7 @@
         font-size: var(--size--font-xs);
         letter-spacing: 0.15em;
         font-weight: 700;
+        line-height: 160%;
 
         a {
             color: var(--text--primary);
@@ -148,7 +174,14 @@
     }
 
     &--main {
+        order: 3;
         padding: 30px;
+        border-top: 1px solid var(--border--primary);
+
+        @include mq-up(xs) {
+            order: 2;
+            border-top: 0;
+        }
 
         .postcolor {
             margin: 0 auto;
@@ -161,6 +194,11 @@
 
     &--aside {
         border-left: 1px solid var(--border--primary);
+        order: 2;
+
+        @include mq-up(xs) {
+            order: 3;
+        }
 
         .accordion {
             position: sticky;
@@ -187,6 +225,16 @@
                 &.scroll {
                     margin: 15px;
                     width: calc(var(--size--avatar-width) - 10px);
+
+                    @include mq-down(xs) {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        align-items: start;
+                    }
+
+                    @include mq-down(xxs) {
+                        grid-template-columns: repeat(1, 1fr);
+                    }
                 }
 
                 &:not(.scroll) {
@@ -196,9 +244,13 @@
                         bottom: 0;
                         left: 0;
                         width: 100%;
-                        height: 30%;
+                        height: 70%;
                         background: linear-gradient(to top, var(--black), transparent);
                         z-index: 1;
+
+                        @include mq-up(xs) {
+                            height: 30%;
+                        }
                     }
                 }
             }
@@ -299,6 +351,7 @@
     }
 
     &--bottom {
+        order: 4;
         grid-column: 1 / -1;
         background: var(--bg--secondary);
         border-top: 1px solid var(--border--primary);
@@ -308,6 +361,8 @@
         font-weight: 600;
         display: flex;
         justify-content: end;
+        gap: 5px 15px;
+        flex-wrap: wrap;
         padding: 3px 10px 3px 50px;
 
         .staffOnly {

@@ -1,3 +1,5 @@
+@import '../global/mixins.scss';
+
 /*******************************
     Variables
 ********************************/
@@ -16,8 +18,18 @@
     --size--corner-cut-small: 10px;
     --size--corner-cut: 20px;
     --size--corner-cut-large: 40px;
-    --size--avatar-width: 250px;
-    --size--avatar-height: 450px;
+    --size--avatar-width: calc(100% - 20px);
+    --size--avatar-height: 125px;
+
+    @include mq-up(xs) {
+        --size--avatar-width: 175px;
+        --size--avatar-height: 315px;
+    }
+
+    @include mq-up(sm) {
+        --size--avatar-width: 250px;
+        --size--avatar-height: 450px;
+    }
 
     --style--cut-corners-small: polygon(var(--size--corner-cut-small) 0, 100% 0, 100% calc(100% - var(--size--corner-cut-small)), calc(100% - var(--size--corner-cut-small)) 100%, 0 100%, 0 var(--size--corner-cut-small));
     --style--cut-corners-small-alt: polygon(0 0, calc(100% - var(--size--corner-cut-small)) 0, 100% var(--size--corner-cut-small), 100% 100%, var(--size--corner-cut-small) 100%, 0 calc(100% - var(--size--corner-cut-small)));
