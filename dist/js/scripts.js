@@ -99,3 +99,8 @@ if(pageType === 'ST') {
 
     $('.activeuserstrip').nextUntil('.activeuserstrip').andSelf().wrapAll('<div class="activeuser--wrap"><div class="activeuser--info"></div></div>'); 
 }
+
+/********** If Accordion **********/
+if(document.querySelectorAll('.accordion').length > 0) {
+    initAccordion();
+}

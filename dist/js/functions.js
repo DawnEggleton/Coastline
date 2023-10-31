@@ -169,6 +169,20 @@ function initTopicsWrap() {
         $(this).nextUntil(`.macro--header`).wrapAll(`<div class="topiclist--section"></div>`);
     });
 }
+function initAccordion() {
+    document.querySelectorAll('.accordion').forEach(accordion => {
+        let triggers = accordion.querySelectorAll('.accordion--trigger');
+        let contents = accordion.querySelectorAll('.accordion--content');
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', e => {
+                triggers.forEach(trigger => trigger.classList.remove('is-open'));
+                contents.forEach(trigger => trigger.classList.remove('is-open'));
+                e.currentTarget.classList.add('is-open');
+                e.currentTarget.nextElementSibling.classList.add('is-open');
+            });
+        })
+    })
+}
 
 /****** Alerts ******/
 function read_alerts() {

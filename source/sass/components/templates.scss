@@ -3,4 +3,48 @@
 /*******************************
     Templates
 ********************************/
+.accordion {
+    &--trigger {
+        background: var(--bg--secondary);
+        font-size: var(--size--font-sm);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 5px 10px;
+        border-bottom: 1px solid var(--border--primary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition-duration: 0.3s;
+        cursor: pointer;
 
+        &:nth-last-child(2):not(.is-open) {
+            border-bottom: none;
+        }
+
+        b {
+            font-size: var(--size--font-xl);
+            font-weight: 900;
+            letter-spacing: 0;
+        }
+
+        &.is-open,
+        &:hover {
+            font-size: var(--size--font-md);
+        }
+    }
+
+    &--content {
+        height: 0;
+        overflow: hidden;
+        transition-duration: 0.5s;
+
+        &.is-open:not(:last-child) {
+            border-bottom: 1px solid var(--border--primary);
+        }
+    }
+
+    &--inner {
+        margin: 10px;
+    }
+}

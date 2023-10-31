@@ -11,10 +11,17 @@
   --size--font-xl: 16px;
   --size--menu-max: 30px;
   --size--menu-width: 250px;
+  --size--corner-cut-small: 10px;
   --size--corner-cut: 20px;
   --size--corner-cut-large: 40px;
+  --size--avatar-width: 250px;
+  --size--avatar-height: 450px;
+  --style--cut-corners-small: polygon(var(--size--corner-cut-small) 0, 100% 0, 100% calc(100% - var(--size--corner-cut-small)), calc(100% - var(--size--corner-cut-small)) 100%, 0 100%, 0 var(--size--corner-cut-small));
+  --style--cut-corners-small-alt: polygon(0 0, calc(100% - var(--size--corner-cut-small)) 0, 100% var(--size--corner-cut-small), 100% 100%, var(--size--corner-cut-small) 100%, 0 calc(100% - var(--size--corner-cut-small)));
   --style--cut-corners: polygon(var(--size--corner-cut) 0, 100% 0, 100% calc(100% - var(--size--corner-cut)), calc(100% - var(--size--corner-cut)) 100%, 0 100%, 0 var(--size--corner-cut));
+  --style--cut-corners-alt: polygon(0 0, calc(100% - var(--size--corner-cut)) 0, 100% var(--size--corner-cut), 100% 100%, var(--size--corner-cut) 100%, 0 calc(100% - var(--size--corner-cut)));
   --style--cut-corners-large: polygon(var(--size--corner-cut-large) 0, 100% 0, 100% calc(100% - var(--size--corner-cut-large)), calc(100% - var(--size--corner-cut-large)) 100%, 0 100%, 0 var(--size--corner-cut-large));
+  --style--cut-corners-large-alt: polygon(0 0, calc(100% - var(--size--corner-cut-large)) 0, 100% var(--size--corner-cut-large), 100% 100%, var(--size--corner-cut-large) 100%, 0 calc(100% - var(--size--corner-cut-large)));
   --hex-1: #377fb0;
   --hex-2: #a16f38;
   --rgb-1: 55, 127, 176;

@@ -195,12 +195,14 @@ button {
   .goto-firstunread a {
     color: var(--text--primary); }
 
+#mark-as-read-subto,
 #delcookiesrow {
   text-align: center;
   text-transform: uppercase;
   font-weight: 900;
   font-size: var(--size--font-sm);
   letter-spacing: 0.1em; }
+  #mark-as-read-subto a,
   #delcookiesrow a {
     font-weight: 900; }
 

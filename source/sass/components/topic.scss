@@ -177,7 +177,7 @@
     &--info {
         display: grid;
         grid-template-rows: auto max-content;
-        clip-path: var(--style--cut-corners);
+        clip-path: var(--style--cut-corners-alt);
         background: var(--bg--primary);
         text-transform: uppercase;
         letter-spacing: 0.15em;
