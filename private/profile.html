@@ -29,16 +29,107 @@
                         <a href="#author"><b>.05</b><span>Author</span></a>
                     </tag-labelset>
                     <div class="profile--aside-inner">
-                        <img src="https://picsum.photos/250/450" />
+                        <img src="https://picsum.photos/500/900" />
                     </div>
                 </div>
                 <tag-tabset class="profile--tabs">
-                    <tag-tab data-key="#at-a-glance">At a glance</tag-tab>
+                    <tag-tab data-key="#at-a-glance" class="profile--glance">
+                        <header>
+                            <h1><i>Duncan</i>O'Donnelley-Taggart</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </header>
+                        <div data-type="grid" data-columns="3" data-gap="lg-even">
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Full Name</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Nickname</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>D.O.B</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Identity</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Pronouns</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Sexuality</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Occupation</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Nationality</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Ethnicity</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Ability</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Apartment</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                            <div class="profile--item">
+                                <div class="profile--item-inner">
+                                    <strong>Face Claim</strong>
+                                    <span>Answer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </tag-tab>
                     <tag-tab data-key="#freeform">Freeform</tag-tab>
                     <tag-tab data-key="#plotting">plotting</tag-tab>
                     <tag-tab data-key="#tracking">tracking</tag-tab>
                     <tag-tab data-key="#author">author</tag-tab>
                 </tag-tabset>
+                <script>
+                    let name = `first last`;
+                    if(name.split(' ').length > 1) {
+                        let nameArray = name.split(' ');
+                        let lastNames = [...nameArray];
+                        lastNames.shift();
+                        name = `<i>${nameArray[0]}</i>${lastNames.join(' ')}`;
+                    } else {
+                        name = `<i>${name}</i>`;
+                    }
+                    document.querySelector('.profile header h1').innerHTML = name;
+                </script>
             </section>
 
 

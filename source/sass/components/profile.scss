@@ -83,6 +83,97 @@
         }
     }
 
+    &--glance {
+        header {
+            min-height: 0;
+
+            h1 {
+                @include fluid-type(24, 78, 480, 1920);
+                z-index: 1;
+
+                i {
+                    @include fluid-type(48, 96, 480, 1920);
+                }
+            }
+            p {
+                max-width: 400px;
+                line-height: 160%;
+                padding: 10px 15px;
+                text-align: justify;
+            }
+        }
+    }
+
+    &--item {
+        filter: var(--shadow--drop-primary);
+
+        &-inner {
+            clip-path: var(--style--cut-corners-small-alt);
+            background: var(--bg--primary);
+            padding: 10px 15px;
+            display: grid;
+            font-size: var(--size--font-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            line-height: 160%;
+            gap: 5px;
+
+            strong {
+                font-size: var(--size--font-xl);
+                text-transform: uppercase;
+                font-weight: 900;
+                color: var(--text--accent);
+                letter-spacing: 0.05em;
+                line-height: 160%;
+                padding-bottom: 5px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 50px;
+                    height: 4px;
+                    background: var(--bg--accent);
+                    border-radius: 1.5px;
+                }
+            }
+
+            .awards,
+            .avoid {
+                margin-top: 2px;
+                padding: 10px;
+                background: var(--bg--secondary);
+                clip-path: var(--style--cut-corners-small);
+
+                .scroll {
+                    display: block;
+                    max-height: 70px;
+                }
+            }
+            .avoid {
+                .scroll {
+                    text-align: justify;
+                }
+            }
+            .awards {
+                .scroll {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 5px;
+
+                    img {
+                        width: 22px;
+                        height: 22px;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+            }
+        }
+    }
+
     & ~ * {
         display: none;
     }

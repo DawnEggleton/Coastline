@@ -16,10 +16,16 @@
     gap: 10px 10px; }
   [data-type="grid"][data-gap="md"] {
     gap: 10px 15px; }
+  [data-type="grid"][data-gap="md-even"] {
+    gap: 15px; }
   [data-type="grid"][data-gap="lg"] {
     gap: 15px 30px; }
-  [data-type="grid"][data-gap="xlg"] {
+  [data-type="grid"][data-gap="lg-even"] {
+    gap: 30px; }
+  [data-type="grid"][data-gap="xl"] {
     gap: 30px 60px; }
+  [data-type="grid"][data-gap="xl-even"] {
+    gap: 60px; }
   [data-type="grid"][data-columns="2"] {
     grid-template-columns: repeat(2, 1fr); }
     @media (max-width: 600px) {
