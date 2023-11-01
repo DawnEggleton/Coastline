@@ -10,7 +10,7 @@
 
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -132,27 +132,47 @@
 		
 
             <!--Profile-->
-            <section class="profile"></section>
-        </main>
-
-        </div>
-<!-- Copyright Information -->
-        <div class="tableborder" align="center">
-            <div class="row4" style="font-size: 7.5pt; padding-top: 1px; padding-bottom: 1px; line-height: 8pt;">
-                <div class="copyright" align="center">
-                    Powered by 
-                    <a href="https://www.invisionboard.com" target="_blank">Invision Power Board</a>
-                    (<a href="http://jcink.com" target="_blank">Jcink.com </a>
-                    <a href="https://jcink.com" target="_blank">Forum Hosting</a>
-                    ) © 2020 &nbsp;
-                    <a href="https://www.invisionpower.com" target="_blank">IPS, Inc.</a>
-                    <br>
-                    Page creation time: 0.0054 <!-- http://luxtradition.b1.jcink.com -->  · 
-                    <a href="index.php?act=Mobile">Mobile Version</a> · 
-                    <a href="index.php?act=privacy">Privacy Policy</a>
+            <section class="profile">
+                <div class="profile--aside">
+                    <tag-labelset class="profile--menu">
+                        <a href="#at-a-glance"><b>.01</b><span>At a Glance</span></a>
+                        <a href="#freeform"><b>.02</b><span>Freeform</span></a>
+                        <a href="#plotting"><b>.03</b><span>Plotting</span></a>
+                        <a href="#tracking"><b>.04</b><span>Tracking</span></a>
+                        <a href="#author"><b>.05</b><span>Author</span></a>
+                    </tag-labelset>
+                    <div class="profile--aside-inner">
+                        <img src="https://picsum.photos/250/450" />
+                    </div>
                 </div>
-            </div>
-        </div> 
+                <tag-tabset class="profile--tabs">
+                    <tag-tab data-key="#at-a-glance">At a glance</tag-tab>
+                    <tag-tab data-key="#freeform">Freeform</tag-tab>
+                    <tag-tab data-key="#plotting">plotting</tag-tab>
+                    <tag-tab data-key="#tracking">tracking</tag-tab>
+                    <tag-tab data-key="#author">author</tag-tab>
+                </tag-tabset>
+            </section>
+
+
+<!-- Copyright Information -->
+            <div class="tableborder" align="center">
+                <div class="row4" style="font-size: 7.5pt; padding-top: 1px; padding-bottom: 1px; line-height: 8pt;">
+                    <div class="copyright" align="center">
+                        Powered by 
+                        <a href="https://www.invisionboard.com" target="_blank">Invision Power Board</a>
+                        (<a href="http://jcink.com" target="_blank">Jcink.com </a>
+                        <a href="https://jcink.com" target="_blank">Forum Hosting</a>
+                        ) © 2020 &nbsp;
+                        <a href="https://www.invisionpower.com" target="_blank">IPS, Inc.</a>
+                        <br>
+                        Page creation time: 0.0054 <!-- http://luxtradition.b1.jcink.com -->  · 
+                        <a href="index.php?act=Mobile">Mobile Version</a> · 
+                        <a href="index.php?act=privacy">Privacy Policy</a>
+                    </div>
+                </div>
+            </div> 
+        </main>
 
         
         

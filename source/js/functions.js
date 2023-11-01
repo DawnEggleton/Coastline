@@ -199,6 +199,73 @@ function initAccordion() {
         })
     })
 }
+function initTabs(isHash = false, wrapClass, menuClass, tabWrapClass, categoryClass = null) {
+    if(isHash) {
+        console.log('run hash tabs');
+        window.addEventListener('hashchange', function(e){
+            initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null);
+        });
+
+        //hash linking
+        if (window.location.hash){
+            initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null);
+        } else {
+            initFirstHashTab(menuClass);
+        }
+    }
+}
+function initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null) {
+    //set variables for categories
+    let selectedCategory, hashMain, hashCategory, categorySiblings, categoryIndex, hashTab, submenuSiblings, submenuIndex;
+
+    //get hash and set basic variables
+    let hash = $.trim( window.location.hash );
+    let selected = document.querySelector(`${menuClass} a[href="${hash}"]`);
+    let hashContent = document.querySelector(`tag-tab[data-key="${hash}"]`);
+    let unsetDefault = Array.from(selected.parentNode.children);
+    let tabSiblings = Array.from(hashContent.parentNode.children);
+    let tabIndex = tabSiblings.indexOf.call(tabSiblings, hashContent);
+
+    //set category variables
+    if(categoryClass) {
+        selectedCategory = selected.closest(categoryClass).getAttribute('data-category');
+        hashMain = document.querySelector(`${menuClass} tag-label[data-category="${selectedCategory}"]`);
+        hashCategory = document.querySelector(`${menuClass} tag-tab[data-category="${selectedCategory}"]`);
+        hashTab = document.querySelector(`${tabWrapClass} tag-tab[data-category="${selectedCategory}"]`);
+        categorySiblings = Array.from(hashCategory.parentNode.children);
+        categoryIndex = categorySiblings.indexOf.call(categorySiblings, hashCategory);
+        submenuSiblings = Array.from(hashTab.parentNode.children);
+        submenuIndex = submenuSiblings.indexOf.call(submenuSiblings, hashTab);
+    }
+
+    //find the sub menu/inner menu link with the matching hash
+    if (hash) {
+        $(selected).trigger('click');
+    }
+
+    //Tabs
+    //Remove active from everything
+    document.querySelectorAll(`${menuClass} tag-label`).forEach(label => label.classList.remove('is-active'));
+    unsetDefault.forEach(label => label.classList.remove('is-active'));
+    document.querySelectorAll(`${wrapClass} tag-tab`).forEach(label => label.classList.remove('is-active'));
+
+    //Add active
+    selected.classList.add('is-active');
+    hashContent.classList.add('is-active');
+    tabSiblings.forEach(sibling => sibling.style.left = `${-100 * tabIndex}%`);
+
+    //add active for category
+    if(categoryClass) {
+        hashMain.classList.add('is-active');
+        hashTab.classList.add('is-active');
+        categorySiblings.forEach(sibling => sibling.style.left = `${-100 * categoryIndex}%`);
+        submenuSiblings.forEach(sibling => sibling.style.left = `${-100 * submenuIndex}%`);
+    }
+}
+function initFirstHashTab(menuClass) {
+    //Auto-select tab without hashtag present
+    document.querySelector(`${menuClass} a`).classList.add('is-active');
+}
 
 /****** Alerts ******/
 function read_alerts() {

@@ -43,6 +43,7 @@
     --rgb-1: 55, 127, 176;
     --rgb-2: 161, 111, 56;
     --opacity--bg-gradient: 0.5;
+    --opacity--bg-gradient-low: 0.3;
 
     --white: rgb(245, 245, 245);
     --offwhite: rgb(235, 235, 235);
@@ -84,6 +85,8 @@ body {
     --accent-2: var(--hex-2);
     --accent-1-gradient: rgba(var(--rgb-1), var(--opacity--bg-gradient));
     --accent-2-gradient: rgba(var(--rgb-2), var(--opacity--bg-gradient));
+    --accent-1-gradient-low: rgba(var(--rgb-1), var(--opacity--bg-gradient-low));
+    --accent-2-gradient-low: rgba(var(--rgb-2), var(--opacity--bg-gradient-low));
     --bg--accent: var(--accent-1);
     --bg--accent-alt: var(--accent-2);
     --text--accent: var(--accent-2);
@@ -100,6 +103,7 @@ body {
         --rgb-1: 209, 176, 106;
         --rgb-2: 124, 193, 118;
         --opacity--bg-gradient: 0.5;
+        --opacity--bg-gradient-low: 0.3;
         --text--on-accent: var(--grey-xdark);
     }
     &.psychic,
@@ -111,6 +115,7 @@ body {
         --rgb-1: 232, 97, 222;
         --rgb-2: 71, 161, 167;
         --opacity--bg-gradient: 0.3;
+        --opacity--bg-gradient-low: 0.1;
         --bg--accent: var(--accent-2);
         --bg--accent-alt: var(--accent-1);
         --text--on-accent: var(--white);
@@ -124,6 +129,7 @@ body {
         --rgb-1: 255, 133, 133;
         --rgb-2: 194, 176, 74;
         --opacity--bg-gradient: 0.4;
+        --opacity--bg-gradient-low: 0.2;
         --text--on-accent: var(--grey-xdark);
     }
     &.summoning,
@@ -135,6 +141,7 @@ body {
         --rgb-1: 117, 112, 203;
         --rgb-2: 35, 57, 93;
         --opacity--bg-gradient: 0.3;
+        --opacity--bg-gradient-low: 0.1;
         --text--on-accent: var(--white);
     }
     &.mutation,
@@ -146,6 +153,7 @@ body {
         --rgb-1: 82, 219, 142;
         --rgb-2: 204, 125, 200;
         --opacity--bg-gradient: 0.5;
+        --opacity--bg-gradient-low: 0.3;
         --text--on-accent: var(--grey-xdark);
     }
     &.alchemical,
@@ -157,6 +165,7 @@ body {
         --rgb-1: 163, 88, 101;
         --rgb-2: 176, 118, 204;
         --opacity--bg-gradient: 0.4;
+        --opacity--bg-gradient-low: 0.2;
         --text--on-accent: var(--white);
     }
     &.admin,
@@ -168,6 +177,7 @@ body {
         --rgb-1: 255, 192, 203;
         --rgb-2: 144, 119, 181;
         --opacity--bg-gradient: 0.5;
+        --opacity--bg-gradient-low: 0.3;
         --text--on-accent: var(--grey-xdark);
     }
 
@@ -181,6 +191,7 @@ body {
 
     &.dark {
         --opacity--bg-gradient: 0.3;
+        --opacity--bg-gradient-low: 0.1;
 
         --bg--primary: var(--black);
         --bg--secondary: var(--offblack);
@@ -205,42 +216,49 @@ body {
         &.g-6,
         .g-6 {
             --opacity--bg-gradient: 0.3;
+            --opacity--bg-gradient-low: 0.1;
         }
         &.psychic,
         .psychic,
         &.g-7,
         .g-7 {
             --opacity--bg-gradient: 0.3;
+            --opacity--bg-gradient-low: 0.1;
         }
         &.enhanced,
         .enhanced,
         &.g-8,
         .g-8 {
             --opacity--bg-gradient: 0.3;
+            --opacity--bg-gradient-low: 0.1;
         }
         &.summoning,
         .summoning,
         &.g-9,
         .g-9 {
             --opacity--bg-gradient: 0.4;
+            --opacity--bg-gradient-low: 0.2;
         }
         &.mutation,
         .mutation,
         &.g-10,
         .g-10 {
             --opacity--bg-gradient: 0.2;
+            --opacity--bg-gradient-low: 0.1;
         }
         &.alchemical,
         .alchemical,
         &.g-11,
         .g-11 {
             --opacity--bg-gradient: 0.3;
+            --opacity--bg-gradient-low: 0.1;
         }
         &.admin,
         .admin,
         &.g-4,
         .g-4 {
             --opacity--bg-gradient: 0.3;
+            --opacity--bg-gradient-low: 0.1;
         }
     }
 }

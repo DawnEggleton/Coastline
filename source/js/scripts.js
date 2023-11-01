@@ -100,6 +100,11 @@ if(pageType === 'ST') {
     $('.activeuserstrip').nextUntil('.activeuserstrip').andSelf().wrapAll('<div class="activeuser--wrap"><div class="activeuser--info"></div></div>'); 
 }
 
+/********** Profile **********/
+if(pageType === 'Profile') {
+    initTabs(true, '.profile', '.profile--menu', '.profile--tabs');
+}
+
 /********** If Accordion **********/
 if(document.querySelectorAll('.accordion').length > 0) {
     initAccordion();
