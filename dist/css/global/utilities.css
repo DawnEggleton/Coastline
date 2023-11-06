@@ -28,39 +28,39 @@
     gap: 60px; }
   [data-type="grid"][data-columns="2"] {
     grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       [data-type="grid"][data-columns="2"] {
         grid-template-columns: repeat(1, 1fr); } }
   [data-type="grid"][data-columns="3"] {
     grid-template-columns: repeat(3, 1fr); }
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       [data-type="grid"][data-columns="3"] {
         grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       [data-type="grid"][data-columns="3"] {
         grid-template-columns: repeat(1, 1fr); } }
   [data-type="grid"][data-columns="4"] {
     grid-template-columns: repeat(4, 1fr); }
-    @media (max-width: 1024px) {
+    @media (max-width: 1280px) {
       [data-type="grid"][data-columns="4"] {
         grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       [data-type="grid"][data-columns="4"] {
         grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       [data-type="grid"][data-columns="4"] {
         grid-template-columns: repeat(1, 1fr); } }
   [data-type="grid"][data-columns="5"] {
     grid-template-columns: repeat(5, 1fr); }
-    @media (max-width: 1280px) {
+    @media (max-width: 1440px) {
       [data-type="grid"][data-columns="5"] {
         grid-template-columns: repeat(4, 1fr); } }
-    @media (max-width: 1024px) {
+    @media (max-width: 1280px) {
       [data-type="grid"][data-columns="5"] {
         grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       [data-type="grid"][data-columns="5"] {
         grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       [data-type="grid"][data-columns="5"] {
         grid-template-columns: repeat(1, 1fr); } }

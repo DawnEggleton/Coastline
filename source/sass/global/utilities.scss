@@ -42,7 +42,7 @@
   &[data-columns="2"] {
     grid-template-columns: repeat(2, 1fr);
 
-    @include mq-down(xs) {
+    @include mq-down(sm) {
       grid-template-columns: repeat(1, 1fr);
     }
   }
@@ -50,11 +50,11 @@
   &[data-columns="3"] {
     grid-template-columns: repeat(3, 1fr);
 
-    @include mq-down(sm) {
+    @include mq-down(md) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @include mq-down(xs) {
+    @include mq-down(sm) {
       grid-template-columns: repeat(1, 1fr);
     }
   }
@@ -62,15 +62,15 @@
   &[data-columns="4"] {
     grid-template-columns: repeat(4, 1fr);
 
-    @include mq-down(md) {
+    @include mq-down(lg) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @include mq-down(sm) {
+    @include mq-down(md) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @include mq-down(xs) {
+    @include mq-down(sm) {
       grid-template-columns: repeat(1, 1fr);
     }
   }
@@ -78,19 +78,19 @@
   &[data-columns="5"] {
     grid-template-columns: repeat(5, 1fr);
 
-    @include mq-down(lg) {
+    @include mq-down(xl) {
       grid-template-columns: repeat(4, 1fr);
     }
 
-    @include mq-down(md) {
+    @include mq-down(lg) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @include mq-down(sm) {
+    @include mq-down(md) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @include mq-down(xs) {
+    @include mq-down(sm) {
       grid-template-columns: repeat(1, 1fr);
     }
   }

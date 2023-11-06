@@ -10,6 +10,7 @@
 .profile {
     display: grid;
     min-height: calc(100vh - (2 * var(--size--menu-max)));
+    height: calc((5 * (41px + (var(--size--font-change) * 2))) + var(--size--avatar-height) + 22px);
 
     @include mq-up(xs) {
         grid-template-columns: calc(var(--size--avatar-width) + 20px) auto;
@@ -18,11 +19,34 @@
     &--aside {
         background: var(--bg--secondary);
         border: 1px solid var(--border--primary);
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
 
         &-inner {
             padding: 10px;
             background: var(--bg--primary);
             height: calc(var(--size--avatar-height) + 20px);
+            flex-grow: 1;
+        }
+
+        @include mq-down(xs) {
+            display: grid;
+            grid-template-columns: auto 30%;
+
+            tag-labelset {
+                border-right: 1px solid var(--border--primary);
+                margin-bottom: -1px;
+            }
+
+            .profile--aside-inner {
+                height: calc((5 * 41px) + (2 * var(--size--font-change)) - 1px);
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
     }
 
@@ -78,12 +102,43 @@
     }
 
     &--tabs {
+        background-color: var(--bg--primary);
+
+        &::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--accent-2-gradient);
+            background-image: 
+              radial-gradient(
+                farthest-side at bottom left,
+                var(--accent-1-gradient), 
+                transparent
+              ),
+              radial-gradient(
+                farthest-corner at bottom right,
+                var(--bg--primary), 
+                transparent
+              );
+        }
+
         tag-tab {
             padding: 30px;
         }
     }
 
-    &--glance {
+    &--glance,
+    &--player {
+        overflow: auto;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
         header {
             min-height: 0;
 
@@ -107,6 +162,26 @@
     &--item {
         filter: var(--shadow--drop-primary);
 
+        &-full {
+            @include mq-down(md) {
+                order: 1;
+            }
+            @include mq-up(md) {
+                grid-column: span 2;
+                grid-row: span 2;
+
+                .profile--item-inner {
+                    height: 100%;
+
+                    .scroll {
+                        height: 80px;
+                        max-height: 80px;
+                        align-items: start;
+                    }
+                }
+            }
+        }
+
         &-inner {
             clip-path: var(--style--cut-corners-small-alt);
             background: var(--bg--primary);
@@ -120,6 +195,7 @@
             gap: 5px;
 
             strong {
+                display: block;
                 font-size: var(--size--font-xl);
                 text-transform: uppercase;
                 font-weight: 900;
@@ -159,8 +235,9 @@
             }
             .awards {
                 .scroll {
-                    display: flex;
-                    flex-wrap: wrap;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, 22px);
+                    grid-template-rows: repeat(auto-fit, 22px);
                     gap: 5px;
 
                     img {
@@ -170,6 +247,99 @@
                         object-position: center;
                     }
                 }
+            }
+
+            .profile--tall &,
+            .profile--half & {
+                padding: 25px 30px;
+                font-size: calc(var(--size--font-md) + 1px);
+                text-transform: none;
+                letter-spacing: 0;
+                font-weight: normal;
+                line-height: 200%;
+                text-align: justify;
+                clip-path: var(--style--cut-corners-alt);
+            }
+
+            .profile--tall & {
+                height: calc(100% - 60px);
+            }
+
+            .profile--half & {
+                height: 100%;
+            }
+        }
+    }
+
+    &--freeform {
+        display: grid;
+        grid-template-columns: auto 75px;
+        gap: 30px;
+
+        @include mq-up(md) {
+            grid-template-columns: auto clamp(250px, 40%, 400px);
+        }
+    }
+
+    &--tall {
+        height: calc((5 * (41px + (var(--size--font-change) * 2))) + var(--size--avatar-height) + 22px);
+        min-height: calc(100vh - (2 * var(--size--menu-max)));
+    }
+    &--half {
+        height: calc((((5 * (41px + (var(--size--font-change) * 2))) + var(--size--avatar-height) + 22px) / 2) - 45px);
+        min-height: calc(((100vh - (2 * var(--size--menu-max))) / 2) - 45px);
+    }
+
+    &--plotting {
+        display: grid;
+        gap: 30px;
+
+        @include mq-down(md) {
+            overflow: auto;
+            scrollbar-width: none;
+        }
+
+        @include mq-up(md) {
+            grid-template-columns: clamp(250px, 40%, 400px) auto;
+            grid-template-rows: 1fr 1fr;
+
+            .profile--tall {
+                grid-row: 1 / 3;
+                grid-column: 2 / 3;
+            }
+        }
+    }
+
+    &--plot-box {
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+
+    &--aesthetic {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: 15px;
+        height: calc((5 * (63px + (var(--size--font-change) * 2))) + var(--size--avatar-height) - 150px);
+        min-height: calc(100vh - (2 * var(--size--menu-max)) - 60px);
+
+        @include mq-up(md) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        span {
+            width: 100%;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                clip-path: var(--style--cut-corners-small-alt);
             }
         }
     }

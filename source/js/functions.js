@@ -201,7 +201,6 @@ function initAccordion() {
 }
 function initTabs(isHash = false, wrapClass, menuClass, tabWrapClass, categoryClass = null) {
     if(isHash) {
-        console.log('run hash tabs');
         window.addEventListener('hashchange', function(e){
             initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null);
         });

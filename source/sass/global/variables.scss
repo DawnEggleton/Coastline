@@ -12,6 +12,7 @@
     --size--font-md: 12px;
     --size--font-lg: 14px;
     --size--font-xl: 16px;
+    --size--font-change: 0px;
 
     --size--menu-max: 30px;
     --size--menu-width: 250px;
@@ -80,7 +81,7 @@
 }
 
 body {
-    //Set colors for group override
+    //set variable colors default
     --accent-1: var(--hex-1);
     --accent-2: var(--hex-2);
     --accent-1-gradient: rgba(var(--rgb-1), var(--opacity--bg-gradient));
@@ -93,6 +94,49 @@ body {
     --text--accent-alt: var(--accent-1);
     --style--text-shadow: 0 0 5px var(--bg--primary);
     --style--text-shadow-sm: 0 0 3px var(--bg--primary), 0 0 5px var(--bg--primary);
+
+    &.g-1,
+    .g-1,
+    &.g-2,
+    .g-2,
+    &.g-3,
+    .g-3,
+    &.g-5,
+    .g-5 {
+        --hex-1: #377fb0;
+        --hex-2: #a16f38;
+        --rgb-1: 55, 127, 176;
+        --rgb-2: 161, 111, 56;
+        --opacity--bg-gradient: 0.5;
+        --opacity--bg-gradient-low: 0.3;
+        --text--on-accent: var(--white);
+    }
+
+    //Set colors for group override
+    .g-1,
+    .g-2,
+    .g-3,
+    .g-4,
+    .g-5,
+    .g-6,
+    .g-7,
+    .g-8,
+    .g-9,
+    .g-10,
+    .g-11 {
+        --accent-1: var(--hex-1);
+        --accent-2: var(--hex-2);
+        --accent-1-gradient: rgba(var(--rgb-1), var(--opacity--bg-gradient));
+        --accent-2-gradient: rgba(var(--rgb-2), var(--opacity--bg-gradient));
+        --accent-1-gradient-low: rgba(var(--rgb-1), var(--opacity--bg-gradient-low));
+        --accent-2-gradient-low: rgba(var(--rgb-2), var(--opacity--bg-gradient-low));
+        --bg--accent: var(--accent-1);
+        --bg--accent-alt: var(--accent-2);
+        --text--accent: var(--accent-2);
+        --text--accent-alt: var(--accent-1);
+        --style--text-shadow: 0 0 5px var(--bg--primary);
+        --style--text-shadow-sm: 0 0 3px var(--bg--primary), 0 0 5px var(--bg--primary);
+    }
 
     &.kinetic,
     .kinetic,
@@ -187,6 +231,7 @@ body {
         --size--font-md: 14px;
         --size--font-lg: 16px;
         --size--font-xl: 18px;
+        --size--font-change: 2px;
     }
 
     &.dark {

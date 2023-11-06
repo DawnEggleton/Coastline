@@ -9,6 +9,7 @@
   --size--font-md: 12px;
   --size--font-lg: 14px;
   --size--font-xl: 16px;
+  --size--font-change: 0px;
   --size--menu-max: 30px;
   --size--menu-width: 250px;
   --size--corner-cut-small: 10px;
@@ -75,6 +76,41 @@ body {
   --text--accent-alt: var(--accent-1);
   --style--text-shadow: 0 0 5px var(--bg--primary);
   --style--text-shadow-sm: 0 0 3px var(--bg--primary), 0 0 5px var(--bg--primary); }
+  body.g-1,
+  body .g-1, body.g-2,
+  body .g-2, body.g-3,
+  body .g-3, body.g-5,
+  body .g-5 {
+    --hex-1: #377fb0;
+    --hex-2: #a16f38;
+    --rgb-1: 55, 127, 176;
+    --rgb-2: 161, 111, 56;
+    --opacity--bg-gradient: 0.5;
+    --opacity--bg-gradient-low: 0.3;
+    --text--on-accent: var(--white); }
+  body .g-1,
+  body .g-2,
+  body .g-3,
+  body .g-4,
+  body .g-5,
+  body .g-6,
+  body .g-7,
+  body .g-8,
+  body .g-9,
+  body .g-10,
+  body .g-11 {
+    --accent-1: var(--hex-1);
+    --accent-2: var(--hex-2);
+    --accent-1-gradient: rgba(var(--rgb-1), var(--opacity--bg-gradient));
+    --accent-2-gradient: rgba(var(--rgb-2), var(--opacity--bg-gradient));
+    --accent-1-gradient-low: rgba(var(--rgb-1), var(--opacity--bg-gradient-low));
+    --accent-2-gradient-low: rgba(var(--rgb-2), var(--opacity--bg-gradient-low));
+    --bg--accent: var(--accent-1);
+    --bg--accent-alt: var(--accent-2);
+    --text--accent: var(--accent-2);
+    --text--accent-alt: var(--accent-1);
+    --style--text-shadow: 0 0 5px var(--bg--primary);
+    --style--text-shadow-sm: 0 0 3px var(--bg--primary), 0 0 5px var(--bg--primary); }
   body.kinetic,
   body .kinetic, body.g-6,
   body .g-6 {
@@ -152,7 +188,8 @@ body {
     --size--font-sm: 12px;
     --size--font-md: 14px;
     --size--font-lg: 16px;
-    --size--font-xl: 18px; }
+    --size--font-xl: 18px;
+    --size--font-change: 2px; }
   body.dark {
     --opacity--bg-gradient: 0.3;
     --opacity--bg-gradient-low: 0.1;

@@ -256,8 +256,9 @@
     .post--item .avoid .scroll {
       text-align: justify; }
     .post--item .awards .scroll {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 22px);
+      grid-template-rows: repeat(auto-fit, 22px);
       gap: 5px; }
       .post--item .awards .scroll img {
         width: 22px;
