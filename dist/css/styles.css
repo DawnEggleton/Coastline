@@ -2424,9 +2424,29 @@ header {
   .profile--freeform {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: auto 75px;
-    grid-template-columns: auto 75px;
-    gap: 30px; }
+    gap: 30px;
+    -ms-grid-rows: calc(100% - 264px) 234px;
+    grid-template-rows: calc(100% - 264px) 234px; }
+    @media (max-width: 768px) {
+      .profile--freeform .profile--tall {
+        height: 100%;
+        min-height: 0; }
+      .profile--freeform .profile--item-inner {
+        height: 100%; } }
+    @media (max-width: 600px) {
+      .profile--freeform {
+        -ms-grid-rows: auto 234px;
+        grid-template-rows: auto 234px;
+        overflow: auto;
+        scrollbar-width: none; }
+        .profile--freeform .profile--tall {
+          min-height: 300px; } }
+    @media (min-width: 769px) {
+      .profile--freeform {
+        -ms-grid-rows: auto;
+        grid-template-rows: auto;
+        -ms-grid-columns: auto 75px;
+        grid-template-columns: auto 75px; } }
     @media (min-width: 1025px) {
       .profile--freeform {
         -ms-grid-columns: auto clamp(250px, 40%, 400px);
@@ -2463,13 +2483,20 @@ header {
   .profile--aesthetic {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[1];
-    grid-template-columns: repeat(1, 1fr);
-    -ms-grid-rows: (1fr)[6];
-    grid-template-rows: repeat(6, 1fr);
+    -ms-grid-columns: (1fr)[3];
+    grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: (1fr)[2];
+    grid-template-rows: repeat(2, 1fr);
     gap: 15px;
-    height: calc((5 * (63px + (var(--size--font-change) * 2))) + var(--size--avatar-height) - 150px);
-    min-height: calc(100vh - (2 * var(--size--menu-max)) - 60px); }
+    height: 234px; }
+    @media (min-width: 769px) {
+      .profile--aesthetic {
+        -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+        -ms-grid-rows: (1fr)[6];
+        grid-template-rows: repeat(6, 1fr);
+        height: calc((5 * (63px + (var(--size--font-change) * 2))) + var(--size--avatar-height) - 150px);
+        min-height: calc(100vh - (2 * var(--size--menu-max)) - 60px); } }
     @media (min-width: 1025px) {
       .profile--aesthetic {
         -ms-grid-columns: (1fr)[2];
@@ -2478,7 +2505,9 @@ header {
         grid-template-rows: repeat(3, 1fr);
         gap: 30px; } }
     .profile--aesthetic span {
-      width: 100%; }
+      width: 100%;
+      -webkit-filter: var(--shadow--drop-primary);
+              filter: var(--shadow--drop-primary); }
       .profile--aesthetic span img {
         position: absolute;
         top: 0;
