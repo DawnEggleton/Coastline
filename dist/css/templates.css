@@ -75,4 +75,5 @@ tag-tab {
           flex: 0 0 100%;
   -webkit-transition-duration: 0.5s;
        -o-transition-duration: 0.5s;
-          transition-duration: 0.5s; }
+          transition-duration: 0.5s;
+  left: 0; }

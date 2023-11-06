@@ -211,7 +211,27 @@ function initTabs(isHash = false, wrapClass, menuClass, tabWrapClass, categoryCl
         } else {
             initFirstHashTab(menuClass);
         }
+    } else {
+        initRegularTabs(menuClass);
     }
+}
+function initRegularTabs(menuClass) {
+    let labels = document.querySelectorAll(`${menuClass} > tag-label`);
+    labels.forEach(label => {
+        label.addEventListener('click', e => {
+            let selected = e.currentTarget;
+            let tab = document.querySelector(`tag-tab[data-key="${selected.dataset.key}"]`);
+            let tabSiblings = Array.from(tab.parentNode.children);
+            let tabIndex = tabSiblings.indexOf.call(tabSiblings, tab);
+            
+            labels.forEach(label => label.classList.remove('is-active'));
+            tabSiblings.forEach(tab => tab.classList.remove('is-active'));
+            
+            selected.classList.add('is-active');
+            tab.classList.add('is-active');
+            tabSiblings.forEach(sibling => sibling.style.left = `${-100 * tabIndex}%`);
+        });
+    });
 }
 function initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null) {
     //set variables for categories

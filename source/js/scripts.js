@@ -103,6 +103,7 @@ if(pageType === 'ST') {
 /********** Profile **********/
 if(pageType === 'Profile') {
     initTabs(true, '.profile', '.profile--menu', '.profile--tabs');
+    initTabs(false, null, '.profile--tracking-menu', null);
 }
 
 /********** If Accordion **********/
