@@ -8,6 +8,15 @@
   display: grid;
   min-height: calc(100vh - (2 * var(--size--menu-max)));
   height: calc((5 * (41px + (var(--size--font-change) * 2))) + var(--size--avatar-height) + 22px); }
+  .profile.g-4 .profile--menu,
+  .profile.g-4 .profile--glance,
+  .profile.g-4 .profile--freeform,
+  .profile.g-4 .profile--plotting,
+  .profile.g-4 .profile--tracking {
+    display: none; }
+  @media (max-width: 600px) {
+    .profile.g-4 .profile--aside {
+      display: none; } }
   @media (min-width: 601px) {
     .profile {
       grid-template-columns: calc(var(--size--avatar-width) + 20px) auto; } }

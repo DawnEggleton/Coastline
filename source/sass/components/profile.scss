@@ -12,6 +12,21 @@
     min-height: calc(100vh - (2 * var(--size--menu-max)));
     height: calc((5 * (41px + (var(--size--font-change) * 2))) + var(--size--avatar-height) + 22px);
 
+    &.g-4 {
+        .profile--menu,
+        .profile--glance,
+        .profile--freeform,
+        .profile--plotting,
+        .profile--tracking {
+            display: none;
+        }
+        .profile--aside {
+            @include mq-down(xs) {
+                display: none;
+            }
+        }
+    }
+
     @include mq-up(xs) {
         grid-template-columns: calc(var(--size--avatar-width) + 20px) auto;
     }
