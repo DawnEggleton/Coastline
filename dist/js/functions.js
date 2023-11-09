@@ -150,7 +150,7 @@ function initQuickLogin() {
         $('#quick-login').appendTo('#quick-login-clip');
         document.querySelector('#quick-login-clip input[name="UserName"]').setAttribute('placeholder', 'Username');
         document.querySelector('#quick-login-clip input[name="PassWord"]').setAttribute('placeholder', 'Password');
-    } else {
+    } else if (document.querySelector('#quick-login-clip')) {
         var main_url = location.href.split('?')[0];
         $.get(main_url, function (data) {
             $('#quick-login', data).appendTo('#quick-login-clip');
