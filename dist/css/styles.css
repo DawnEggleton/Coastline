@@ -2141,10 +2141,12 @@ header {
                 justify-content: center;
         background: var(--bg--primary);
         border: 1px solid var(--bg--primary);
+        color: var(--text--primary);
         width: 26px;
         height: 26px; }
         .post--aside-links a:hover {
-          border-color: var(--border--primary); }
+          border-color: var(--border--primary);
+          color: var(--text--accent); }
   .post--item {
     display: -ms-grid;
     display: grid;
@@ -2254,6 +2256,42 @@ header {
     .profile {
       -ms-grid-columns: calc(var(--size--avatar-width) + 20px) auto;
       grid-template-columns: calc(var(--size--avatar-width) + 20px) auto; } }
+  .profile--links {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 10px;
+    z-index: 2; }
+    .profile--links a {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      background: var(--bg--primary);
+      border: 1px solid var(--bg--primary);
+      width: 26px;
+      height: 26px;
+      color: var(--text--primary); }
+      .profile--links a:hover {
+        border-color: var(--border--primary);
+        color: var(--text--accent); }
   .profile--aside {
     background: var(--bg--secondary);
     border: 1px solid var(--border--primary);
@@ -2803,6 +2841,9 @@ header {
   -ms-grid-columns: 150px auto;
   grid-template-columns: 150px auto;
   margin-bottom: 30px; }
+  @media (max-width: 480px) {
+    .mem {
+      margin-bottom: 10px; } }
   .mem--image img {
     position: absolute;
     top: 0;

@@ -92,6 +92,9 @@
   display: grid;
   grid-template-columns: 150px auto;
   margin-bottom: 30px; }
+  @media (max-width: 480px) {
+    .mem {
+      margin-bottom: 10px; } }
   .mem--image img {
     position: absolute;
     top: 0;

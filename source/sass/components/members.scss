@@ -128,6 +128,10 @@
     grid-template-columns: 150px auto;
     margin-bottom: 30px;
 
+    @include mq-down(xxs) {
+        margin-bottom: 10px;
+    }
+
     &--image {
         img {
             position: absolute;

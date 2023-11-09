@@ -279,11 +279,13 @@
                 justify-content: center;
                 background: var(--bg--primary);
                 border: 1px solid var(--bg--primary);
+                color: var(--text--primary);
                 width: 26px;
                 height: 26px;
 
                 &:hover {
                     border-color: var(--border--primary);
+                    color: var(--text--accent);
                 }
             }
         }

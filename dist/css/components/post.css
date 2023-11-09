@@ -212,10 +212,12 @@
         justify-content: center;
         background: var(--bg--primary);
         border: 1px solid var(--bg--primary);
+        color: var(--text--primary);
         width: 26px;
         height: 26px; }
         .post--aside-links a:hover {
-          border-color: var(--border--primary); }
+          border-color: var(--border--primary);
+          color: var(--text--accent); }
   .post--item {
     display: grid;
     font-size: var(--size--font-xs);
