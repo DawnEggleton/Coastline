@@ -57,6 +57,11 @@
         height: 0;
         overflow: hidden;
         transition-duration: 0.5s;
+
+        &.is-open {
+            height: 100%;
+            border-bottom: 1px solid var(--border--primary);
+        }
     }
 
     &--inner {

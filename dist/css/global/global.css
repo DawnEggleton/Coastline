@@ -266,6 +266,26 @@ a {
 .ph-duotone {
   color: inherit; }
 
+#loading {
+  position: fixed;
+  top: var(--size--menu-max);
+  left: var(--size--menu-max);
+  width: 100%;
+  height: calc(100vh - (2 * var(--size--menu-max)));
+  background: var(--bg--secondary);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  #loading i {
+    font-size: 50px;
+    color: var(--text--accent); }
+  #loading p {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: var(--size--font-xl); }
+
 body:not(.g-4) .staffOnly,
 body:not(.g-2) .guestOnly,
 body.g-2 .memOnly {

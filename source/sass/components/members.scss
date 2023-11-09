@@ -3,4 +3,115 @@
 /*******************************
     Member List
 ********************************/
+.ml {
+    margin: -30px;
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: calc(100vh - (2 * var(--size--menu-max)));
+    height: calc(100vh - (2 * var(--size--menu-max)));
+  
+    @include mq-down(xxs) {
+      margin: -10px;
+    }
 
+    &--menu {
+        background: var(--bg--secondary);
+        border: 1px solid var(--border--primary);
+
+        #quicksearch {
+            width: calc(100% - 30px);
+            background: var(--bg--primary);
+            outline: none;
+            margin: 15px;
+        }
+
+        .scroll {
+            padding: 0;
+        }
+
+        .accordion {
+            border-top: 1px solid var(--border--primary);
+
+            &--content {
+                transition-duration: 0s;
+            }
+        }
+    }
+
+    &--filter-group {
+        font-size: 0;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+
+        label {
+            text-transform: uppercase;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            padding: 5px 8px;
+            background: var(--bg--primary);
+            border: 1px solid var(--border--primary);
+            border-radius: 2px;
+            line-height: 160%;
+            cursor: pointer;
+
+            input {
+                display: none;
+            }
+
+            &.is-checked {
+                background: var(--bg--secondary);
+                border-color: var(--text--accent);
+                color: var(--text--accent);
+                font-weight: 800;
+            }
+        }
+    }
+
+    &--sort-buttons {
+        font-size: 0;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+
+        button {
+            text-transform: uppercase;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            padding: 5px 8px;
+            background: var(--bg--primary);
+            border: 1px solid var(--border--primary);
+            border-radius: 2px;
+            line-height: 160%;
+            cursor: pointer;
+
+            &.is-checked {
+                background: var(--bg--secondary);
+                border-color: var(--text--accent);
+                color: var(--text--accent);
+                font-weight: 800;
+            }
+        }
+    }
+
+    .scroll {
+        height: 100%;
+    }
+
+    & ~ * {
+        display: none;
+    }
+}
+.mem {
+    &--image {
+        img {
+            width: 100px;
+            height: 100px;
+
+        }
+    }
+}

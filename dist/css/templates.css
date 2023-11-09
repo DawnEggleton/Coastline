@@ -55,6 +55,9 @@
   -webkit-transition-duration: 0.5s;
        -o-transition-duration: 0.5s;
           transition-duration: 0.5s; }
+  .accordion--content.is-open {
+    height: 100%;
+    border-bottom: 1px solid var(--border--primary); }
 
 .accordion--inner {
   margin: 10px; }

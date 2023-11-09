@@ -286,6 +286,227 @@ function initFirstHashTab(menuClass) {
     document.querySelector(`${menuClass} a`).classList.add('is-active');
 }
 
+/****** Member List Only ******/
+function formatMemberRow(accountType, data) {
+    let html = `<div class="ml--member ${accountType} grid-item g-${data.groupID} floor-${data.floor} ${data.aliasClass}">
+        <div class="mem">
+            <div class="mem--image">
+                <img src="${data.image}" />
+            </div>
+            <div class="mem--main">
+                <a href="?showuser=${data.id}" class="mem--name">${data.name}</a>
+                <div class="mem--item">
+                    <strong>Played By</strong>
+                    <span class="mem--alias">${data.alias}</span>
+                </div>
+                <div class="mem--item">
+                    <strong>Age</strong>
+                    <span>${data.age}</span>
+                </div>
+                <div class="mem--item">
+                    <strong>Pronouns</strong>
+                    <span>${data.pronouns}</span>
+                </div>
+                <div class="mem--item">
+                    <strong>Occupation</strong>
+                    <span>${data.occupation}</span>
+                </div>
+                <div class="mem--item">
+                    <strong>Power</strong>
+                    <span class="mem--power">${data.power}</span>
+                </div>
+                <div class="mem--item">
+                    <strong>Stats</strong>
+                    <span><span class="mem--posts">${data.postCount}</span> Posts</span>
+                    <span>Last Post ${data.lastPost}</span>
+                </div><span class="mem--join hidden">${data.joined}</span>
+            </div>
+        </div>
+    </div>`;
+    return html;
+}
+function populatePage(array) {
+    let html = ``;
+    let members = [], membersClean = [];
+    let floors = [], floorsClean = [];
+
+    for (let i = 0; i < array.length; i++) {
+        //Make Member Array
+        let member = {raw: array[i].alias, clean: array[i].aliasClass};
+        if(jQuery.inArray(member.clean, membersClean) == -1 && member.clean != '') {
+            membersClean.push(member.clean);
+            members.push(member);
+        }
+        //Make Floor Array
+        let floor = {raw: array[i].floor, clean: `floor-${array[i].floor}`};
+        if(jQuery.inArray(floor.clean, floorsClean) == -1 && floor.raw != '') {
+            floorsClean.push(floor.clean);
+            floors.push(floor);
+        }
+
+        switch(array[i].groupID) {
+            //member only
+            case 4:
+                html += formatMemberRow('member', array[i]);
+                break;
+            //character only
+            default: 
+                html += formatMemberRow('character', array[i]);
+                break;
+        }
+    }
+    document.querySelector('#ml--rows').insertAdjacentHTML('beforeend', html);
+
+
+    //sort member array
+    members.sort((a, b) => {
+        if(a.clean < b.clean) {
+            return -1;
+        } else if (a.clean > b.clean) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    //sort floors array
+    floors.sort((a, b) => {
+        if(parseInt(a.raw) < parseInt(b.raw)) {
+            return -1;
+        } else if (parseInt(a.raw) > parseInt(b.raw)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
+    //Append Arrays
+    members.forEach(member => {
+        document.querySelector('.ml--member-list').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".${member.clean}"/>${member.raw}</label>`);
+    });
+    floors.forEach(floor => {
+        document.querySelector('.ml--floor-list').insertAdjacentHTML('beforeend', `<label><input type="checkbox" value=".${floor.clean}"/>${floor.raw}</label>`);
+    });
+}
+function setCustomFilter() {
+    //get search value
+    qsRegex = document.querySelector(typeSearch).value;
+    
+    //add show class to all items to reset
+    elements.forEach(el => el.classList.add(visible));
+    
+    //filter by nothing
+    let searchFilter = '';
+    
+    //check each item
+    elements.forEach(el => {
+        let name = el.querySelector(memName).textContent;
+        if(!name.toLowerCase().includes(qsRegex)) {
+            el.classList.remove(visible);
+            searchFilter = `.${visible}`;
+        }
+    });
+
+    let filterGroups = document.querySelectorAll(filterGroup);
+    let groups = [];
+    let checkFilters;
+    filterGroups.forEach(group => {
+        let filters = [];
+        group.querySelectorAll('label.is-checked input').forEach(filter => {
+            if(filter.value) {
+                filters.push(filter.value);
+            }
+        });
+        groups.push({group: group.dataset.filterGroup, selected: filters});
+    });
+
+    groups.forEach(group => {
+        let tagString = group.selected.join('_');
+        appendSearchQuery(group.group, tagString);
+    });
+
+    let filterCount = 0;
+    let comboFilters = [];
+    groups.forEach(group => {
+        // skip to next filter group if it doesn't have any values
+        if ( group.selected.length > 0 ) {
+            if ( filterCount === 0 ) {
+                // copy groups to comboFilters
+                comboFilters = group.selected;
+            } else {
+                var filterSelectors = [];
+                var groupCombo = comboFilters;
+                // merge filter Groups
+                for (var k = 0; k < group.selected.length; k++) {
+                    for (var j = 0; j < groupCombo.length; j++) {
+                        //accommodate weirdness with object vs not
+                        if(groupCombo[j].selected) {
+                            if(groupCombo[j].selected != group.selected[k]) {
+                                filterSelectors.push( groupCombo[j].selected + group.selected[k] );
+                            }
+                        } else if (!groupCombo[j].selected && group.selected[k]) {
+                            if(groupCombo[j] != group.selected[k]) {
+                                filterSelectors.push( groupCombo[j] + group.selected[k] );
+                            }
+                        }
+                    }
+                }
+                // apply filter selectors to combo filters for next group
+                comboFilters = filterSelectors;
+            }
+            filterCount++;
+        }
+    });
+    
+    //set filter to blank
+    let filter = [];
+    //check if it's only search
+    if(qsRegex.length > 0 && comboFilters.length === 0) {
+        filter = [`.${visible}`];
+    }
+    //check if it's only checkboxes
+    else if(qsRegex.length === 0 && comboFilters.length > 0) {
+        let combos = comboFilters.join(',').split(',');
+        filter = [...combos];
+    }
+    //check if it's both
+    else if (qsRegex.length > 0 && comboFilters.length > 0) {
+        let dualFilters = comboFilters.map(filter => filter + `.${visible}`);
+        filter = [...dualFilters];
+    }
+
+    //join array into string
+    filter = filter.join(', ');
+
+    // bind sort button click
+    let currentSort = document.querySelector('.ml--sort.is-checked');
+        
+    //render isotope
+    $container.isotope({
+        filter: filter,
+        sortBy: currentSort.dataset.sort,
+    });
+    $container.isotope('layout');
+}
+function debounce(fn, threshold) {
+    var timeout;
+    return function debounced() {
+        if (timeout) {
+        clearTimeout(timeout);
+        }
+
+        function delayed() {
+        fn();
+        timeout = null;
+        }
+        setTimeout(delayed, threshold || 100);
+    };
+}
+function appendSearchQuery(param, value) {
+    const url = new URL(window.location.href);
+    url.searchParams.set(param, value);
+    window.history.replaceState(null, null, url);
+}
+
 /****** Alerts ******/
 function read_alerts() {
     $('#recent-alerts').fadeOut();

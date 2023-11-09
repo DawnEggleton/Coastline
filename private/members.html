@@ -17,30 +17,248 @@
         <main>
             <a name="top"></a>
 		
-            <form action='index.php' method='get'>
-                <input type='hidden' name='act' value='Members' />
-                <!--Members-->
-            </form>
+            <div id="loading">
+                <i class="ph-bold ph-anchor"></i>
+                <p>Loading</p>
+            </div>
+            
+            <section class="ml">
+                <div class="ml--menu" data-type="flex">
+                    <div class="scroll">
+                        <!-- |pages| -->
+                        <input id="quicksearch" class="forminput memberlist-namesearch" type="text" size="25" name="name" value="" placeholder="Filter by name...">
+                        <div class="accordion ml--filters">
+                            <div class="accordion--trigger is-open">
+                                <span>Member</span>
+                            </div>
+                            <div class="accordion--content is-open">
+                                <div class="ml--filter-group ml--member-list" data-filter-group="member">
+                                    <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all members</label>
+                                </div>
+                            </div>
+                            <div class="accordion--trigger">
+                                <span>Group</span>
+                            </div>
+                            <div class="accordion--content">
+                                <div class="ml--filter-group" data-filter-group="group">
+                                    <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all groups</label>
+                                    <label><input type="checkbox" value=".g-11">alchemical</label>
+                                    <label><input type="checkbox" value=".g-8">enhanced</label>
+                                    <label><input type="checkbox" value=".g-6">kinetic</label>
+                                    <label><input type="checkbox" value=".g-10">mutation</label>
+                                    <label><input type="checkbox" value=".g-7">psychic</label>
+                                    <label><input type="checkbox" value=".g-9">summoning</label>
+                                    <label><input type="checkbox" value=".g-4">admin</label>
+                                    <label><input type="checkbox" value=".g-3">unsorted</label>
+                                </div>
+                            </div>
+                            <div class="accordion--trigger">
+                                <span>Floor</span>
+                            </div>
+                            <div class="accordion--content">
+                                <div class="ml--filter-group ml--floor-list" data-filter-group="floor">
+                                    <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all floors</label>
+                                </div>
+                            </div>
+                            <div class="accordion--trigger">
+                                <span>Sort</span>
+                            </div>
+                            <div class="accordion--content">
+                                <div class="ml--sort-buttons" data-type="flex">
+                                    <button type="button" class="ml--sort is-checked" data-sort="name">Name</button>
+                                    <button type="button" class="ml--sort" data-sort="alias">Alias</button>
+                                    <button type="button" class="ml--sort" data-sort="power">power</button>
+                                    <button type="button" class="ml--sort" data-sort="posts">Posts</button>
+                                    <button type="button" class="ml--sort" data-sort="newest">Newest</button>
+                                    <button type="button" class="ml--sort" data-sort="oldest">Oldest</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml--wrapper">
+                    <div class="ml--members scroll">
+                        <form action='index.php' method='get'>
+                            <input type='hidden' name='act' value='Members' />
+                            <div id="ml--rows"><div class="grid-sizer"></div></div>
+                        </form>
+                    </div>
+                </div>
+                <script>
+                    //remove loading screen
+                    document.onreadystatechange = function() {
+                        if (
+                            (document.querySelectorAll('body#Members').length > 0 && document.readyState === "complete")
+                            || (document.querySelectorAll('body#Members').length === 0 && document.readyState === "interactive")
+                        ) {
+                            document.querySelector('body').classList.remove('loading');
+                            document.querySelector('#loading').remove();
+                        }
+                    };
+            
+            
+                    //set variables
+                    let accounts = [];
+                    let filters = {};
+                    let $container = $('#ml--rows');
+                    let typeSearch = `#quicksearch`;
+                    let memName = `.mem--main > a`;
+                    let visible = `is-visible`;
+                    let filterGroup = `.ml--filter-group`;
+                    let filterOptions = `.ml--filter-group input`;
+                    let sorts = `.ml--sort-buttons button`;
+                    let gridItem = `.grid-item`;
+                    let defaultShow = `.character`;
+
+                    accounts = [...tempAccounts]; //replace with memberlist rows on jcink
+        
+                    populatePage(accounts);
+            
+                    //initialize isotope
+                    // quick search regex
+                    let qsRegex;
+                    let elements = document.querySelectorAll(gridItem);
+                    
+                    // init Isotope
+                    $(window).on('load', function() {
+                        $container.isotope({
+                            itemSelector: gridItem,
+                            percentPosition: true,
+                            masonry: {
+                                columnWidth: '.grid-sizer',
+                                gutter: 15
+                            },
+                            filter: defaultShow,
+                            sortBy: 'name',
+                            getSortData: {
+                                name: '.mem--name',
+                                alias: '.mem--alias',
+                                power: '.mem--power',
+                                posts: '.mem--posts parseInt',
+                                newest: function ($elem) {
+                                    return Date.parse($elem.querySelector('.mem--join').innerText);
+                                },
+                                oldest: function ($elem) {
+                                    return Date.parse($elem.querySelector('.mem--join').innerText);
+                                },
+                            },
+                            sortAscending: {
+                                name: true,
+                                alias: true,
+                                power: true,
+                                posts: false,
+                                newest: false,
+                                oldest: true,
+                            }
+                        });
+
+                        //handle filter storage
+                        let queryParamsArray = window.location.search.split('&').map(param => param.split('='));
+                        let queryParams = {};
+                        queryParamsArray.forEach(param => {
+                            queryParams[param[0]] = param[1];
+                        });
+                        for (const param in queryParams) {
+                            if(param !== '') {
+                                let key = param;
+                                let values = queryParams[param].split('_');
+                
+                                if(document.querySelector(`[data-filter-group="${key}"]`) && values.length > 0) {
+                                    document.querySelector(`[data-filter-group="${key}"] .all`).classList.remove('is-checked');
+                                    values.forEach(value => {
+                                        document.querySelector(`[data-filter-group="${key}"] [value="${value}"]`)
+                                        .closest('label')
+                                        .classList.add('is-checked');
+                                    });
+                                    setCustomFilter();
+                                }
+                            }
+                        }
+        
+                        if(window.location.search.split('typesearch=')[1]) {
+                            document.querySelector(typeSearch).value = window.location.search.split('typesearch=')[1].split('&')[0];
+                            setCustomFilter();
+                        }
+                    });
+                
+                    //use value of input select to filter
+                    let checkboxes = document.querySelectorAll(filterOptions);
+                    checkboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', e => {
+                            if(e.currentTarget.classList.contains('all')) {
+                                e.currentTarget.checked = true;
+                                e.currentTarget.parentElement.classList.add('is-checked');
+                                e.currentTarget.parentElement.parentElement.querySelectorAll('input:not(.all)').forEach(input => {
+                                    input.checked = false;
+                                    input.parentElement.classList.remove('is-checked');
+                                });
+                            } else {
+                                if(e.currentTarget.parentElement.classList.contains('is-checked')) {
+                                    e.currentTarget.checked = false;
+                                    e.currentTarget.parentElement.classList.remove('is-checked');
+                                } else {
+                                    e.currentTarget.checked = true;
+                                    e.currentTarget.parentElement.classList.add('is-checked');
+                                    e.currentTarget.parentElement.parentElement.querySelector('input.all').checked = false;
+                                    e.currentTarget.parentElement.parentElement.querySelector('input.all').parentElement.classList.remove('is-checked');
+                                }
+                            }
+                            let labels = e.currentTarget.parentElement.parentElement.querySelectorAll('label');
+                            let checked = 0;
+                            labels.forEach(label => {
+                                if(label.classList.contains('is-checked')) {
+                                    checked++;
+                                }
+                            });
+                            if(checked === 0) {
+                                e.currentTarget.parentElement.parentElement.querySelector('input.all').checked = true;
+                                e.currentTarget.parentElement.parentElement.querySelector('input.all').parentElement.classList.add('is-checked');
+                            }
+                            //set filters
+                            setCustomFilter();
+                        });
+                    });
+                
+                    // use value of search field to filter
+                    document.querySelector(typeSearch).addEventListener('keyup', e => {
+                    appendSearchQuery('typesearch', e.currentTarget.value);
+                        setCustomFilter();
+                    });
+            
+                    // bind sort button click
+                    let sortButtons = document.querySelectorAll(sorts);
+                    sortButtons.forEach(button => {
+                        button.addEventListener('click', e => {
+                            let sortValue = e.currentTarget.dataset.sort;
+                            $container.isotope({ sortBy: sortValue });
+                            sortButtons.forEach(button => {
+                                button.classList.remove('is-checked');
+                            });
+                            e.currentTarget.classList.add('is-checked');
+                        });
+                    });
+                </script>
+            </section>
+            <!-- Copyright Information -->
+                    <div class="tableborder" align="center">
+                        <div class="row4" style="font-size: 7.5pt; padding-top: 1px; padding-bottom: 1px; line-height: 8pt;">
+                            <div class="copyright" align="center">
+                                Powered by 
+                                <a href="https://www.invisionboard.com" target="_blank">Invision Power Board</a>
+                                (<a href="http://jcink.com" target="_blank">Jcink.com </a>
+                                <a href="https://jcink.com" target="_blank">Forum Hosting</a>
+                                ) © 2020 &nbsp;
+                                <a href="https://www.invisionpower.com" target="_blank">IPS, Inc.</a>
+                                <br>
+                                Page creation time: 0.0054 <!-- http://luxtradition.b1.jcink.com -->  · 
+                                <a href="index.php?act=Mobile">Mobile Version</a> · 
+                                <a href="index.php?act=privacy">Privacy Policy</a>
+                            </div>
+                        </div>
+                    </div> 
         </main>
 
         </div>
-<!-- Copyright Information -->
-        <div class="tableborder" align="center">
-            <div class="row4" style="font-size: 7.5pt; padding-top: 1px; padding-bottom: 1px; line-height: 8pt;">
-                <div class="copyright" align="center">
-                    Powered by 
-                    <a href="https://www.invisionboard.com" target="_blank">Invision Power Board</a>
-                    (<a href="http://jcink.com" target="_blank">Jcink.com </a>
-                    <a href="https://jcink.com" target="_blank">Forum Hosting</a>
-                    ) © 2020 &nbsp;
-                    <a href="https://www.invisionpower.com" target="_blank">IPS, Inc.</a>
-                    <br>
-                    Page creation time: 0.0054 <!-- http://luxtradition.b1.jcink.com -->  · 
-                    <a href="index.php?act=Mobile">Mobile Version</a> · 
-                    <a href="index.php?act=privacy">Privacy Policy</a>
-                </div>
-            </div>
-        </div> 
 
         
         @@include('../source/templates/scripts.html', {
