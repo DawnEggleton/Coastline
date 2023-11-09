@@ -288,5 +288,6 @@ a {
 
 body:not(.g-4) .staffOnly,
 body:not(.g-2) .guestOnly,
-body.g-2 .memOnly {
+body.g-2 .memOnly,
+.hidden {
   display: none !important; }

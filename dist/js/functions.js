@@ -316,10 +316,14 @@ function formatMemberRow(accountType, data) {
                     <span class="mem--power">${data.power}</span>
                 </div>
                 <div class="mem--item">
-                    <strong>Stats</strong>
+                    <strong>Posts</strong>
                     <span><span class="mem--posts">${data.postCount}</span> Posts</span>
-                    <span>Last Post ${data.lastPost}</span>
-                </div><span class="mem--join hidden">${data.joined}</span>
+                </div>
+                <div class="mem--item">
+                    <strong>Last Post</strong>
+                    <span>${data.lastPost}</span>
+                </div>
+                <span class="mem--join hidden">${data.joined}</span>
             </div>
         </div>
     </div>`;

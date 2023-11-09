@@ -81,13 +81,13 @@ body {
   body .g-2, body.g-3,
   body .g-3, body.g-5,
   body .g-5 {
-    --hex-1: #377fb0;
-    --hex-2: #a16f38;
-    --rgb-1: 55, 127, 176;
-    --rgb-2: 161, 111, 56;
+    --hex-1: #B7D1E2;
+    --hex-2: #92A7BA;
+    --rgb-1: 183,209,226;
+    --rgb-2: 146,167,186;
     --opacity--bg-gradient: 0.5;
     --opacity--bg-gradient-low: 0.3;
-    --text--on-accent: var(--white); }
+    --text--on-accent: var(--grey-xdark); }
   body .g-1,
   body .g-2,
   body .g-3,
@@ -98,7 +98,8 @@ body {
   body .g-8,
   body .g-9,
   body .g-10,
-  body .g-11 {
+  body .g-11,
+  body .g-13 {
     --accent-1: var(--hex-1);
     --accent-2: var(--hex-2);
     --accent-1-gradient: rgba(var(--rgb-1), var(--opacity--bg-gradient));
@@ -172,6 +173,16 @@ body {
     --rgb-2: 176, 118, 204;
     --opacity--bg-gradient: 0.4;
     --opacity--bg-gradient-low: 0.2;
+    --text--on-accent: var(--white); }
+  body.undefined,
+  body .undefined, body.g-12,
+  body .g-12 {
+    --hex-1: #377fb0;
+    --hex-2: #a16f38;
+    --rgb-1: 55, 127, 176;
+    --rgb-2: 161, 111, 56;
+    --opacity--bg-gradient: 0.5;
+    --opacity--bg-gradient-low: 0.3;
     --text--on-accent: var(--white); }
   body.admin,
   body .admin, body.g-4,
