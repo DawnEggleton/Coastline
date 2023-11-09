@@ -292,6 +292,10 @@ function formatMemberRow(accountType, data) {
         <div class="mem">
             <div class="mem--image">
                 <img src="${data.image}" />
+                <div class="mem--links">
+                    <a href="?act=Search&CODE=getalluser&mid=${data.id}&type=topics" title="View Topics"><i class="ph ph-folder"></i></a>
+                    <a href="?act=Msg&CODE=04&MID=${data.id}" title="Send Message"><i class="ph ph-envelope"></i></a>
+                </div>
             </div>
             <div class="mem--main">
                 <a href="?showuser=${data.id}" class="mem--name">${data.name}</a>
@@ -317,7 +321,7 @@ function formatMemberRow(accountType, data) {
                 </div>
                 <div class="mem--item">
                     <strong>Posts</strong>
-                    <span><span class="mem--posts">${data.postCount}</span> Posts</span>
+                    <a href="?act=Search&CODE=getalluser&mid=${data.id}"><span class="mem--posts">${data.postCount}</span> Posts</a>
                 </div>
                 <div class="mem--item">
                     <strong>Last Post</strong>

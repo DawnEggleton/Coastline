@@ -148,8 +148,31 @@
       font-weight: 800;
       letter-spacing: 0;
       line-height: 160%; }
+    .mem--item a {
+      color: var(--text--primary);
+      font-weight: normal; }
     .mem--item:last-of-type {
       grid-column: 1 / -1; }
+  .mem--links {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2; }
+    .mem--links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg--primary);
+      border: 1px solid var(--bg--primary);
+      width: 26px;
+      height: 26px;
+      color: var(--text--primary); }
+      .mem--links a:hover {
+        border-color: var(--border--primary);
+        color: var(--text--accent); }
 
 .grid-sizer,
 .grid-item {

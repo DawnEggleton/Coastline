@@ -194,8 +194,39 @@
             line-height: 160%;
         }
 
+        a {
+            color: var(--text--primary);
+            font-weight: normal;
+        }
+
         &:last-of-type {
             grid-column: 1 / -1;
+        }
+    }
+
+    &--links {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 2;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg--primary);
+            border: 1px solid var(--bg--primary);
+            width: 26px;
+            height: 26px;
+            color: var(--text--primary);
+
+            &:hover {
+                border-color: var(--border--primary);
+                color: var(--text--accent);
+            }
         }
     }
 }

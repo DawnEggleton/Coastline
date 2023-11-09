@@ -2870,8 +2870,47 @@ header {
       font-weight: 800;
       letter-spacing: 0;
       line-height: 160%; }
+    .mem--item a {
+      color: var(--text--primary);
+      font-weight: normal; }
     .mem--item:last-of-type {
       grid-column: 1 / -1; }
+  .mem--links {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 10px;
+    z-index: 2; }
+    .mem--links a {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      background: var(--bg--primary);
+      border: 1px solid var(--bg--primary);
+      width: 26px;
+      height: 26px;
+      color: var(--text--primary); }
+      .mem--links a:hover {
+        border-color: var(--border--primary);
+        color: var(--text--accent); }
 
 .grid-sizer,
 .grid-item {
