@@ -37,7 +37,7 @@ function formatReserves(data) {
     let active = data.filter(item => {
         let time = new Date(item.Timestamp);
         let difference = Math.floor(((current - time) / (1000*60*60*24)));
-        return difference < 15;
+        return difference < 22;
     });
     active.sort((a, b) => {
         if (a.Face < b.Face) {
@@ -103,7 +103,7 @@ function submitReserves(data, discord, successMessage) {
                         let current = new Date();
                         let time = new Date(reserve.Timestamp);
                         let difference = Math.floor(((current - time) / (1000*60*60*24)));
-                        if(difference < 15) {
+                        if(difference < 22) {
                             if(form.querySelector('.warning')) {
                                 form.querySelector('.warning').remove();
                             }
