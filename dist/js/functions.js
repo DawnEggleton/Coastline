@@ -183,7 +183,6 @@ function initAccordion() {
                 if(e.currentTarget.classList.contains('is-open')) {
                     alreadyOpen = true;
                 }
-                console.log(alreadyOpen);
                 triggers.forEach(trigger => trigger.classList.remove('is-open'));
                 contents.forEach(trigger => trigger.classList.remove('is-open'));
                 if(alreadyOpen) {
@@ -194,22 +193,21 @@ function initAccordion() {
                     e.currentTarget.classList.add('is-open');
                     e.currentTarget.nextElementSibling.classList.add('is-open');
                 }
-                console.log(alreadyOpen);
             });
         })
     })
 }
-function initTabs(isHash = false, wrapClass, menuClass, tabWrapClass, categoryClass = null) {
+function initTabs(isHash = false, wrapClass, menuClass, tabWrapClass, activeClass = 'is-active', categoryClass = null) {
     if(isHash) {
         window.addEventListener('hashchange', function(e){
-            initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null);
+            initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass);
         });
 
         //hash linking
         if (window.location.hash){
-            initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null);
+            initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass);
         } else {
-            initFirstHashTab(menuClass);
+            initFirstHashTab(menuClass, activeClass);
         }
     } else {
         initRegularTabs(menuClass);
@@ -233,9 +231,9 @@ function initRegularTabs(menuClass) {
         });
     });
 }
-function initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null) {
+function initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass = null) {
     //set variables for categories
-    let selectedCategory, hashMain, hashCategory, categorySiblings, categoryIndex, hashTab, submenuSiblings, submenuIndex;
+    let selectedCategory, hashMain, hashCategory, hashCategoryArray, categorySiblings, categoryIndex, hashTab, submenuSiblings, submenuIndex;
 
     //get hash and set basic variables
     let hash = $.trim( window.location.hash );
@@ -245,14 +243,23 @@ function initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null) 
     let tabSiblings = Array.from(hashContent.parentNode.children);
     let tabIndex = tabSiblings.indexOf.call(tabSiblings, hashContent);
 
-    //set category variables
+    //set category variables document.querySelector(`.webpage--menu a[href="#tab2-2"]`).closest('.tab-category').getAttribute('data-category')
     if(categoryClass) {
         selectedCategory = selected.closest(categoryClass).getAttribute('data-category');
+
         hashMain = document.querySelector(`${menuClass} tag-label[data-category="${selectedCategory}"]`);
+
         hashCategory = document.querySelector(`${menuClass} tag-tab[data-category="${selectedCategory}"]`);
+        if(!hashCategory) {
+            hashCategoryArray = document.querySelectorAll(`${menuClass} [data-category="${selectedCategory}"]`);
+        }
+
         hashTab = document.querySelector(`${tabWrapClass} tag-tab[data-category="${selectedCategory}"]`);
-        categorySiblings = Array.from(hashCategory.parentNode.children);
-        categoryIndex = categorySiblings.indexOf.call(categorySiblings, hashCategory);
+
+        if(hashCategory) {
+            categorySiblings = Array.from(hashCategory.parentNode.children);
+            categoryIndex = categorySiblings.indexOf.call(categorySiblings, hashCategory);
+        }
         submenuSiblings = Array.from(hashTab.parentNode.children);
         submenuIndex = submenuSiblings.indexOf.call(submenuSiblings, hashTab);
     }
@@ -264,26 +271,102 @@ function initHashTabs(wrapClass, menuClass, tabWrapClass, categoryClass = null) 
 
     //Tabs
     //Remove active from everything
-    document.querySelectorAll(`${menuClass} tag-label`).forEach(label => label.classList.remove('is-active'));
-    unsetDefault.forEach(label => label.classList.remove('is-active'));
-    document.querySelectorAll(`${wrapClass} tag-tab`).forEach(label => label.classList.remove('is-active'));
+    document.querySelectorAll(`${menuClass} tag-label`).forEach(label => label.classList.remove(activeClass));
+    document.querySelectorAll(`${menuClass} a`).forEach(label => label.classList.remove(activeClass));
+    unsetDefault.forEach(label => label.classList.remove(activeClass));
+    document.querySelectorAll(`${wrapClass} tag-tab`).forEach(label => label.classList.remove(activeClass));
+    document.querySelectorAll(categoryClass).forEach(item => item.classList.remove(activeClass));
 
     //Add active
-    selected.classList.add('is-active');
-    hashContent.classList.add('is-active');
+    selected.classList.add(activeClass);
+    hashContent.classList.add(activeClass);
     tabSiblings.forEach(sibling => sibling.style.left = `${-100 * tabIndex}%`);
+    hashCategoryArray.forEach(item => item.classList.add(activeClass));
 
     //add active for category
     if(categoryClass) {
-        hashMain.classList.add('is-active');
-        hashTab.classList.add('is-active');
-        categorySiblings.forEach(sibling => sibling.style.left = `${-100 * categoryIndex}%`);
+        hashMain.classList.add(activeClass);
+        hashTab.classList.add(activeClass);
+        if(categorySiblings) {
+            categorySiblings.forEach(sibling => sibling.style.left = `${-100 * categoryIndex}%`);
+        }
         submenuSiblings.forEach(sibling => sibling.style.left = `${-100 * submenuIndex}%`);
     }
 }
-function initFirstHashTab(menuClass) {
+function initFirstHashTab(menuClass, activeClass) {
     //Auto-select tab without hashtag present
-    document.querySelector(`${menuClass} a`).classList.add('is-active');
+    document.querySelector(`${menuClass} a`).classList.add(activeClass);
+}
+function initWebpages() {
+    //remove loading screen
+    document.querySelector('body').classList.remove('loading');
+    document.querySelector('#loading').remove();
+    initTabs(true, '.webpage', '.webpage--menu', '.webpage--content', 'is-open', '.tab-category')
+}
+function initTableSort(table) {
+    let headers = table.querySelectorAll('th'),
+        rows,
+        switching = true,
+        i,
+        a,
+        b,
+        shouldSwitch,
+        switchcount = 0;
+
+    headers.forEach((header, index) => {
+        header.addEventListener('click', () => {
+            let column = index;
+            let dir = header.dataset.sort ? header.dataset.sort : 'asc';
+            for(let j = 0; j < headers.length; j++) {
+                if (j !== index) {
+                    headers[j].removeAttribute('data-sort');
+                }
+            }
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                  shouldSwitch = false;
+
+                  //set sorting value in a way that works for date, numerical, or alphabetical sorting
+                  switch(header.dataset.sortBy) {
+                    case 'date':
+                        a = Date.parse(rows[i].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim());
+                        b = Date.parse(rows[i + 1].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim());
+                        break;
+                    case 'number':
+                        a = parseInt(rows[i].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim());
+                        b = parseInt(rows[i + 1].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim());
+                        break;
+                    default:
+                        a = rows[i].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim();
+                        b = rows[i + 1].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim();
+                  }
+                  
+                  if (dir == "asc") {
+                    if (a > b) {
+                      shouldSwitch = true;
+                      break;
+                    }
+                  } else if (dir == "desc") {
+                    if (a < b) {
+                      shouldSwitch = true;
+                      break;
+                    }
+                  }
+                }
+                if (shouldSwitch) {
+                  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                  switching = true;
+                  switchcount ++;
+                }
+            }
+            switching = true;
+            switchCount = 0;
+            header.dataset.sort = dir === 'asc' ? 'desc' : 'asc';
+        });
+    });
 }
 
 /****** Member List Only ******/

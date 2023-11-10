@@ -14,6 +14,10 @@
   display: grid;
   gap: 10px 15px;
 
+  .fullWidth {
+    grid-column: 1 / -1;
+  }
+
   &[data-gap="xs"] {
     gap: 5px 5px;
   }
@@ -94,4 +98,23 @@
       grid-template-columns: repeat(1, 1fr);
     }
   }
+}
+
+[data-align="left"] {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}
+[data-align="center"] {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+[data-align="right"] {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+[data-align="left"] {
+  text-align: justify;
 }

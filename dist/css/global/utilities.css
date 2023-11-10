@@ -10,6 +10,8 @@
 [data-type="grid"] {
   display: grid;
   gap: 10px 15px; }
+  [data-type="grid"] .fullWidth {
+    grid-column: 1 / -1; }
   [data-type="grid"][data-gap="xs"] {
     gap: 5px 5px; }
   [data-type="grid"][data-gap="sm"] {
@@ -64,3 +66,21 @@
     @media (max-width: 768px) {
       [data-type="grid"][data-columns="5"] {
         grid-template-columns: repeat(1, 1fr); } }
+
+[data-align="left"] {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left; }
+
+[data-align="center"] {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+[data-align="right"] {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right; }
+
+[data-align="left"] {
+  text-align: justify; }

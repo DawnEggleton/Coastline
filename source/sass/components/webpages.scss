@@ -3,3 +3,160 @@
 /*******************************
     Webpages
 ********************************/
+.webpage {
+    margin: -30px;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include mq-up(sm) {
+        grid-template-columns: 250px auto;
+    }
+  
+    @include mq-down(xxs) {
+      margin: -10px;
+    }
+
+    &--menu {
+        background: var(--bg--secondary);
+        border: 1px solid var(--border--primary);
+        height: calc(100vh - (2 * var(--size--menu-max)));
+        position: sticky;
+        top: var(--size--menu-max);
+
+        .accordion {
+            &--content {
+                transition-duration: 0s;
+
+                &.is-open {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    height: auto;
+                    padding: 10px 15px;
+                }
+            }
+        }
+
+        a {
+            display: block;
+            background: var(--bg--primary);
+            font-size: var(--size--font-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text--primary);
+            padding: 5px 10px;
+            line-height: 160%;
+            border: 1px solid var(--border--primary);
+            border-radius: 2px;
+            text-align: center;
+
+            &.is-open {
+                border-color: var(--text--accent);
+                color: var(--text--accent);
+                background: var(--bg--secondary);
+            }
+        }
+    }
+
+    &--content {
+        font-size: calc(var(--size--font-md) + 1px);
+        line-height: 200%;
+
+        & > tag-tab {
+            padding: 30px;
+
+            @include mq-down(xxs) {
+                padding: 10px;
+            }
+
+            & > tag-tabset {
+                filter: var(--shadow--drop-primary);
+
+                & > tag-tab {
+                    clip-path: var(--style--cut-corners-alt);
+                    background: var(--bg--primary);
+                    padding: 30px;
+                    height: max-content;
+
+                    @include mq-down(xxs) {
+                        padding: 15px;
+                    }
+                }
+            }
+        }
+
+        form {
+            label {
+                display: grid;
+
+                input {
+                    margin: 0;
+                    font-size: var(--size--font-md);
+                    text-transform: none;
+                    letter-spacing: 0;
+                }
+            }
+            button {
+                grid-column: 1 / -1;
+                background: var(--accent-1-gradient-low);
+                border: 1px solid var(--bg--accent);
+                max-width: max-content;
+                margin: 10px auto 0;
+                text-transform: uppercase;
+                font-size: var(--size--font-sm);
+                letter-spacing: 0.05em;
+                padding: 3px 15px;
+                font-weight: 700;
+                border-radius: 2px;
+            }
+        }
+    }
+
+    & ~ * {
+        display: none;
+    }
+}
+
+.claims {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+
+    th {
+        font-size: var(--size--font-lg);
+        text-transform: uppercase;
+        font-weight: 900;
+        border-bottom: 1px solid var(--border--secondary);
+        padding: 0 10px;
+        cursor: pointer;
+
+        .ph-arrow-up,
+        .ph-arrow-down {
+            display: none;
+        }
+        &[data-sort="asc"] {
+            .ph-arrow-up {
+                display: initial;
+            }
+        }
+        &[data-sort="desc"] {
+            .ph-arrow-down {
+                display: initial;
+            }
+        }
+    }
+
+    td {
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: var(--size--font-xs);
+        padding: 5px 10px;
+        border-bottom: 1px solid var(--border--primary);
+
+        &:first-child {
+            font-size: var(--size--font-sm);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+    }
+}

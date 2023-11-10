@@ -131,12 +131,126 @@
         <main>
             <a name="top"></a>
 		
+            <div id="loading">
+                <i class="ph-bold ph-anchor"></i>
+                <p>Loading</p>
+            </div>
+		
             
             <!--Webpage-->
-            <section class="webpage"></section>
-        </main>
+            <section class="webpage">
+                <div class="webpage--menu">
+                    <tag-labels class="accordion">
+                        <tag-label data-category="category1" class="tab-category accordion--trigger is-open">
+                            <b>.01</b><span>Category 1</span>
+                        </tag-label>
+                        <div data-category="category1" class="tab-category accordion--content is-open">
+                            <a href="#tab1-1" class="is-active">Tab 1-1</a>
+                            <a href="#tab1-2">Tab 1-2</a>
+                        </div>
+                        <tag-label data-category="claims" class="tab-category accordion--trigger">
+                            <b>.02</b><span>Claims</span>
+                        </tag-label>
+                        <div data-category="claims" class="tab-category accordion--content">
+                            <a href="#reserves">Reserves</a>
+                            <a href="#members">Members</a>
+                            <a href="#characters">Characters</a>
+                        </div>
+                    </tag-labels>
+                </div>
+                <tag-tabset class="webpage--content">
+                    <tag-tab class="tab-category" data-category="category1">
+                        <tag-tabset>
+                            <tag-tab data-key="#tab1-1">
+                                <h1><i>Extra</i>large Header</h1>
+                                <h2><i>Large</i>Header</h2>
+                                <h3><i>Medium</i>Header</h3>
+                                <h4>Small Header</h4>
+                                <h5>Extra Small Header</h5>
+                                <h6>Block Header Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h6>
+                                <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote>
+                                <p>Lorem ipsum dolor <b>sit amet</b>, consectetur adipiscing elit, sed do <i>eiusmod tempor incididunt</i> ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <u>Duis aute irure</u> dolor in reprehenderit in voluptate velit esse <s>cillum dolore</s> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit <a>anim id est laborum</a>.</p>
+                            </tag-tab>
+                            <tag-tab data-key="#tab1-2">
+                                Tab 1-2
+                            </tag-tab>
+                        </tag-tabset>
+                    </tag-tab>
+                    <tag-tab class="tab-category" data-category="claims">
+                        <tag-tabset>
+                            <tag-tab data-key="#reserves">
+                                <h2 class="h1" data-align="center"><i>Add A</i>Reserve</h2>
+                                <form id="form-reserve" data-type="grid" data-columns="2">
+                                    <label>
+                                        <b class="h7" data-align="left">Alias</b>
+                                        <input type="text" id="member" placeholder="Alias" />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Face</b>
+                                        <input type="text" id="face" placeholder="Face" />
+                                    </label>
+                                    <button type="submit" id="submit" class="fullWidth">Submit</button>
+                                </form>
+                                <h2 class="h1" data-align="center"><i>Active</i>Reserves</h2>
+                                <table class="claims">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Face
+                                                <i class="ph-bold ph-arrow-up"></i>
+                                                <i class="ph-bold ph-arrow-down"></i>
+                                            </th>
+                                            <th>
+                                                Alias
+                                                <i class="ph-bold ph-arrow-up"></i>
+                                                <i class="ph-bold ph-arrow-down"></i>
+                                            </th>
+                                            <th data-sort-by="date">
+                                                Expires
+                                                <i class="ph-bold ph-arrow-up"></i>
+                                                <i class="ph-bold ph-arrow-down"></i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="clip--reserves"></tbody>
+                                </table>
+                            </tag-tab>
+                            <tag-tab data-key="#members">
+                                Clip member data
+                            </tag-tab>
+                            <tag-tab data-key="#characters">
+                                Clip character data
+                            </tag-tab>
+                        </tag-tabset>
+                    </tag-tab>
+                </tag-tabset>
+            </section>
+            <script src="../dist/js/claimsFunctions.js"></script>
+            <script src="../dist/js/claimsScripts.js"></script>
+            <script>
+                const sheetID = '1qlk4ezdI7bFbfLEIdO5eHjalb680NT6z5rYvtvW72A4';
+                const deployID = 'AKfycbxLOKasMjFiKqpCtT4PaAjKIaNPXI0naKalkCKuOnPgtv5ozGtqaJCzrmuQVmGaI4flPg';
 
-        </div>
+                const discordServer = '1172357121472466994';
+                const reservesHook = 'h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA';
+
+                const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
+                const reserves = `https://opensheet.elk.sh/${sheetID}/Reserves`;
+                fetch(claims)
+                .then((response) => response.json())
+                .then((claimsData) => {
+                    //console.log(claimsData);
+                    
+                    fetch(reserves)
+                    .then((response) => response.json())
+                    .then((reservesData) => {
+                        formatReserves(reservesData);
+                        
+                    }).then(() => {
+                        initWebpages();
+                    });
+                });
+            </script>
 <!-- Copyright Information -->
         <div class="tableborder" align="center">
             <div class="row4" style="font-size: 7.5pt; padding-top: 1px; padding-bottom: 1px; line-height: 8pt;">
@@ -154,6 +268,9 @@
                 </div>
             </div>
         </div> 
+        </main>
+
+        </div>
 
         
         

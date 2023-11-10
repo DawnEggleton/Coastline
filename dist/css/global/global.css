@@ -239,6 +239,125 @@ select {
   select[type="submit"] {
     cursor: pointer; }
 
+main h1,
+main .h1,
+main h2,
+main .h2,
+main h3,
+main .h3 {
+  font-weight: 900;
+  text-transform: lowercase;
+  letter-spacing: -0.05em;
+  color: var(--text--accent-alt); }
+  main h1 i,
+  main .h1 i,
+  main h2 i,
+  main .h2 i,
+  main h3 i,
+  main .h3 i {
+    font-family: var(--font-head);
+    color: var(--text--accent);
+    letter-spacing: -0.1em;
+    margin-right: -0.05em;
+    font-size: 0.8em; }
+
+main h1,
+main .h1 {
+  font-size: 30px; }
+  @media only screen and (min-width: 480px) {
+    main h1,
+    main .h1 {
+      font-size: calc(30px + 30 * (100vw - 480px) / (1440 - 480)); } }
+  @media only screen and (min-width: 1440px) {
+    main h1,
+    main .h1 {
+      font-size: 60px; } }
+
+main h2,
+main .h2 {
+  font-size: 26px; }
+  @media only screen and (min-width: 480px) {
+    main h2,
+    main .h2 {
+      font-size: calc(26px + 24 * (100vw - 480px) / (1440 - 480)); } }
+  @media only screen and (min-width: 1440px) {
+    main h2,
+    main .h2 {
+      font-size: 50px; } }
+
+main h3,
+main .h3 {
+  font-size: 18px; }
+  @media only screen and (min-width: 480px) {
+    main h3,
+    main .h3 {
+      font-size: calc(18px + 14 * (100vw - 480px) / (1440 - 480)); } }
+  @media only screen and (min-width: 1440px) {
+    main h3,
+    main .h3 {
+      font-size: 32px; } }
+
+main h4,
+main .h4,
+main h5,
+main .h5 {
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--text--primary); }
+  main h4::after,
+  main .h4::after,
+  main h5::after,
+  main .h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background: var(--bg--accent);
+    border-radius: 1.5px; }
+
+main h4,
+main .h4 {
+  font-size: var(--size--font-lg);
+  padding-bottom: 5px; }
+  main h4::after,
+  main .h4::after {
+    width: 50px;
+    height: 4px;
+    border-radius: 1.5px; }
+
+main h5,
+main .h5 {
+  font-size: var(--size--font-md);
+  letter-spacing: 0.05em; }
+  main h5::after,
+  main .h5::after {
+    width: 35px;
+    height: 2px;
+    border-radius: 1px; }
+
+main h6,
+main .h6 {
+  max-width: 300px;
+  text-transform: uppercase;
+  font-size: var(--size--font-xs);
+  text-align: justify;
+  line-height: 200%;
+  letter-spacing: 0.05em;
+  border-left: 1px solid var(--bg--accent-alt);
+  padding: 5px 10px; }
+
+main blockquote {
+  background: var(--accent-1-gradient-low);
+  border: 1px solid var(--accent-1);
+  padding: 10px 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: calc(var(--size--font-sm) + 1px);
+  line-height: 200%;
+  border-radius: 2px; }
+
 u {
   text-decoration: none;
   border-bottom: 1px solid var(--text--accent);
