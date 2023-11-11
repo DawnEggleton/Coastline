@@ -225,27 +225,27 @@
   .profile--freeform {
     display: grid;
     gap: 30px;
-    grid-template-rows: calc(100% - 264px) 234px; }
-    @media (max-width: 768px) {
-      .profile--freeform .profile--tall {
-        height: 100%;
-        min-height: 0; }
-      .profile--freeform .profile--item-inner {
-        height: 100%; } }
-    @media (max-width: 600px) {
-      .profile--freeform {
-        grid-template-rows: auto 234px;
-        overflow: auto;
-        scrollbar-width: none; }
-        .profile--freeform .profile--tall {
-          min-height: 300px; } }
+    grid-template-rows: 400px 434px;
+    overflow: auto;
+    scrollbar-width: none; }
+    .profile--freeform::-webkit-scrollbar {
+      display: none; }
+    .profile--freeform .profile--tall {
+      height: 100%;
+      min-height: 0; }
+    .profile--freeform .profile--item-inner {
+      height: 100%; }
     @media (min-width: 769px) {
       .profile--freeform {
-        grid-template-rows: auto;
-        grid-template-columns: auto 75px; } }
+        grid-template-rows: 400px 534px; } }
     @media (min-width: 1025px) {
       .profile--freeform {
-        grid-template-columns: auto clamp(250px, 40%, 400px); } }
+        overflow: hidden;
+        grid-template-columns: auto 275px;
+        grid-template-rows: auto; } }
+    @media (min-width: 1281px) {
+      .profile--freeform {
+        grid-template-columns: auto 450px; } }
   .profile--tall {
     height: calc((5 * (41px + (var(--size--font-change) * 2))) + var(--size--avatar-height) + 22px);
     min-height: calc(100vh - (2 * var(--size--menu-max))); }
@@ -271,20 +271,27 @@
   .profile--aesthetic {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 15px;
-    height: 234px; }
+    height: 434px; }
     @media (min-width: 769px) {
       .profile--aesthetic {
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        height: calc((5 * (63px + (var(--size--font-change) * 2))) + var(--size--avatar-height) - 150px);
-        min-height: calc(100vh - (2 * var(--size--menu-max)) - 60px); } }
+        height: 534px; } }
     @media (min-width: 1025px) {
       .profile--aesthetic {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        height: calc((5 * (63px + (var(--size--font-change) * 2))) + var(--size--avatar-height) - 150px);
+        min-height: calc(100vh - (2 * var(--size--menu-max)) - 60px); }
+        .profile--aesthetic span:nth-last-child(2) {
+          grid-row: span 2; } }
+    @media (min-width: 1281px) {
+      .profile--aesthetic {
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        gap: 30px; } }
+        gap: 30px; }
+        .profile--aesthetic span:nth-last-child(2) {
+          grid-row: span 1; } }
     .profile--aesthetic span {
       width: 100%;
       filter: var(--shadow--drop-primary); }

@@ -316,35 +316,35 @@
     &--freeform {
         display: grid;
         gap: 30px;
-        grid-template-rows: calc(100% - 264px) 234px;
-
-        @include mq-down(sm) {
-            .profile--tall {
-                height: 100%;
-                min-height: 0;
-            }
-            .profile--item-inner {
-                height: 100%;
-            }
+        grid-template-rows: 400px 434px;
+        overflow: auto;
+        scrollbar-width: none;
+    
+        &::-webkit-scrollbar {
+            display: none;
         }
 
-        @include mq-down(xs) {
-            grid-template-rows: auto 234px;
-            overflow: auto;
-            scrollbar-width: none;
-
-            .profile--tall {
-                min-height: 300px;
-            }
+        .profile--tall {
+            height: 100%;
+            min-height: 0;
+        }
+        
+        .profile--item-inner {
+            height: 100%;
         }
 
         @include mq-up(sm) {
-            grid-template-rows: auto;
-            grid-template-columns: auto 75px;
+            grid-template-rows: 400px 534px;
         }
 
         @include mq-up(md) {
-            grid-template-columns: auto clamp(250px, 40%, 400px);
+            overflow: hidden;
+            grid-template-columns: auto 275px;
+            grid-template-rows: auto;
+        }
+
+        @include mq-up(lg) {
+            grid-template-columns: auto 450px;
         }
     }
 
@@ -386,21 +386,33 @@
     &--aesthetic {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         gap: 15px;
-        height: 234px;
+        height: 434px;
 
         @include mq-up(sm) {
-            grid-template-columns: repeat(1, 1fr);
-            grid-template-rows: repeat(6, 1fr);
-            height: calc((5 * (63px + (var(--size--font-change) * 2))) + var(--size--avatar-height) - 150px);
-            min-height: calc(100vh - (2 * var(--size--menu-max)) - 60px);
+            height: 534px;
         }
 
         @include mq-up(md) {
             grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            height: calc((5 * (63px + (var(--size--font-change) * 2))) + var(--size--avatar-height) - 150px);
+            min-height: calc(100vh - (2 * var(--size--menu-max)) - 60px);
+
+            span:nth-last-child(2) {
+                grid-row: span 2;
+            }
+        }
+
+        @include mq-up(lg) {
+            grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             gap: 30px;
+
+            span:nth-last-child(2) {
+                grid-row: span 1;
+            }
         }
 
         span {
