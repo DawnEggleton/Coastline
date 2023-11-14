@@ -3241,6 +3241,49 @@ header {
       font-weight: 700;
       letter-spacing: 0.05em; }
 
+.member-directory .accordion--trigger {
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: lowercase;
+  letter-spacing: -0.05em;
+  border: 1px solid var(--border--primary);
+  padding: 10px 15px; }
+  @media only screen and (min-width: 480px) {
+    .member-directory .accordion--trigger {
+      font-size: calc(18px + 14 * (100vw - 480px) / (1440 - 480)); } }
+  @media only screen and (min-width: 1440px) {
+    .member-directory .accordion--trigger {
+      font-size: 32px; } }
+  .member-directory .accordion--trigger:hover, .member-directory .accordion--trigger.is-open {
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: lowercase;
+    letter-spacing: -0.05em; }
+    @media only screen and (min-width: 480px) {
+      .member-directory .accordion--trigger:hover, .member-directory .accordion--trigger.is-open {
+        font-size: calc(18px + 14 * (100vw - 480px) / (1440 - 480)); } }
+    @media only screen and (min-width: 1440px) {
+      .member-directory .accordion--trigger:hover, .member-directory .accordion--trigger.is-open {
+        font-size: 32px; } }
+
+.member-directory .accordion--content {
+  -webkit-transition-duration: 0;
+       -o-transition-duration: 0;
+          transition-duration: 0;
+  border: 1px solid var(--border--primary);
+  border-top: 0;
+  border-bottom: 0; }
+  .member-directory .accordion--content.is-open {
+    -webkit-transition-duration: 0;
+         -o-transition-duration: 0;
+            transition-duration: 0; }
+  .member-directory .accordion--content tbody tr:last-child td {
+    border-bottom: 0; }
+
+.member-directory .claims th {
+  padding: 5px 10px;
+  border-top: 0; }
+
 /*******************************
     Jcink Defaults
 ********************************/

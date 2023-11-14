@@ -19,15 +19,39 @@ function sendDiscordMessage(webhook, message, embedTitle, notification = null, c
     request.send(JSON.stringify(params));
 }
 
-function formatClaimsRow(columns, group = null) {
-    let classes = `claims--item`;
-    if(group) {
-        classes += ` g-${group}`;
-    }
+function formatClaimsRow(columns, classes = ``) {
     let html = `<tr class="${classes}">
         ${columns.map(column => `<td>${column}</td>`).join('')}
     </tr>`;
 
+    return html;
+}
+function formatClaimsBlockOpen(columns, title, accordion = false, classes = ``) {
+    let html = ``;
+    if (accordion) {
+        html += `<div class="accordion member-directory">
+        <div class="accordion--trigger">${title}</div>
+        <div class="accordion--content">`;
+    }
+    if(!accordion && title) {
+        html += `<h2>${title}</h2>`;
+    }
+    html += `<table class="${classes}">
+                <thead>
+                    <tr>
+                        ${columns.map(column => `<th ${column.sort && `data-sort-by="${column.sort}"`}>${column.title}<i class="ph-bold ph-arrow-up"></i><i class="ph-bold ph-arrow-down"></i></th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>`;
+    return html;
+}
+function formatClaimsBlockClose(accordion = false) {
+    let html = `</tbody>
+            </table>`;
+    if (accordion) {
+        html += `</div>
+        </div>`;
+    }
     return html;
 }
 
@@ -67,10 +91,108 @@ function formatReserves(data) {
     document.querySelector(`.clip--reserves`).insertAdjacentHTML('beforeend', html);
 }
 function formatMembers(data) {
-    console.log(data);
+    data.sort((a, b) => {
+        if (a.Member < b.Member) {
+            return -1;
+        } else if (a.Member > b.Member) {
+            return 1;
+        } if (a.Character < b.Character) {
+            return -1;
+        } else if (a.Character > b.Character) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    let html = ``;
+
+    for(let i = 0; i < data.length; i++) {
+        //first instance: new member block open, character block
+        if(i === 0) {
+            html += formatClaimsBlockOpen([
+                {title: `Character`},
+                {title: `Age`, sort: 'number'},
+                {title: `Apartment`, sort: 'number'},
+                {title: `Power`},
+                {title: `Occupation`}
+            ],
+            data[i].Member,
+            true,
+            'claims');
+            html += formatClaimsRow([
+                `<a href="?showuser=${data[i].AccountID}">${data[i].Character}</a>`,
+                data[i].Age,
+                data[i].Apartment,
+                data[i].Ability,
+                data[i].Occupation,
+            ],
+            `g-${data[i].GroupID}`);
+        }
+        //if new member: close previous member block, open new member block, character block
+        else if (i !== 0 && data[i].Member !== data[i - 1].Member) {
+            html += formatClaimsBlockClose(true);
+            html += formatClaimsBlockOpen([
+                {title: `Character`},
+                {title: `Age`, sort: 'number'},
+                {title: `Apartment`, sort: 'number'},
+                {title: `Power`},
+                {title: `Occupation`}
+            ],
+            data[i].Member,
+            true,
+            'claims');
+            html += formatClaimsRow([
+                `<a href="?showuser="${data[i].AccountID}">${data[i].Character}</a>`,
+                data[i].Age,
+                data[i].Apartment,
+                data[i].Ability,
+                data[i].Occupation,
+            ],
+            `g-${data[i].GroupID}`);
+        }
+        //if new character: character block
+        else if (i !== 0 && data[i].Member === data[i - 1].Member) {
+            html += formatClaimsRow([
+                `<a href="?showuser="${data[i].AccountID}">${data[i].Character}</a>`,
+                data[i].Age,
+                data[i].Apartment,
+                data[i].Ability,
+                data[i].Occupation,
+            ],
+            `g-${data[i].GroupID}`);
+        }
+        //if last instance: close member block
+        if(i === data.length -1) {
+            html += formatClaimsBlockClose(true);
+        }
+    }
+
+    document.querySelector(`.clip--members`).insertAdjacentHTML('beforeend', html);
 }
 function formatCharacters(data) {
-    console.log(data);
+    data.sort((a, b) => {
+        if (a.Character < b.Character) {
+            return -1;
+        } else if (a.Character > b.Character) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    let html = ``;
+
+    for(let i = 0; i < data.length; i++) {
+        html += formatClaimsRow([
+            `<a href="?showuser="${data[i].AccountID}">${data[i].Character}</a>`,
+            data[i].Face,
+            data[i].Ability,
+            data[i].Apartment,
+            data[i].Member,
+        ],
+        `g-${data[i].GroupID}`);
+    }
+
+    document.querySelector(`.clip--characters`).insertAdjacentHTML('beforeend', html);
 }
 
 function submitReserves(data, discord, successMessage) {
@@ -144,6 +266,31 @@ function submitReserves(data, discord, successMessage) {
     
     return false;
 }
+function submitClaims(data, discord, successMessage) {
+	let form = document.querySelector(`#form-sort`);
+	storedHTML = form.innerHTML;
+    form.querySelector('[type="submit"]').innerText = 'Submitting...';
+    if(form.querySelector('.warning')) {
+        form.querySelector('.warning').remove();
+    }
+
+    fetch(`https://opensheet.elk.sh/1mrdIG_MZ-f0jBHb-8_5aRGCczs5f3sl5WglDF0D1XwU/Claims`)
+    .then((response) => response.json())
+    .then((claimsData) => {
+        let existing = claimsData.filter(item => item.AccountID === data.AccountID);
+
+        if(existing.length === 0) {
+            $(form).trigger('reset');
+            sendAjax(form, data, discord, successMessage);
+        } else {
+            form.insertAdjacentHTML('afterbegin', `<blockquote class="fullWidth warning">Uh-oh! Someone else already exists on the sheet with that ID. Please double check it's entered correctly and reach out to staff if you need help!</blockquote>`);
+        
+            form.querySelector('button[type="submit"]').innerText = 'Submit';
+        }
+        
+        window.scrollTo(0, 0);
+    });
+}
 function sendAjax(form, data, discord, successMessage) {
     $(form).trigger('reset');
     
@@ -156,6 +303,9 @@ function sendAjax(form, data, discord, successMessage) {
         success: function () {
             switch(data.SubmissionType) {
                 case 'reserve-submit':
+                    sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${reservesHook}`, discord.staffMessage, discord.staffTitle);
+                    break;
+                case 'claims-submit':
                     sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${reservesHook}`, discord.staffMessage, discord.staffTitle);
                     break;
                 default:
@@ -173,6 +323,14 @@ function sendAjax(form, data, discord, successMessage) {
             form.innerHTML = successMessage;
 
             window.scrollTo(0, 0);
+            switch(data.SubmissionType) {
+                case 'claims-submit':
+                    sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${reservesHook}`, discord.publicMessage, discord.publicTitle);
+                    break;
+                default:
+                    console.log('Complete');
+                    break;
+            }
         }
     });
 }

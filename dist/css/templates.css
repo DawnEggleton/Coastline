@@ -72,6 +72,8 @@ tag-tabset {
   height: 100%; }
 
 tag-tab {
+  width: 100%;
+  max-width: 100%;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 100%;
       -ms-flex: 0 0 100%;

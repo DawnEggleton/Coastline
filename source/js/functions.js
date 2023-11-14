@@ -21,6 +21,13 @@ function capitalizeMultiple(selector) {
         character.innerText = capitalize(character.innerText);
     });
 }
+function toggleFieldVisibility(form, field, targetClass) {
+    if(field.options[field.selectedIndex].value === 'y') {
+        form.querySelectorAll(targetClass).forEach(item => item.classList.remove('hidden'));
+    } else {
+        form.querySelectorAll(targetClass).forEach(item => item.classList.add('hidden'));
+    }
+}
 
 /****** Settings ******/
 function setTheme() {
@@ -133,7 +140,7 @@ function initSwitcher() {
 		if(i !== 0) {
 			let characterName = character.innerText.trim();
 			let characterId = character.value;
-            let siteString = `uploads2/coves`;
+            let siteString = `uploads2/godlybehaviour`;
 			newSwitch += `<label class="switch-block">
 				<input type="checkbox" value="${characterId}" onchange="this.form.submit()" name="sub_id" />
 				<div style="background-image: url(https://files.jcink.net/${siteString}/av-${characterId}.png), url(https://files.jcink.net/${siteString}/av-${characterId}.gif), url(https://files.jcink.net/${siteString}/av-${characterId}.jpg), url(https://files.jcink.net/${siteString}/av-${characterId}.jpeg), url(https://picsum.photos/250);"></div>
@@ -169,8 +176,8 @@ function initTopicsWrap() {
         $(this).nextUntil(`.macro--header`).wrapAll(`<div class="topiclist--section"></div>`);
     });
 }
-function initAccordion() {
-    document.querySelectorAll('.accordion').forEach(accordion => {
+function initAccordion(target = '.accordion') {
+    document.querySelectorAll(target).forEach(accordion => {
         let triggers = accordion.querySelectorAll('.accordion--trigger');
         let contents = accordion.querySelectorAll('.accordion--content');
         if(window.innerWidth <= 480) {
@@ -292,6 +299,7 @@ function initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryC
         }
         submenuSiblings.forEach(sibling => sibling.style.left = `${-100 * submenuIndex}%`);
     }
+    window.scrollTo(0, 0);
 }
 function initFirstHashTab(menuClass, activeClass) {
     //Auto-select tab without hashtag present
@@ -301,7 +309,15 @@ function initWebpages() {
     //remove loading screen
     document.querySelector('body').classList.remove('loading');
     document.querySelector('#loading').remove();
-    initTabs(true, '.webpage', '.webpage--menu', '.webpage--content', 'is-open', '.tab-category')
+    initTabs(true, '.webpage', '.webpage--menu', '.webpage--content', 'is-open', '.tab-category');
+
+    //sortable tables
+    document.querySelectorAll('table.claims').forEach(table => {
+        initTableSort(table);
+    });
+
+    //accordions
+    initAccordion('.member-directory');
 }
 function initTableSort(table) {
     let headers = table.querySelectorAll('th'),
@@ -332,16 +348,16 @@ function initTableSort(table) {
                   //set sorting value in a way that works for date, numerical, or alphabetical sorting
                   switch(header.dataset.sortBy) {
                     case 'date':
-                        a = Date.parse(rows[i].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim());
-                        b = Date.parse(rows[i + 1].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim());
+                        a = Date.parse(rows[i].getElementsByTagName("TD")[column].innerText.toLowerCase().trim());
+                        b = Date.parse(rows[i + 1].getElementsByTagName("TD")[column].innerText.toLowerCase().trim());
                         break;
                     case 'number':
-                        a = parseInt(rows[i].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim());
-                        b = parseInt(rows[i + 1].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim());
+                        a = parseInt(rows[i].getElementsByTagName("TD")[column].innerText.toLowerCase().trim());
+                        b = parseInt(rows[i + 1].getElementsByTagName("TD")[column].innerText.toLowerCase().trim());
                         break;
                     default:
-                        a = rows[i].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim();
-                        b = rows[i + 1].getElementsByTagName("TD")[column].innerHTML.toLowerCase().trim();
+                        a = rows[i].getElementsByTagName("TD")[column].innerText.toLowerCase().trim();
+                        b = rows[i + 1].getElementsByTagName("TD")[column].innerText.toLowerCase().trim();
                   }
                   
                   if (dir == "asc") {

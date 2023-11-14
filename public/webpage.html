@@ -156,6 +156,14 @@
                             <a href="#members">Members</a>
                             <a href="#characters">Characters</a>
                         </div>
+                        <tag-label data-category="forms" class="tab-category accordion--trigger">
+                            <b>.03</b><span>Forms</span>
+                        </tag-label>
+                        <div data-category="forms" class="tab-category accordion--content">
+                            <a href="#submit">Submit a Character</a>
+                            <a href="#edit">Edit a Character</a>
+                            <a href="#moderation">Request Staff Help</a>
+                        </div>
                     </tag-labels>
                 </div>
                 <tag-tabset class="webpage--content">
@@ -215,11 +223,121 @@
                                     <tbody class="clip--reserves"></tbody>
                                 </table>
                             </tag-tab>
-                            <tag-tab data-key="#members">
-                                Clip member data
+                            <tag-tab data-key="#members" class="clip--members">
+                                <h2 class="h1" data-align="center"><i>Member</i>Directory</h2>
                             </tag-tab>
                             <tag-tab data-key="#characters">
-                                Clip character data
+                                <h2 class="h1" data-align="center"><i>Character</i>List</h2>
+                                <table class="claims">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Name
+                                                <i class="ph-bold ph-arrow-up"></i>
+                                                <i class="ph-bold ph-arrow-down"></i>
+                                            </th>
+                                            <th>
+                                                Face
+                                                <i class="ph-bold ph-arrow-up"></i>
+                                                <i class="ph-bold ph-arrow-down"></i>
+                                            </th>
+                                            <th>
+                                                Ability
+                                                <i class="ph-bold ph-arrow-up"></i>
+                                                <i class="ph-bold ph-arrow-down"></i>
+                                            </th>
+                                            <th data-sort-by="number">
+                                                Apartment
+                                                <i class="ph-bold ph-arrow-up"></i>
+                                                <i class="ph-bold ph-arrow-down"></i>
+                                            </th>
+                                            <th>
+                                                Alias
+                                                <i class="ph-bold ph-arrow-up"></i>
+                                                <i class="ph-bold ph-arrow-down"></i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="clip--characters"></tbody>
+                                </table>
+                            </tag-tab>
+                        </tag-tabset>
+                    </tag-tab>
+                    <tag-tab class="tab-category" data-category="forms">
+                        <tag-tabset>
+                            <tag-tab data-key="#submit">
+                                <h2 class="h1" data-align="center"><i>Submit a</i>Character</h2>
+                                <blockquote>Please note that if you use any of the following extensions in Chrome (possibly in other browsers as well), you must disable them for the form to complete all of its functions correctly:
+                                    <ul><li>Privacy Badger</li>
+                                    <li>UBlock</li>
+                                    <li>Potentially AdBlock (Plus Only)</li></ul>
+                                </blockquote><br>
+                                <form id="form-sort" data-type="grid" data-columns="2">
+                                    <label>
+                                        <b class="h7" data-align="left">Alias</b>
+                                        <input type="text" id="member" placeholder="Member" required />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Character</b>
+                                        <input type="text" id="character" placeholder="Character" required />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Group</b>
+                                        <select id="group" required>
+                                            <option value="">(select)</option>
+                                            <option value="8">Enchanced</option>
+                                            <option value="6">Kinetic</option>
+                                            <option value="7">Psychic</option>
+                                            <option value="9">Summoning</option>
+                                            <option value="10">Mutation</option>
+                                            <option value="11">Alchemical</option>
+                                            <option value="12">Undefined</option>
+                                        </select>
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Profile URL</b>
+                                        <input type="text" id="accountid" placeholder="Profile URL" required />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Age</b>
+                                        <input type="number" id="age" placeholder="Age" required />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Face Claim</b>
+                                        <input type="text" id="face" placeholder="Face Claim" required />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Occupation</b>
+                                        <input type="text" id="occupation" placeholder="Face Claim" required />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Apartment Number</b>
+                                        <input type="number" id="apartment" placeholder="Apartment Number" required />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">Abilty</b>
+                                        <input type="text" id="ability" placeholder="Ability" required />
+                                    </label>
+                                    <label>
+                                        <b class="h7" data-align="left">For a Request?</b>
+                                        <select id="request" required>
+                                            <option value="">(select)</option>
+                                            <option value="y">Yes</option>
+                                            <option value="n">No</option>
+                                        </select>
+                                    </label>
+                                    <label class="hidden ifRequest fullWidth">
+                                        <b class="h7" data-align="left">Request URL / Creator</b>
+                                        <input type="text" id="request-data" placeholder="Request URL / Creator" />
+                                    </label>
+                                    <button type="submit" id="submit" class="fullWidth">Submit</button>
+                                </form>
+                            </tag-tab>
+                            <tag-tab data-key="#edit">
+                                Edit Claims
+                            </tag-tab>
+                            <tag-tab data-key="#moderation">
+                                Mod request form
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
@@ -239,7 +357,8 @@
                 fetch(claims)
                 .then((response) => response.json())
                 .then((claimsData) => {
-                    //console.log(claimsData);
+                    formatMembers(claimsData);
+                    formatCharacters(claimsData);
                     
                     fetch(reserves)
                     .then((response) => response.json())
