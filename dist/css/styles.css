@@ -3114,8 +3114,6 @@ header {
 ********************************/
 .webpage {
   margin: -30px;
-  display: -ms-grid;
-  display: grid;
   -ms-grid-columns: 1fr;
   grid-template-columns: 1fr; }
   @media (min-width: 769px) {
@@ -3131,7 +3129,10 @@ header {
     height: calc(100vh - (2 * var(--size--menu-max)));
     position: -webkit-sticky;
     position: sticky;
-    top: var(--size--menu-max); }
+    top: var(--size--menu-max);
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content; }
     .webpage--menu .accordion--content {
       -webkit-transition-duration: 0s;
            -o-transition-duration: 0s;

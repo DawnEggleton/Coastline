@@ -3,7 +3,6 @@
 ********************************/
 .webpage {
   margin: -30px;
-  display: grid;
   grid-template-columns: 1fr; }
   @media (min-width: 769px) {
     .webpage {
@@ -16,7 +15,8 @@
     border: 1px solid var(--border--primary);
     height: calc(100vh - (2 * var(--size--menu-max)));
     position: sticky;
-    top: var(--size--menu-max); }
+    top: var(--size--menu-max);
+    height: max-content; }
     .webpage--menu .accordion--content {
       transition-duration: 0s; }
       .webpage--menu .accordion--content.is-open {
