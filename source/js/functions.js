@@ -28,6 +28,13 @@ function toggleFieldVisibility(form, field, targetClass) {
         form.querySelectorAll(targetClass).forEach(item => item.classList.add('hidden'));
     }
 }
+function toggleCheckVisibility(form, field, targetClass) {
+    if(field.checked) {
+        form.querySelectorAll(targetClass).forEach(item => item.classList.remove('hidden'));
+    } else {
+        form.querySelectorAll(targetClass).forEach(item => item.classList.add('hidden'));
+    }
+}
 
 /****** Settings ******/
 function setTheme() {

@@ -1,0 +1,66 @@
+<form id="form-edit" data-type="grid" data-columns="2">
+    <blockquote class="fullWidth">The claims edits will happen based on Account ID, so ensure it is accurate.</blockquote>
+    <label class="fullWidth">
+        <b class="h7" data-align="left">Member Alias</b>
+        <input type="text" id="member" placeholder="Alias" required />
+    </label>
+    <label>
+        <b class="h7" data-align="left">Character</b>
+        <input type="text" id="character" placeholder="Character Name" required />
+    </label>
+    <label>
+        <b class="h7" data-align="left">Profile URL</b>
+        <input type="text" id="accountid" placeholder="Profile URL" required />
+    </label>
+    <b class="fullWidth">Please Update</b>
+    <div class="fullWidth multiSelect" data-type="flex" data-gap="lg">
+        <label class="input-wrap">
+            <input type="checkbox" name="update" id="choice-alias" value="alias">
+            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+            <strong class="checkbox">Change Alias</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="update" id="choice-name" value="name">
+            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+            <strong class="checkbox">Change Character Name</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="update" id="choice-age" value="age" data-update-class=".ifAge">
+            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+            <strong class="checkbox">Update Age</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="update" id="choice-face" value="face" data-update-class=".ifFace">
+            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+            <strong class="checkbox">Change Face</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="update" id="choice-apartment" value="apartment" data-update-class=".ifApt">
+            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+            <strong class="checkbox">Change Apartment Number</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="update" id="choice-occupation" value="occupation" data-update-class=".ifJob">
+            <div class="fancy-input checkbox"><i class="fa-regular fa-xmark"></i></div>
+            <strong class="checkbox">Change Occupation</strong>
+        </label>
+    </div>
+    <label class="hidden ifAge fullWidth">
+        <b>Age</b>
+        <input type="number" id="age" placeholder="Age" />
+    </label>
+    <label class="hidden ifFace fullWidth">
+        <b>Face Claim</b>
+        <input type="text" id="face" placeholder="Face Claim" />
+    </label>
+    <label class="hidden ifApt fullWidth">
+        <b>Apartment Number</b>
+        <input type="number" id="apartment" placeholder="Apartment Number" />
+    </label>
+    <label class="hidden ifJob fullWidth">
+        <b>Occupation</b>
+        <input type="text" id="occupation" placeholder="Face Claim" />
+    </label>
+    <blockquote class="fullWidth ifName">Please note that alias and characer name changes will not produce new fields; they will use the above fields so make sure those are accurate to what you want moving forward.</blockquote>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>

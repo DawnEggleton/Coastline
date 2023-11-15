@@ -90,3 +90,53 @@ toggleFieldVisibility(sortForm, requestField, '.ifRequest');
 requestField.addEventListener('change', e => {
     toggleFieldVisibility(sortForm, e.currentTarget, '.ifRequest');
 });
+
+//edit claims
+document.querySelector('#form-edit').addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget;
+
+    let member = form.querySelector('#member').value.toLowerCase().trim();
+    let character = form.querySelector('#character').value.toLowerCase().trim();
+    let account = form.querySelector('#accountid').value.split(`showuser=`)[1] ? form.querySelector('#accountid').value.split(`showuser=`)[1] : form.querySelector('#accountid').value.trim();
+    let age = form.querySelector('#age').value.toLowerCase().trim();
+    let face = form.querySelector('#face').value.toLowerCase().trim();
+    let occupation = form.querySelector('#occupation').value.toLowerCase().trim();
+    let apartment = form.querySelector('#apartment').value.toLowerCase().trim();
+    let selectedChanges = Array.prototype.slice.call(form.querySelectorAll('[name="update"]')).filter(item => item.checked).map(item => item.value);
+
+    let embedTitle = `${capitalize(member)} has made edits to ${capitalize(character)} (#${account})`;
+
+    let data = {
+        "SubmissionType": "claims-edit",
+        Member: member,
+        Character: character,
+        AccountID: account,
+        Face: face,
+        Occupation: occupation,
+        Age: age,
+        Apartment: apartment,
+        SelectedChanges: selectedChanges,
+    }
+    let discord = {
+        staffTitle: embedTitle
+    }
+
+    let successMessage = `<blockquote class="fullWidth">Submission successful! Please refresh the guidebook and double check your claims. They may take up to a minute to display.</blockquote>
+    <button onclick="reloadForm(this)" type="button" class="fullWidth">Back to form</button>`;
+
+    updateClaims(data, discord, successMessage);
+});
+
+//update toggles
+let editForm = document.querySelector('#form-edit');
+let updateBoxes = editForm.querySelectorAll('[name="update"]');
+updateBoxes.forEach(box => {
+    if(box.dataset.updateClass) {
+        toggleCheckVisibility(editForm, box, box.dataset.updateClass);
+        box.addEventListener('change', e => {
+            toggleCheckVisibility(editForm, e.currentTarget, e.currentTarget.dataset.updateClass);
+        });
+    }
+})

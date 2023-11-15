@@ -93,8 +93,11 @@ button {
     line-height: 100%;
     cursor: pointer; }
 
-.input-wrap input {
-  display: none; }
+.input-wrap {
+  display: flex;
+  gap: 5px; }
+  .input-wrap input {
+    display: none; }
 
 .fancy-input {
   display: flex;

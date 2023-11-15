@@ -1,0 +1,60 @@
+<form id="form-sort" data-type="grid" data-columns="2">
+    <label>
+        <b>Alias</b>
+        <input type="text" id="member" placeholder="Member" required />
+    </label>
+    <label>
+        <b>Character</b>
+        <input type="text" id="character" placeholder="Character" required />
+    </label>
+    <label>
+        <b>Group</b>
+        <select id="group" required>
+            <option value="">(select)</option>
+            <option value="8">Enchanced</option>
+            <option value="6">Kinetic</option>
+            <option value="7">Psychic</option>
+            <option value="9">Summoning</option>
+            <option value="10">Mutation</option>
+            <option value="11">Alchemical</option>
+            <option value="12">Undefined</option>
+        </select>
+    </label>
+    <label>
+        <b>Profile URL</b>
+        <input type="text" id="accountid" placeholder="Profile URL" required />
+    </label>
+    <label>
+        <b>Age</b>
+        <input type="number" id="age" placeholder="Age" required />
+    </label>
+    <label>
+        <b>Face Claim</b>
+        <input type="text" id="face" placeholder="Face Claim" required />
+    </label>
+    <label>
+        <b>Occupation</b>
+        <input type="text" id="occupation" placeholder="Face Claim" required />
+    </label>
+    <label>
+        <b>Apartment Number</b>
+        <input type="number" id="apartment" placeholder="Apartment Number" required />
+    </label>
+    <label>
+        <b>Abilty</b>
+        <input type="text" id="ability" placeholder="Ability" required />
+    </label>
+    <label>
+        <b>For a Request?</b>
+        <select id="request" required>
+            <option value="">(select)</option>
+            <option value="y">Yes</option>
+            <option value="n">No</option>
+        </select>
+    </label>
+    <label class="hidden ifRequest fullWidth">
+        <b>Request URL / Creator</b>
+        <input type="text" id="request-data" placeholder="Request URL / Creator" />
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>

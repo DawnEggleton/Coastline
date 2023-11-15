@@ -291,6 +291,89 @@ function submitClaims(data, discord, successMessage) {
         window.scrollTo(0, 0);
     });
 }
+
+function updateClaims(data, discord, successMessage) {
+	let form = document.querySelector(`#form-edit`);
+	storedHTML = form.innerHTML;
+    form.querySelector('[type="submit"]').innerText = 'Submitting...';
+    if(form.querySelector('.warning')) {
+        form.querySelector('.warning').remove();
+    }
+
+    fetch(`https://opensheet.elk.sh/${sheetID}/Claims`)
+    .then((response) => response.json())
+    .then((claimsData) => {
+        let existing = claimsData.filter(item => item.AccountID === data.AccountID);
+
+        if(existing.length === 1) {
+            existing = existing[0];
+            let original = {...existing};
+            discord.message = ``;
+
+            if(data.SelectedChanges.includes('alias')) {
+                existing.Member = data.Member;
+                if(discord.message !== '') {
+                    discord.message += `\n`
+                }
+                discord.message += `**Alias Change:** From ${capitalize(original.Member)} to ${capitalize(existing.Member)}`;
+            }
+
+            if(data.SelectedChanges.includes('name')) {
+                existing.Character = data.Character;
+                if(discord.message !== '') {
+                    discord.message += `\n`
+                }
+                discord.message += `**Name Change:** From ${capitalize(original.Character)} to ${capitalize(existing.Character)}`;
+            }
+
+            if(data.SelectedChanges.includes('age')) {
+                existing.Age = data.Age;
+                if(discord.message !== '') {
+                    discord.message += `\n`
+                }
+                discord.message += `**Age Change:** From ${capitalize(original.Age)} to ${capitalize(existing.Age)}`;
+            }
+
+            if(data.SelectedChanges.includes('face')) {
+                existing.Face = data.Face;
+                if(discord.message !== '') {
+                    discord.message += `\n`
+                }
+                discord.message += `**Face Change:** From ${capitalize(original.Face)} to ${capitalize(existing.Face)}`;
+            }
+
+            if(data.SelectedChanges.includes('apartment')) {
+                existing.Apartment = data.Apartment;
+                if(discord.message !== '') {
+                    discord.message += `\n`
+                }
+                discord.message += `**Apartment Change:** From ${capitalize(original.Apartment)} to ${capitalize(existing.Apartment)}`;
+            }
+
+            if(data.SelectedChanges.includes('occupation')) {
+                existing.Occupation = data.Occupation;
+                if(discord.message !== '') {
+                    discord.message += `\n`
+                }
+                discord.message += `**Job Change:** From ${capitalize(original.Occupation)} to ${capitalize(existing.Occupation)}`;
+            }
+
+            existing.SubmissionType = data.SubmissionType;
+            
+            $(form).trigger('reset');
+
+            sendAjax(form, existing, discord, successMessage)
+        } else {
+            form.insertAdjacentHTML('afterbegin', `<blockquote class="fullWidth warning">Uh-oh! This character doesn't exist on the sheet. Have they been <a href="#sort">sorted</a> yet?</blockquote>`);
+        
+            $('#form-sort button[type="submit"]').text('Submit');
+        }
+        
+        window.scrollTo(0, 0);
+    });
+    
+    return false;
+}
 function sendAjax(form, data, discord, successMessage) {
     $(form).trigger('reset');
     
@@ -306,7 +389,10 @@ function sendAjax(form, data, discord, successMessage) {
                     sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${reservesHook}`, discord.staffMessage, discord.staffTitle);
                     break;
                 case 'claims-submit':
-                    sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${reservesHook}`, discord.staffMessage, discord.staffTitle);
+                    sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${staffSubmitHook}`, discord.staffMessage, discord.staffTitle);
+                    break;
+                case 'claims-edit':
+                    sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${staffSubmitHook}`, discord.message, discord.staffTitle);
                     break;
                 default:
                     console.log('Success');
@@ -325,7 +411,7 @@ function sendAjax(form, data, discord, successMessage) {
             window.scrollTo(0, 0);
             switch(data.SubmissionType) {
                 case 'claims-submit':
-                    sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${reservesHook}`, discord.publicMessage, discord.publicTitle);
+                    sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${submitHook}`, discord.publicMessage, discord.publicTitle);
                     break;
                 default:
                     console.log('Complete');

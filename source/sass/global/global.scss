@@ -127,6 +127,9 @@ button {
   }
 }
 .input-wrap {
+  display: flex;
+  gap: 5px;
+
   input {
       display: none;
   }
