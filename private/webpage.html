@@ -50,6 +50,12 @@
                             <a href="#edit-form">Edit a Character</a>
                             <a href="#mod-form">Request Staff Help</a>
                         </div>
+                        <tag-label data-category="staff" class="tab-category accordion--trigger staffOnly">
+                            <b>.04</b><span>Staff Only</span>
+                        </tag-label>
+                        <div data-category="staff" class="tab-category accordion--content">
+                            <a href="#announce-form">Announce a Character</a>
+                        </div>
                     </tag-labels>
                 </div>
                 <tag-tabset class="webpage--content">
@@ -184,6 +190,22 @@
                                     <li>Potentially AdBlock (Plus Only)</li></ul>
                                 </blockquote><br>
                                 @@include('../source/templates/mod.html', {
+                                      "prefix": ".."
+                                  })
+                            </tag-tab>
+                        </tag-tabset>
+                    </tag-tab>
+                    <tag-tab class="tab-category staffOnly" data-category="staff">
+                        <tag-tabset>
+                            <tag-tab data-key="#announce-form">
+                                <h2 class="h1" data-align="center"><i>Announce a</i>Character</h2>
+                                <blockquote>
+                                    Please note that if you use any of the following extensions in Chrome (possibly in other browsers as well), you must disable them for the form to complete all of its functions correctly:
+                                    <ul><li>Privacy Badger</li>
+                                    <li>UBlock</li>
+                                    <li>Potentially AdBlock (Plus Only)</li></ul>
+                                </blockquote><br>
+                                @@include('../source/templates/announce.html', {
                                       "prefix": ".."
                                   })
                             </tag-tab>

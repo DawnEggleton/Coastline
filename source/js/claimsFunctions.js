@@ -291,7 +291,6 @@ function submitClaims(data, discord, successMessage) {
         window.scrollTo(0, 0);
     });
 }
-
 function updateClaims(data, discord, successMessage) {
 	let form = document.querySelector(`#form-edit`);
 	storedHTML = form.innerHTML;
@@ -367,6 +366,38 @@ function updateClaims(data, discord, successMessage) {
             form.insertAdjacentHTML('afterbegin', `<blockquote class="fullWidth warning">Uh-oh! This character doesn't exist on the sheet. Have they been <a href="#sort">sorted</a> yet?</blockquote>`);
         
             $('#form-sort button[type="submit"]').text('Submit');
+        }
+        
+        window.scrollTo(0, 0);
+    });
+    
+    return false;
+}
+function announceCharacter(data, discord, successMessage) {
+	let form = document.querySelector(`#form-announce`);
+	storedHTML = form.innerHTML;
+    form.querySelector('[type="submit"]').innerText = 'Submitting...';
+    if(form.querySelector('.warning')) {
+        form.querySelector('.warning').remove();
+    }
+
+    fetch(`https://opensheet.elk.sh/${sheetID}/Claims`)
+    .then((response) => response.json())
+    .then((claimsData) => {
+        let existing = claimsData.filter(item => item.AccountID === data.AccountID);
+
+        if(existing.length === 1) {
+            existing = existing[0];
+
+            existing.Group = data.Group;
+            existing.GroupID = data.GroupID;
+            existing.SubmissionType = data.SubmissionType;
+            discord.message = discord.publicMessage;
+            discord.staffTitle = discord.publicTitle;
+            
+            $(form).trigger('reset');
+
+            sendAjax(form, existing, discord, successMessage);
         }
         
         window.scrollTo(0, 0);

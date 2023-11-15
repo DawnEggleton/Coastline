@@ -164,6 +164,12 @@
                             <a href="#edit-form">Edit a Character</a>
                             <a href="#mod-form">Request Staff Help</a>
                         </div>
+                        <tag-label data-category="staff" class="tab-category accordion--trigger staffOnly">
+                            <b>.04</b><span>Staff Only</span>
+                        </tag-label>
+                        <div data-category="staff" class="tab-category accordion--content">
+                            <a href="#announce-form">Announce a Character</a>
+                        </div>
                     </tag-labels>
                 </div>
                 <tag-tabset class="webpage--content">
@@ -282,20 +288,7 @@
         <b>Character</b>
         <input type="text" id="character" placeholder="Character" required />
     </label>
-    <label>
-        <b>Group</b>
-        <select id="group" required>
-            <option value="">(select)</option>
-            <option value="8">Enchanced</option>
-            <option value="6">Kinetic</option>
-            <option value="7">Psychic</option>
-            <option value="9">Summoning</option>
-            <option value="10">Mutation</option>
-            <option value="11">Alchemical</option>
-            <option value="12">Undefined</option>
-        </select>
-    </label>
-    <label>
+    <label class="fullWidth">
         <b>Profile URL</b>
         <input type="text" id="accountid" placeholder="Profile URL" required />
     </label>
@@ -417,7 +410,75 @@
                                     <li>UBlock</li>
                                     <li>Potentially AdBlock (Plus Only)</li></ul>
                                 </blockquote><br>
-                                Mod form
+                                <form id="form-mod" data-type="grid">
+    <input type="hidden" value="Member Name" id="member" />
+    <input type="hidden" value="Account Number" id="account" />
+    <input type="hidden" value="IP Address" id="ip" />
+    <label>
+        <b>Request Type</b>
+        <select id="type" required>
+            <option value="">(select)</option>
+            <option value="board">Board Request</option>
+            <option value="thread">Thread Moderation</option>
+            <option value="account">Account Moderation</option>
+            <option value="other">Other</option>
+        </select>
+    </label>
+    <label>
+        <b>Request</b>
+        <textarea type="text" id="request" placeholder="Request text" required></textarea>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
+                            </tag-tab>
+                        </tag-tabset>
+                    </tag-tab>
+                    <tag-tab class="tab-category staffOnly" data-category="staff">
+                        <tag-tabset>
+                            <tag-tab data-key="#announce-form">
+                                <h2 class="h1" data-align="center"><i>Announce a</i>Character</h2>
+                                <blockquote>
+                                    Please note that if you use any of the following extensions in Chrome (possibly in other browsers as well), you must disable them for the form to complete all of its functions correctly:
+                                    <ul><li>Privacy Badger</li>
+                                    <li>UBlock</li>
+                                    <li>Potentially AdBlock (Plus Only)</li></ul>
+                                </blockquote><br>
+                                <form id="form-announce" data-type="grid" data-columns="2">
+    <label>
+        <b>Alias</b>
+        <input type="text" id="member" placeholder="Member" required />
+    </label>
+    <label>
+        <b>Character</b>
+        <input type="text" id="character" placeholder="Character" required />
+    </label>
+    <label class="fullWidth">
+        <b>Profile URL</b>
+        <input type="text" id="accountid" placeholder="Profile URL" required />
+    </label>
+    <label>
+        <b>Group</b>
+        <select id="group" required>
+            <option value="">(select)</option>
+            <option value="8">Enchanced</option>
+            <option value="6">Kinetic</option>
+            <option value="7">Psychic</option>
+            <option value="9">Summoning</option>
+            <option value="10">Mutation</option>
+            <option value="11">Alchemical</option>
+            <option value="12">Undefined</option>
+        </select>
+    </label>
+    <label>
+        <b>Ability</b>
+        <input type="text" id="ability" placeholder="Ability" required />
+    </label>
+    <label class="fullWidth">
+        <b>Welcome Note</b>
+        <textarea type="text" id="note" placeholder="Welcome note" required></textarea>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>

@@ -290,7 +290,8 @@ button {
 }
 
 input,
-select {
+select,
+textarea {
   background: var(--bg--secondary);
   color: var(--text--primary);
   border: 1px solid var(--border--primary);
@@ -313,6 +314,13 @@ select {
   &[type="submit"] {
     cursor: pointer;
   }
+}
+textarea {
+  font-size: calc(var(--size--font-md) + 1px);
+  line-height: 200%;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: normal;
 }
 main {
   h1,

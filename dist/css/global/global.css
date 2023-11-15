@@ -220,7 +220,8 @@ button {
     font-weight: 900; }
 
 input,
-select {
+select,
+textarea {
   background: var(--bg--secondary);
   color: var(--text--primary);
   border: 1px solid var(--border--primary);
@@ -233,14 +234,24 @@ select {
   line-height: 100%;
   margin: 0 2.5px; }
   input:hover,
-  select:hover {
+  select:hover,
+  textarea:hover {
     background: var(--bg--secondary);
     border-color: var(--text--accent);
     color: var(--text--accent); }
   input[type="button"], input[type="submit"],
   select[type="button"],
-  select[type="submit"] {
+  select[type="submit"],
+  textarea[type="button"],
+  textarea[type="submit"] {
     cursor: pointer; }
+
+textarea {
+  font-size: calc(var(--size--font-md) + 1px);
+  line-height: 200%;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: normal; }
 
 main h1,
 main .h1,

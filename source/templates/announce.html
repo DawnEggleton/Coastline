@@ -1,0 +1,36 @@
+<form id="form-announce" data-type="grid" data-columns="2">
+    <label>
+        <b>Alias</b>
+        <input type="text" id="member" placeholder="Member" required />
+    </label>
+    <label>
+        <b>Character</b>
+        <input type="text" id="character" placeholder="Character" required />
+    </label>
+    <label class="fullWidth">
+        <b>Profile URL</b>
+        <input type="text" id="accountid" placeholder="Profile URL" required />
+    </label>
+    <label>
+        <b>Group</b>
+        <select id="group" required>
+            <option value="">(select)</option>
+            <option value="8">Enchanced</option>
+            <option value="6">Kinetic</option>
+            <option value="7">Psychic</option>
+            <option value="9">Summoning</option>
+            <option value="10">Mutation</option>
+            <option value="11">Alchemical</option>
+            <option value="12">Undefined</option>
+        </select>
+    </label>
+    <label>
+        <b>Ability</b>
+        <input type="text" id="ability" placeholder="Ability" required />
+    </label>
+    <label class="fullWidth">
+        <b>Welcome Note</b>
+        <textarea type="text" id="note" placeholder="Welcome note" required></textarea>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>

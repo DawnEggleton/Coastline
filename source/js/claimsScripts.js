@@ -32,9 +32,6 @@ document.querySelector('#form-sort').addEventListener('submit', e => {
 
     let member = form.querySelector('#member').value.toLowerCase().trim();
     let character = form.querySelector('#character').value.toLowerCase().trim();
-    let groupField = form.querySelector('#group');
-    let group = groupField.options[groupField.selectedIndex].innerText.toLowerCase().trim();
-    let groupID = groupField.options[groupField.selectedIndex].value;
     let account = form.querySelector('#accountid').value.split(`showuser=`)[1] ? form.querySelector('#accountid').value.split(`showuser=`)[1] : form.querySelector('#accountid').value.trim();
     let age = form.querySelector('#age').value.toLowerCase().trim();
     let face = form.querySelector('#face').value.toLowerCase().trim();
@@ -45,14 +42,14 @@ document.querySelector('#form-sort').addEventListener('submit', e => {
     let wantedURLs = e.currentTarget.querySelector('#request-data').value;
 
     let embedTitle = `${capitalize(member)} has requested sorting for ${capitalize(character)}`;
-    let message = `${capitalize(character)} should be placed in the ${capitalize(group)} group.\n\n**Profile:** https://godlybehaviour.jcink.net/?showuser=${account}\n**Requested?** ${wanted}`;
+    let message = `${capitalize(character)} should be placed in the ${capitalize(group)} group.\n\n**Profile:** https://coves.jcink.net/?showuser=${account}\n**Requested?** ${wanted}`;
     if (wanted === 'Yes') {
         message += `\n${wantedURLs}`;
     }
     message += `\n\nPlease follow the sorting procedure, available in Processes > #sorting of this Discord server. React to this notification when you begin reviewing the application.`;
 
     let publicTitle = `${capitalize(member)} has finished ${capitalize(character)}!`;
-    let publicMessage = `**Learn More:** <https://godlybehaviour.jcink.net/?showuser=${account}>`;
+    let publicMessage = `**Learn More:** <https://coves.jcink.net/?showuser=${account}>`;
     if (wanted === 'Yes') {
         publicMessage += `\n\n*This character fills one or more requests. Members managing those requests will be contacted prior to character approval and sorting.*`;
     }
@@ -62,8 +59,6 @@ document.querySelector('#form-sort').addEventListener('submit', e => {
         Member: member,
         Character: character,
         AccountID: account,
-        Group: group,
-        GroupID: groupID,
         Face: face,
         Occupation: occupation,
         Age: age,
@@ -140,3 +135,65 @@ updateBoxes.forEach(box => {
         });
     }
 })
+
+//character announcements
+document.querySelector('#form-announce').addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget;
+
+    let member = form.querySelector('#member').value.toLowerCase().trim();
+    let character = form.querySelector('#character').value.toLowerCase().trim();
+    let account = form.querySelector('#accountid').value.split(`showuser=`)[1] ? form.querySelector('#accountid').value.split(`showuser=`)[1] : form.querySelector('#accountid').value.trim();
+    let groupField = form.querySelector('#group');
+    let group = groupField.options[groupField.selectedIndex].innerText.toLowerCase().trim();
+    let groupID = groupField.options[groupField.selectedIndex].value;
+    let ability = form.querySelector('#ability').value.toLowerCase().trim();
+    let note = form.querySelector('#note').value.trim();
+
+    let publicTitle = `Welcome to ${capitalize(character)}!`;
+    let publicMessage = `${note}\n\n**Learn More:** <https://coves.jcink.net/?showuser=${account}>`;
+
+    let data = {
+        "SubmissionType": "claims-edit",
+        Member: member,
+        Character: character,
+        AccountID: account,
+        Ability: ability,
+        Group: group,
+        GroupID: groupID,
+    }
+    let discord = {
+        publicTitle: publicTitle,
+        publicMessage: publicMessage
+    }
+
+    let successMessage = `<blockquote class="fullWidth">Character announcement complete!</blockquote>
+    <button onclick="reloadForm(this)" type="button" class="fullWidth">Back to form</button>`;
+
+    announceCharacter(data, discord, successMessage);
+});
+
+//mod form
+document.querySelector('#form-mod').addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget;
+
+    let member = form.querySelector('#member').value.toLowerCase();
+    let account = form.querySelector('#account').value.toLowerCase();
+    let ip = form.querySelector('#ip').value.toLowerCase();
+    let typeField = form.querySelector('#type');
+    let type = typeField.options[typeField.selectedIndex].innerText;
+    let request = form.querySelector('#request').value.trim();
+
+    let staffTitle = `${capitalize(member)} (#${account}, ${ip}) would like some help!`;
+    let staffMessage = `**Type:** ${type}\n**Request:**\n${request}`;
+
+    sendDiscordMessage(`https://discord.com/api/webhooks/${discordServer}/${staffSubmitHook}`, staffMessage, staffTitle);
+    
+    form.innerHTML = `<blockquote class="fullWidth">Help request sent!</blockquote>
+    <button onclick="reloadForm(this)" type="button" class="fullWidth">Back to form</button>`;
+
+    window.scrollTo(0, 0);
+});

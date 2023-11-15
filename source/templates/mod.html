@@ -1,1 +1,20 @@
-Mod form
+<form id="form-mod" data-type="grid">
+    <input type="hidden" value="Member Name" id="member" />
+    <input type="hidden" value="Account Number" id="account" />
+    <input type="hidden" value="IP Address" id="ip" />
+    <label>
+        <b>Request Type</b>
+        <select id="type" required>
+            <option value="">(select)</option>
+            <option value="board">Board Request</option>
+            <option value="thread">Thread Moderation</option>
+            <option value="account">Account Moderation</option>
+            <option value="other">Other</option>
+        </select>
+    </label>
+    <label>
+        <b>Request</b>
+        <textarea type="text" id="request" placeholder="Request text" required></textarea>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
