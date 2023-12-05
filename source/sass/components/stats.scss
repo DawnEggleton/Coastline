@@ -40,6 +40,10 @@
                 font-size: var(--size--font-xl);
                 font-weight: 700;
                 line-height: 200%;
+                
+                span {
+                    color: var(--text--accent);
+                }
             }
         }
     }
@@ -109,6 +113,10 @@
 
             @include mq-up(md) {
                 max-height: 155px;
+            }
+                
+            a span {
+                color: var(--text--accent);
             }
         }
     }

@@ -78,10 +78,10 @@
         padding: 20px; 
 
         h3 {
-            font-size: var(--size--font-xl);
+            font-size: 18px;
             text-transform: uppercase;
             line-height: 160%;
-            margin: 0;
+            margin: 0 !important;
 
             a {
                 font-weight: 900;
@@ -129,6 +129,10 @@
             color: var(--text--accent);
             font-weight: 900;
         }
+
+        &:empty {
+            display: none;
+        }
     }
 
     &--latest {
@@ -146,17 +150,18 @@
             grid-row: span 2;
         }
 
-        span {
+        & > span {
             &:first-of-type {
-                font-size: var(--size--font-md);
+                font-size: var(--size--font-sm);
+                letter-spacing: 0.05em;
                 line-height: 160%;
                 align-self: end;
             }
             &:last-of-type {
-                font-size: var(--size--font-sm);
-                letter-spacing: 0.05em;
+                font-style: italic;
+                font-size: var(--size--font-xs);
+                letter-spacing: 0.15em;
                 line-height: 160%;
-                align-self: start;
             }
         }
     }

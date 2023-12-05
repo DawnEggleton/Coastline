@@ -18,7 +18,7 @@
    &--title {
       font-size: 60px;
       font-weight: 900;
-      margin: 0;
+      margin: 0 !important;
       line-height: 100%;
       padding: 10px 40px 10px 0;
       color: var(--text--accent);
@@ -100,14 +100,10 @@
       background: var(--bg--primary);
 
       h3 {
-         margin: 0;
+         margin: 0 0 10px 0 !important;
          text-transform: uppercase;
-         font-size: 30px;
-         line-height: 160%;
-
-         @include mq-down(sm) {
-            @include fluid-type(16, 30, 480, 786)
-         }
+         @include fluid-type(18, 30, 480, 786);
+         line-height: 100%;
 
          a {
             font-weight: 900;
@@ -196,6 +192,15 @@
          display: flex;
          flex-wrap: wrap;
          gap: 5px 15px;
+         font-size: 0;
+         
+         .subforums-macro {
+            display: none;
+         }
+
+         a {
+            font-size: var(--size--font-sm);
+         }
       }
    }
 }

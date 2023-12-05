@@ -1,3 +1,901 @@
 /*******************************
     Jcink Defaults
 ********************************/
+/***** Hide Unused Elements *****/
+.hidden,
+.hide,
+.newstext,
+#submenu,
+#userlinks,
+.wrapmini,
+a[href=""] {
+  display: none !important; }
+
+/***** Custom Defaults - Input Wraps *****/
+.input-wrap {
+  gap: 5px;
+  font-size: var(--size--font-sm);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  align-items: center; }
+  .input-wrap p {
+    margin: 0; }
+  .input-wrap input {
+    display: none; }
+    .input-wrap input:checked ~ .fancy-input {
+      color: black; }
+  .input-wrap .fancy-input {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    width: 16px;
+    height: 16px; }
+    .input-wrap .fancy-input.radio {
+      border-radius: 50%; }
+
+/***** Variables for Defaults *****/
+:root {
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 30px;
+  --spacing-xl: 60px;
+  --menuHeight: var(--size--menu-max);
+  --storeImageWidth: 16px; }
+
+/***** Online List ******/
+#Online main > .tableborder:nth-of-type(2) {
+  max-width: 1200px;
+  margin: 0 auto; }
+  #Online main > .tableborder:nth-of-type(2) .maintitle {
+    text-align: left;
+    margin: var(--spacing-lg) 0;
+    line-height: 160%;
+    max-width: max-content;
+    padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
+    border-left: 5px solid var(--bg--primary);
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text--accent); }
+    @media only screen and (min-width: 480px) {
+      #Online main > .tableborder:nth-of-type(2) .maintitle {
+        font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+    @media only screen and (min-width: 1920px) {
+      #Online main > .tableborder:nth-of-type(2) .maintitle {
+        font-size: 36px; } }
+    #Online main > .tableborder:nth-of-type(2) .maintitle + table {
+      display: block;
+      width: 100%; }
+      #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md); }
+        @media (min-width: 769px) {
+          #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody {
+            grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1025px) {
+          #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody {
+            grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 1281px) {
+          #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody {
+            grid-template-columns: repeat(4, 1fr); } }
+        #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr {
+          padding: var(--spacing-lg);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background: var(--bg--primary);
+          font-size: var(--size--font-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          line-height: 160%; }
+          #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr:first-child {
+            display: none; }
+          #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr:last-child {
+            grid-column: 1 / -1; }
+          #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr > td {
+            display: block;
+            width: 100%;
+            padding: 0;
+            text-align: center; }
+            #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr > td:first-child:not(:only-child) {
+              text-align: center;
+              font-size: 0; }
+              #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr > td:first-child:not(:only-child) a {
+                display: block;
+                font-size: var(--size--font-xl);
+                font-weight: 900;
+                letter-spacing: 0; }
+            #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr > td:last-child:not(:only-child) {
+              display: none; }
+            #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr > td form {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-wrap: wrap; }
+              #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr > td form select,
+              #Online main > .tableborder:nth-of-type(2) .maintitle + table > tbody > tr > td form input {
+                line-height: 100%; }
+
+/***** Quick Reply/Options *****/
+#ST #qr_open,
+#ST #topic_open {
+  margin: 0 auto var(--spacing-lg);
+  text-align: justify;
+  padding: var(--spacing-lg); }
+
+#ST #qr_open .maintitle {
+  line-height: 160%;
+  max-width: max-content;
+  padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-lg);
+  margin-top: 0;
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--text--accent); }
+  @media only screen and (min-width: 480px) {
+    #ST #qr_open .maintitle {
+      font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+  @media only screen and (min-width: 1920px) {
+    #ST #qr_open .maintitle {
+      font-size: 36px; } }
+
+#ST #qr_open .tablepad {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0;
+  justify-content: center;
+  background: var(--bg--primary);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-lg); }
+
+#ST #qr_open .input-wrap {
+  margin-top: 15px; }
+  #ST #qr_open .input-wrap:first-of-type {
+    margin-right: calc(var(--spacing-md) / 2); }
+    #ST #qr_open .input-wrap:first-of-type + .input-wrap {
+      margin-left: calc(var(--spacing-md) / 2); }
+
+#ST #qr_open textarea {
+  width: 100%;
+  flex: 0 0 100%; }
+  #ST #qr_open textarea ~ br {
+    display: none; }
+
+#ST #qr_open .qr_buttons {
+  width: 100%;
+  flex: 0 0 100%;
+  margin-top: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center; }
+  #ST #qr_open .qr_buttons input {
+    margin-left: 0;
+    margin-right: 0; }
+
+#ST #qr_open #post_as_selector {
+  width: 100%;
+  flex: 0 0 100%;
+  margin: var(--spacing-md) 0 var(--spacing-xs); }
+  #ST #qr_open #post_as_selector br {
+    display: none; }
+
+#ST #topic_open .maintitle {
+  font-size: 0; }
+  #ST #topic_open .maintitle a {
+    font-size: 22px; }
+    @media only screen and (min-width: 480px) {
+      #ST #topic_open .maintitle a {
+        font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+    @media only screen and (min-width: 1920px) {
+      #ST #topic_open .maintitle a {
+        font-size: 36px; } }
+
+#ST #topic_open .tablepad {
+  background: var(--bg--primary);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-lg); }
+  #ST #topic_open .tablepad b {
+    display: block;
+    max-width: max-content;
+    line-height: 160%;
+    max-width: max-content;
+    margin: var(--spacing-lg) 0 0;
+    text-transform: uppercase;
+    font-size: 16px; }
+    @media only screen and (min-width: 480px) {
+      #ST #topic_open .tablepad b {
+        font-size: calc(16px + 6 * (100vw - 480px) / (1920 - 480)); } }
+    @media only screen and (min-width: 1920px) {
+      #ST #topic_open .tablepad b {
+        font-size: 22px; } }
+    #ST #topic_open .tablepad b:first-child {
+      margin-top: 0; }
+    #ST #topic_open .tablepad b a {
+      font-weight: 900; }
+    #ST #topic_open .tablepad b ~ br {
+      display: none; }
+
+/***** New Post/Reply ******/
+#Post main > form ~ br {
+  display: none; }
+
+#Post #posting-form {
+  display: block; }
+  #Post #posting-form .maintitle {
+    display: block;
+    text-align: center;
+    grid-column: 1 / -1 !important;
+    line-height: 160%;
+    max-width: max-content;
+    padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-md);
+    border-left: 5px solid var(--bg--primary);
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text--accent); }
+    @media only screen and (min-width: 480px) {
+      #Post #posting-form .maintitle {
+        font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+    @media only screen and (min-width: 1920px) {
+      #Post #posting-form .maintitle {
+        font-size: 36px; } }
+  #Post #posting-form > tbody {
+    display: block;
+    width: 100%; }
+    #Post #posting-form > tbody > tr:first-child {
+      display: block;
+      margin-bottom: var(--spacing-lg);
+      width: 100%; }
+    #Post #posting-form > tbody > tr:not(:first-child) {
+      padding: var(--spacing-md) var(--spacing-md) 0; }
+    #Post #posting-form > tbody > tr:last-child {
+      padding-bottom: var(--spacing-md); }
+    #Post #posting-form > tbody > tr#topic-settings-header, #Post #posting-form > tbody > tr#code-buttons-header, #Post #posting-form > tbody > tr#enter-your-post-header, #Post #posting-form > tbody > tr#post-as-header,
+    #Post #posting-form > tbody > tr#post-as + tr:not(:last-child),
+    #Post #posting-form > tbody > tr#post-as .pformleft,
+    #Post #posting-form > tbody > tr#post-options .pformleft,
+    #Post #posting-form > tbody > tr#enter-your-post .pformleft,
+    #Post #posting-form > tbody > tr#code-buttons .pformleft,
+    #Post #posting-form > tbody > tr#topic-title .pformleft,
+    #Post #posting-form > tbody > tr#topic-desc .pformleft,
+    #Post #posting-form > tbody > tr#post-as + tr + tr:not(:last-child) .pformleft, #Post #posting-form > tbody > tr#upload-files-header, #Post #posting-form > tbody > tr#upload-files,
+    #Post #posting-form > tbody > tr#upload-files + tr:not(:last-child),
+    #Post #posting-form > tbody > tr#upload-files + tr + tr:not(:last-child) .pformleft {
+      display: none; }
+    #Post #posting-form > tbody > tr#topic-title, #Post #posting-form > tbody > tr#topic-desc {
+      display: block; }
+      #Post #posting-form > tbody > tr#topic-title .pformright, #Post #posting-form > tbody > tr#topic-desc .pformright {
+        display: block; }
+        #Post #posting-form > tbody > tr#topic-title .pformright input, #Post #posting-form > tbody > tr#topic-desc .pformright input {
+          width: 100%;
+          box-sizing: border-box;
+          text-transform: none; }
+    #Post #posting-form > tbody > tr#topic-title .pformright input {
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 22px; }
+      @media only screen and (min-width: 480px) {
+        #Post #posting-form > tbody > tr#topic-title .pformright input {
+          font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+      @media only screen and (min-width: 1920px) {
+        #Post #posting-form > tbody > tr#topic-title .pformright input {
+          font-size: 36px; } }
+    #Post #posting-form > tbody > tr#topic-desc .pformright input {
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 18px; }
+      @media only screen and (min-width: 480px) {
+        #Post #posting-form > tbody > tr#topic-desc .pformright input {
+          font-size: calc(18px + 4 * (100vw - 480px) / (1920 - 480)); } }
+      @media only screen and (min-width: 1920px) {
+        #Post #posting-form > tbody > tr#topic-desc .pformright input {
+          font-size: 22px; } }
+    #Post #posting-form > tbody > tr#code-buttons {
+      display: block;
+      padding: var(--spacing-md); }
+      #Post #posting-form > tbody > tr#code-buttons .pformright {
+        font-size: 0;
+        line-height: 0; }
+        #Post #posting-form > tbody > tr#code-buttons .pformright > input,
+        #Post #posting-form > tbody > tr#code-buttons .pformright > br {
+          display: none; }
+        #Post #posting-form > tbody > tr#code-buttons .pformright #bbcode-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--spacing-xs); }
+          #Post #posting-form > tbody > tr#code-buttons .pformright #bbcode-buttons input,
+          #Post #posting-form > tbody > tr#code-buttons .pformright #bbcode-buttons select {
+            margin: 0; }
+          #Post #posting-form > tbody > tr#code-buttons .pformright #bbcode-buttons > a,
+          #Post #posting-form > tbody > tr#code-buttons .pformright #bbcode-buttons > br {
+            display: none; }
+    #Post #posting-form > tbody > tr#enter-your-post {
+      display: block; }
+      #Post #posting-form > tbody > tr#enter-your-post > td {
+        display: block; }
+        #Post #posting-form > tbody > tr#enter-your-post > td textarea {
+          width: 100%;
+          height: 400px;
+          box-sizing: border-box; }
+    #Post #posting-form > tbody > tr#post-options {
+      display: block; }
+      #Post #posting-form > tbody > tr#post-options .pformright {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        flex-wrap: wrap; }
+        #Post #posting-form > tbody > tr#post-options .pformright > br {
+          display: none; }
+        #Post #posting-form > tbody > tr#post-options .pformright .input-wrap {
+          gap: var(--spacing-xs); }
+          #Post #posting-form > tbody > tr#post-options .pformright .input-wrap .fancy-input {
+            margin-right: var(--spacing-xs); }
+          #Post #posting-form > tbody > tr#post-options .pformright .input-wrap + br + .input-wrap:not(:last-child) {
+            display: none; }
+    #Post #posting-form > tbody > tr#post-as + tr + tr:not(:last-child), #Post #posting-form > tbody > tr#post-as {
+      display: block; }
+      #Post #posting-form > tbody > tr#post-as + tr + tr:not(:last-child) td, #Post #posting-form > tbody > tr#post-as td {
+        display: block;
+        text-align: center; }
+        #Post #posting-form > tbody > tr#post-as + tr + tr:not(:last-child) td select, #Post #posting-form > tbody > tr#post-as td select {
+          width: 100%;
+          max-width: 250px; }
+    #Post #posting-form > tbody > tr#post-icon-options {
+      display: block; }
+      #Post #posting-form > tbody > tr#post-icon-options .pformleft {
+        display: none; }
+      #Post #posting-form > tbody > tr#post-icon-options .pformright {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm) 0;
+        justify-content: center; }
+    #Post #posting-form > tbody > tr#upload-files + tr + tr:not(:last-child) {
+      display: block; }
+      #Post #posting-form > tbody > tr#upload-files + tr + tr:not(:last-child) .pformright {
+        text-align: center;
+        display: block; }
+    #Post #posting-form > tbody > tr:last-child {
+      display: block; }
+      #Post #posting-form > tbody > tr:last-child .pformstrip:only-child {
+        display: flex;
+        justify-content: center; }
+
+#Post #topic-summary {
+  margin-top: var(--spacing-md); }
+  @media (min-width: 601px) {
+    #Post #topic-summary {
+      margin-top: var(--spacing-lg); } }
+  #Post #topic-summary > .tableborder .pformstrip {
+    text-align: left;
+    margin: var(--spacing-lg) 0;
+    line-height: 160%;
+    max-width: max-content;
+    padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
+    border-left: 5px solid var(--bg--primary);
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text--accent); }
+    @media only screen and (min-width: 480px) {
+      #Post #topic-summary > .tableborder .pformstrip {
+        font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+    @media only screen and (min-width: 1920px) {
+      #Post #topic-summary > .tableborder .pformstrip {
+        font-size: 36px; } }
+  #Post #topic-summary > .tableborder > table {
+    display: block;
+    margin-top: var(--spacing-md); }
+    @media (min-width: 601px) {
+      #Post #topic-summary > .tableborder > table {
+        margin-top: var(--spacing-lg); } }
+    #Post #topic-summary > .tableborder > table tbody {
+      display: flex;
+      flex-direction: column; }
+      #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n + 1) {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-lg);
+        background: var(--bg--secondary);
+        border-bottom: 1px solid var(--border--primary); }
+        #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n + 1) td {
+          padding: 0;
+          width: 100%;
+          font-size: var(--size--font-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          font-weight: 600; }
+          #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n + 1) td a,
+          #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n + 1) td b {
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text--accent); }
+            @media only screen and (min-width: 480px) {
+              #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n + 1) td a,
+              #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n + 1) td b {
+                font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+            @media only screen and (min-width: 1920px) {
+              #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n + 1) td a,
+              #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n + 1) td b {
+                font-size: 36px; } }
+      #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n) {
+        display: block;
+        padding: var(--spacing-lg);
+        margin: 0 0 var(--spacing-lg);
+        background: var(--bg--primary); }
+        #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n) td {
+          display: block;
+          width: 100%;
+          padding: 0;
+          text-align: justify;
+          line-height: 200%; }
+          #Post #topic-summary > .tableborder > table tbody tr:nth-child(2n) td:first-child {
+            display: none; }
+
+#Post #post-preview .pformstrip {
+  display: block;
+  max-width: max-content;
+  padding: var(--spacing-xs) var(--spacing-sm); }
+
+#Post #post-preview .row1 {
+  padding: var(--spacing-lg) !important;
+  margin-top: var(--spacing-md); }
+
+/***** Registration ******/
+#Reg main .maintitle {
+  text-align: left;
+  margin: var(--spacing-lg) 0;
+  line-height: 160%;
+  max-width: max-content;
+  padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
+  border-left: 5px solid var(--bg--primary);
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--text--accent); }
+  @media only screen and (min-width: 480px) {
+    #Reg main .maintitle {
+      font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+  @media only screen and (min-width: 1920px) {
+    #Reg main .maintitle {
+      font-size: 36px; } }
+
+#Reg main > .tableborder:first-of-type .tablepad {
+  background: var(--bg--primary);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-md) 0; }
+  #Reg main > .tableborder:first-of-type .tablepad b {
+    margin: 0 0 var(--spacing-md);
+    display: block;
+    max-width: max-content; }
+    #Reg main > .tableborder:first-of-type .tablepad b ~ br {
+      display: none; }
+
+#Reg main > .tableborder:first-of-type .row2:last-child {
+  margin-top: var(--spacing-lg); }
+
+#Reg main > .tableborder:first-of-type,
+#Reg main > form > .tableborder {
+  padding: var(--spacing-lg); }
+  #Reg main > .tableborder:first-of-type .maintitle,
+  #Reg main > form > .tableborder .maintitle {
+    text-align: left;
+    margin: var(--spacing-lg) 0;
+    line-height: 160%;
+    max-width: max-content;
+    padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-lg) !important; }
+  #Reg main > .tableborder:first-of-type .tablepad b + br + br,
+  #Reg main > .tableborder:first-of-type .tablepad b + br + br + br,
+  #Reg main > form > .tableborder .tablepad b + br + br,
+  #Reg main > form > .tableborder .tablepad b + br + br + br {
+    display: none; }
+
+#Reg main > form {
+  display: flex;
+  flex-direction: column;
+  font-size: 0; }
+  #Reg main > form > br,
+  #Reg main > form .maintitle + .pformstrip {
+    display: none; }
+  #Reg main > form .tablepad > table {
+    display: block;
+    font-size: var(--size--font-md); }
+    #Reg main > form .tablepad > table > tbody {
+      display: block; }
+      #Reg main > form .tablepad > table > tbody > tr:first-child {
+        display: flex;
+        flex-direction: column; }
+        #Reg main > form .tablepad > table > tbody > tr:first-child > td {
+          width: 100%; }
+          #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child,
+          #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td {
+            display: grid;
+            gap: var(--spacing-lg); }
+            @media (min-width: 1025px) {
+              #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child,
+              #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td {
+                grid-template-columns: repeat(2, 1fr); } }
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child > br,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td > br {
+              display: none; }
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset input,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset select,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset textarea,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset input,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset select,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset textarea {
+              width: 100%; }
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset input,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset textarea,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset input,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset textarea {
+              text-transform: none; }
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset table,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset tbody,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset table,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset tbody {
+              display: block; }
+              #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset table tr,
+              #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset tbody tr,
+              #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset table tr,
+              #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset tbody tr {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-md); }
+                #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset table tr td:only-child,
+                #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset tbody tr td:only-child,
+                #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset table tr td:only-child,
+                #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td fieldset tbody tr td:only-child {
+                  grid-column: 1 / -1; }
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child > div > b,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td > div > b {
+              display: none; }
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child table,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child tbody,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child tr,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child td,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td table,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td tbody,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td tr,
+            #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td td {
+              display: block; }
+          #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset {
+            grid-column: 1 / -1; }
+          #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > b {
+            display: block;
+            text-align: left;
+            margin-top: var(--spacing-xl);
+            line-height: 160%;
+            max-width: max-content;
+            padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
+            border-left: 5px solid var(--bg--primary);
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text--accent); }
+            @media only screen and (min-width: 480px) {
+              #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > b {
+                font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+            @media only screen and (min-width: 1920px) {
+              #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > b {
+                font-size: 36px; } }
+      #Reg main > form .tablepad > table > tbody > tr:last-child {
+        display: block; }
+        #Reg main > form .tablepad > table > tbody > tr:last-child > td:first-child {
+          display: none; }
+        #Reg main > form .tablepad > table > tbody > tr:last-child > td:last-child {
+          display: block; }
+          #Reg main > form .tablepad > table > tbody > tr:last-child > td:last-child fieldset {
+            display: none; }
+          #Reg main > form .tablepad > table > tbody > tr:last-child > td:last-child .desc {
+            font-size: 0;
+            max-width: max-content;
+            margin: var(--spacing-md) auto 0; }
+            #Reg main > form .tablepad > table > tbody > tr:last-child > td:last-child .desc + br {
+              display: none; }
+            #Reg main > form .tablepad > table > tbody > tr:last-child > td:last-child .desc .input-wrap {
+              text-align: left; }
+              #Reg main > form .tablepad > table > tbody > tr:last-child > td:last-child .desc .input-wrap .fancy-input {
+                margin-right: var(--spacing-sm); }
+
+#Reg #registered-name-image,
+#Reg #password-image,
+#Reg #email-image {
+  display: none; }
+
+/***** Login ******/
+#Login .textNodes {
+  padding: var(--spacing-lg);
+  background: var(--bg--primary); }
+  #Login .textNodes p:first-child {
+    margin-top: 0; }
+  #Login .textNodes br {
+    display: none; }
+  #Login .textNodes .tableborder > .maintitle {
+    text-align: left;
+    margin: var(--spacing-lg) 0;
+    line-height: 160%;
+    max-width: max-content;
+    padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
+    border-left: 5px solid var(--bg--accent);
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text--accent); }
+    @media only screen and (min-width: 480px) {
+      #Login .textNodes .tableborder > .maintitle {
+        font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+    @media only screen and (min-width: 1920px) {
+      #Login .textNodes .tableborder > .maintitle {
+        font-size: 36px; } }
+  #Login .textNodes form .tablebasic {
+    margin-bottom: var(--spacing-lg); }
+    #Login .textNodes form .tablebasic:first-of-type {
+      width: 100%; }
+      #Login .textNodes form .tablebasic:first-of-type tbody {
+        width: 100%;
+        display: flex;
+        flex-direction: column; }
+        #Login .textNodes form .tablebasic:first-of-type tbody .pformleftw {
+          display: none; }
+        #Login .textNodes form .tablebasic:first-of-type tbody tr {
+          width: 100%;
+          padding: var(--spacing-xs) 0; }
+        #Login .textNodes form .tablebasic:first-of-type tbody td,
+        #Login .textNodes form .tablebasic:first-of-type tbody input {
+          width: 100%;
+          display: block; }
+      #Login .textNodes form .tablebasic:first-of-type + .pformstrip {
+        display: none; }
+    #Login .textNodes form .tablebasic:last-of-type {
+      display: none; }
+
+/***** Search Pages (Posts by User, Topics by User, Active Topics) *****/
+#Search main > br:nth-child(2) {
+  display: none; }
+
+#Search.code-show main > #search-topics .maintitle,
+#Search.code-getactive .maintitle {
+  text-align: left;
+  margin: var(--spacing-lg) 0;
+  line-height: 160%;
+  max-width: max-content;
+  padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
+  border-left: 5px solid var(--bg--primary);
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--text--accent); }
+  @media only screen and (min-width: 480px) {
+    #Search.code-show main > #search-topics .maintitle,
+    #Search.code-getactive .maintitle {
+      font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+  @media only screen and (min-width: 1920px) {
+    #Search.code-show main > #search-topics .maintitle,
+    #Search.code-getactive .maintitle {
+      font-size: 36px; } }
+
+#Search.code-show main > #search-topics .tablebasic,
+#Search.code-getactive .tablebasic {
+  display: block; }
+  #Search.code-show main > #search-topics .tablebasic > tbody,
+  #Search.code-getactive .tablebasic > tbody {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md); }
+    @media (min-width: 601px) {
+      #Search.code-show main > #search-topics .tablebasic > tbody,
+      #Search.code-getactive .tablebasic > tbody {
+        gap: var(--spacing-lg); } }
+    @media (min-width: 769px) {
+      #Search.code-show main > #search-topics .tablebasic > tbody,
+      #Search.code-getactive .tablebasic > tbody {
+        grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1025px) {
+      #Search.code-show main > #search-topics .tablebasic > tbody,
+      #Search.code-getactive .tablebasic > tbody {
+        grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1281px) {
+      #Search.code-show main > #search-topics .tablebasic > tbody,
+      #Search.code-getactive .tablebasic > tbody {
+        grid-template-columns: repeat(4, 1fr); } }
+    #Search.code-show main > #search-topics .tablebasic > tbody > tr,
+    #Search.code-getactive .tablebasic > tbody > tr {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 var(--spacing-md);
+      background: var(--bg--primary); }
+      #Search.code-show main > #search-topics .tablebasic > tbody > tr:first-child,
+      #Search.code-getactive .tablebasic > tbody > tr:first-child {
+        display: none; }
+      #Search.code-show main > #search-topics .tablebasic > tbody > tr > td,
+      #Search.code-getactive .tablebasic > tbody > tr > td {
+        flex: 0 0 100%;
+        width: 100%;
+        text-align: left;
+        padding: 0;
+        font-size: var(--size--font-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        line-height: 200%; }
+        #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(1), #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(2), #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(7),
+        #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(1),
+        #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(2),
+        #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(7) {
+          display: none; }
+        #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(3),
+        #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(3) {
+          order: 1;
+          font-weight: 700;
+          font-size: var(--size--font-sm);
+          background: var(--bg--secondary);
+          border-bottom: 1px solid var(--border--primary);
+          padding: var(--spacing-md); }
+          #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(3) table tbody > tr > td:last-child > a,
+          #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(3) table tbody > tr > td:last-child > a {
+            display: block;
+            font-size: var(--size--font-xl);
+            font-weight: 900;
+            letter-spacing: 0; }
+        #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(4),
+        #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(4) {
+          order: 3;
+          padding: 0 var(--spacing-md); }
+          #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(4)::before,
+          #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(4)::before {
+            content: 'Posted in '; }
+        #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(5),
+        #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(5) {
+          order: 4;
+          padding: 0 var(--spacing-md) var(--spacing-md); }
+          #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(5)::before,
+          #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(5)::before {
+            content: 'Started by '; }
+        #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(6),
+        #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(6) {
+          order: 2;
+          padding: var(--spacing-md) var(--spacing-md) 0; }
+          #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(6)::after,
+          #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(6)::after {
+            content: ' Replies'; }
+        #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(8),
+        #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(8) {
+          display: flex;
+          flex-direction: column;
+          order: 5;
+          background: var(--bg--secondary);
+          border-top: 1px solid var(--border--primary);
+          padding: var(--spacing-md); }
+          #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(8) > a,
+          #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(8) > a {
+            order: -1; }
+          #Search.code-show main > #search-topics .tablebasic > tbody > tr > td:nth-child(8) > b,
+          #Search.code-getactive .tablebasic > tbody > tr > td:nth-child(8) > b {
+            order: -1; }
+  #Search.code-show main > #search-topics .tablebasic + .titlemedium,
+  #Search.code-getactive .tablebasic + .titlemedium {
+    display: none; }
+
+#Search.code-getactive main > form > div:not(.pagelinks) {
+  width: 100% !important; }
+  #Search.code-getactive main > form > div:not(.pagelinks) fieldset {
+    margin: 0; }
+
+#Search.code-show main > div:not(.wrapmini):not(.tableborder):not(#search-topics) {
+  position: sticky;
+  top: var(--menuHeight);
+  padding: var(--spacing-md);
+  z-index: 1;
+  background: var(--bg--secondary);
+  margin: -30px -30px 0; }
+
+#Search.code-show main #search-topics > .tableborder > .maintitle {
+  padding: var(--spacing-sm) 0 var(--spacing-md) var(--spacing-md) !important; }
+  #Search.code-show main #search-topics > .tableborder > .maintitle a {
+    display: block;
+    margin-left: 0; }
+
+#Search.code-show main > .tableborder {
+  max-width: 1200px;
+  margin: 0 auto var(--spacing-xl); }
+  #Search.code-show main > .tableborder .maintitle {
+    text-align: left;
+    margin: var(--spacing-lg) 0;
+    line-height: 160%;
+    max-width: max-content;
+    padding: var(--spacing-md) 0 var(--spacing-md) var(--spacing-md);
+    border-left: 5px solid var(--bg--primary);
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text--accent); }
+    @media only screen and (min-width: 480px) {
+      #Search.code-show main > .tableborder .maintitle {
+        font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+    @media only screen and (min-width: 1920px) {
+      #Search.code-show main > .tableborder .maintitle {
+        font-size: 36px; } }
+  #Search.code-show main > .tableborder .tablebasic {
+    display: block;
+    background: var(--bg--primary); }
+    #Search.code-show main > .tableborder .tablebasic tbody {
+      display: flex;
+      flex-direction: column; }
+      #Search.code-show main > .tableborder .tablebasic tbody tr td {
+        padding: 0; }
+      #Search.code-show main > .tableborder .tablebasic tbody tr:first-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-md);
+        line-height: 160%;
+        background: var(--bg--secondary);
+        border-bottom: 1px solid var(--border--primary); }
+        #Search.code-show main > .tableborder .tablebasic tbody tr:first-child td {
+          font-size: var(--size--font-xs);
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          font-weight: 600;
+          line-height: 120%; }
+          #Search.code-show main > .tableborder .tablebasic tbody tr:first-child td a,
+          #Search.code-show main > .tableborder .tablebasic tbody tr:first-child td b {
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text--accent);
+            line-height: 120%; }
+            @media only screen and (min-width: 480px) {
+              #Search.code-show main > .tableborder .tablebasic tbody tr:first-child td a,
+              #Search.code-show main > .tableborder .tablebasic tbody tr:first-child td b {
+                font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+            @media only screen and (min-width: 1920px) {
+              #Search.code-show main > .tableborder .tablebasic tbody tr:first-child td a,
+              #Search.code-show main > .tableborder .tablebasic tbody tr:first-child td b {
+                font-size: 36px; } }
+      #Search.code-show main > .tableborder .tablebasic tbody tr:nth-child(2) {
+        margin: var(--spacing-lg); }
+        #Search.code-show main > .tableborder .tablebasic tbody tr:nth-child(2) td:first-child {
+          display: none; }
+      #Search.code-show main > .tableborder .tablebasic tbody tr:last-child {
+        padding: var(--spacing-md);
+        background: var(--bg--secondary);
+        border-top: 1px solid var(--border--primary);
+        font-size: var(--size--font-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.15em; }
+  #Search.code-show main > .tableborder + br {
+    display: none; }
+
+#Search.code-show div:empty {
+  display: none; }
+
+/***** Redirect & Error ******/
+#redirect-screen {
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 100vh;
+  padding: 0; }
+  #redirect-screen::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(146, 167, 186, 0.5);
+    background-image: radial-gradient(farthest-side at bottom left, rgba(183, 209, 226, 0.5), transparent), radial-gradient(farthest-corner at bottom right, whitesmoke, transparent); }
+  #redirect-screen > * {
+    z-index: 1; }
+  #redirect-screen .tablefill {
+    max-width: 325px;
+    line-height: 200%;
+    z-index: 3;
+    background: whitesmoke; }
+
+#board-message {
+  background: var(--bg--primary);
+  padding: var(--spacing-lg); }

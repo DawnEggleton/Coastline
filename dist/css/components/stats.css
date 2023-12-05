@@ -31,6 +31,8 @@
       font-size: var(--size--font-xl);
       font-weight: 700;
       line-height: 200%; }
+      .stats--on-now .scroll a span {
+        color: var(--text--accent); }
 
 .stats--welcome {
   font-weight: 900;
@@ -91,6 +93,8 @@
     @media (min-width: 1025px) {
       .stats--on-today .scroll {
         max-height: 155px; } }
+    .stats--on-today .scroll a span {
+      color: var(--text--accent); }
 
 .stats--list {
   background: var(--bg--secondary);

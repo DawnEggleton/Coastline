@@ -15,6 +15,11 @@
       margin: -10px;
     }
 
+    &--contain {
+        max-width: 750px;
+        margin: 0 auto;
+    }
+
     &--menu {
         background: var(--bg--secondary);
         border: 1px solid var(--border--primary);

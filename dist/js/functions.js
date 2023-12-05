@@ -35,6 +35,26 @@ function toggleCheckVisibility(form, field, targetClass) {
         form.querySelectorAll(targetClass).forEach(item => item.classList.add('hidden'));
     }
 }
+function getAllTextNodes(element) {
+    if(element) {
+        return Array.from(element.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+    }
+}
+function inputWrap(el, next = null, type = 'checkbox') {
+    if(next) {
+        $(el).nextUntil(next).andSelf().wrapAll(`<label class="input-wrap ${type}"></label>`);
+    } else {
+        $(el).next().andSelf().wrapAll(`<label class="input-wrap ${type}"></label>`);
+    }
+}
+function fancyBoxes() {
+    document.querySelectorAll('.input-wrap.checkbox').forEach(label => {
+        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input checkbox"><i class="ph-bold ph-x"></i></div>`);
+    });
+    document.querySelectorAll('.input-wrap.radio').forEach(label => {
+        label.querySelector('input').insertAdjacentHTML('afterend', `<div class="fancy-input radio"><i class="ph-bold ph-x"></i></div>`);
+    });
+}
 
 /****** Settings ******/
 function setTheme() {

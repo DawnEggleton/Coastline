@@ -56,10 +56,10 @@
     background: var(--bg--primary);
     padding: 20px; }
     .topic--main h3 {
-      font-size: var(--size--font-xl);
+      font-size: 18px;
       text-transform: uppercase;
       line-height: 160%;
-      margin: 0; }
+      margin: 0 !important; }
       .topic--main h3 a {
         font-weight: 900;
         color: var(--text--primary); }
@@ -94,6 +94,8 @@
     .topic--stat a {
       color: var(--text--accent);
       font-weight: 900; }
+    .topic--stat:empty {
+      display: none; }
   .topic--latest {
     display: grid;
     grid-template-columns: 65px calc(100% - 80px);
@@ -106,15 +108,16 @@
       height: 65px;
       border-radius: 2px;
       grid-row: span 2; }
-    .topic--latest span:first-of-type {
-      font-size: var(--size--font-md);
-      line-height: 160%;
-      align-self: end; }
-    .topic--latest span:last-of-type {
+    .topic--latest > span:first-of-type {
       font-size: var(--size--font-sm);
       letter-spacing: 0.05em;
       line-height: 160%;
-      align-self: start; }
+      align-self: end; }
+    .topic--latest > span:last-of-type {
+      font-style: italic;
+      font-size: var(--size--font-xs);
+      letter-spacing: 0.15em;
+      line-height: 160%; }
   .topic--started {
     text-transform: uppercase;
     background: var(--bg--secondary);

@@ -10,6 +10,9 @@
   @media (max-width: 480px) {
     .webpage {
       margin: -10px; } }
+  .webpage--contain {
+    max-width: 750px;
+    margin: 0 auto; }
   .webpage--menu {
     background: var(--bg--secondary);
     border: 1px solid var(--border--primary);

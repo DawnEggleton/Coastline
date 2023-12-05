@@ -14,7 +14,7 @@
   .category--title {
     font-size: 60px;
     font-weight: 900;
-    margin: 0;
+    margin: 0 !important;
     line-height: 100%;
     padding: 10px 40px 10px 0;
     color: var(--text--accent);
@@ -73,19 +73,16 @@
     padding: 15px 20px 20px;
     background: var(--bg--primary); }
     .forum--main h3 {
-      margin: 0;
+      margin: 0 0 10px 0 !important;
       text-transform: uppercase;
-      font-size: 30px;
-      line-height: 160%; }
-      @media (max-width: 768px) {
+      font-size: 18px;
+      line-height: 100%; }
+      @media only screen and (min-width: 480px) {
         .forum--main h3 {
-          font-size: 16px; } }
-  @media only screen and (max-width: 768px) and (min-width: 480px) {
-    .forum--main h3 {
-      font-size: calc(16px + 14 * (100vw - 480px) / (786 - 480)); } }
-  @media only screen and (max-width: 768px) and (min-width: 786px) {
-    .forum--main h3 {
-      font-size: 30px; } }
+          font-size: calc(18px + 12 * (100vw - 480px) / (786 - 480)); } }
+      @media only screen and (min-width: 786px) {
+        .forum--main h3 {
+          font-size: 30px; } }
       .forum--main h3 a {
         font-weight: 900;
         color: var(--text--primary); }
@@ -148,4 +145,9 @@
     .forum--links .subforums {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px 15px; }
+      gap: 5px 15px;
+      font-size: 0; }
+      .forum--links .subforums .subforums-macro {
+        display: none; }
+      .forum--links .subforums a {
+        font-size: var(--size--font-sm); }

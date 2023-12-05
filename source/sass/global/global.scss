@@ -1,56 +1,6 @@
 @import '../global/mixins.scss';
 
 /*******************************
-    Testing Only
-********************************/
-.git--test {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  
-  &-toggle {
-    height: var(--size--menu-max);
-    display: flex;
-    align-items: center;
-    font-size: var(--size--font-xs);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 0 15px;
-    color: var(--text--primary);
-  }
-  &-box {
-    display: none;
-    position: fixed;
-    left: var(--size--menu-max);
-    bottom: var(--size--menu-max);
-    background: var(--bg--primary);
-    flex-wrap: wrap;
-    gap: 5px 15px;
-    padding: 10px;
-    font-size: var(--size--font-xs);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--text--primary);
-  
-    & > b {
-      flex: 0 0 100%;
-    }
-
-    &.is-open {
-      display: flex;
-    }
-
-    select {
-      font-size: var(--size--font-md);
-      font-weight: normal;
-    }
-  }
-}
-
-/*******************************
     Global
 ********************************/
 body {
@@ -207,6 +157,7 @@ button {
   height: 32px;
   border-radius: 2px;
   transition-duration: 0.3s;
+  margin-left: 5px;
 
   &:hover {
     background: var(--bg--primary);
@@ -289,6 +240,22 @@ button {
   }
 }
 
+    
+fieldset {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg--primary);
+  border: 0;
+  padding: var(--spacing-md);
+
+  legend {
+      float: left;
+      width: calc(100% + 1px);
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+  }
+}
 input,
 select,
 textarea {
@@ -315,6 +282,13 @@ textarea {
     cursor: pointer;
   }
 }
+select {
+  height: calc(var(--size--font-sm) + 22px);
+
+  option {
+    font-size: var(--size--font-md);
+  }
+}
 textarea {
   font-size: calc(var(--size--font-md) + 1px);
   line-height: 200%;
@@ -322,7 +296,62 @@ textarea {
   letter-spacing: 0;
   font-weight: normal;
 }
+p {
+    text-align: justify;
+    margin: 2em auto;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    h1 + &,
+    .h1 + &,
+    h2 + &,
+    .h2 + &,
+    h3 + &,
+    .h3 + &,
+    h4 + &,
+    .h4 + &,
+    h5 + &,
+    .h5 + &,
+    h6 + &,
+    .h6 + & {
+        margin-top: 0;
+    }
+}
+
 main {
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    &:first-child,
+    & + h2,
+    & + .h2,
+    & + h3,
+    & + .h3,
+    & + h4,
+    & + .h4,
+    & + h5,
+    & + .h5,
+    & + h6,
+    & + .h6 {
+        margin-top: 1em;
+    }
+
+    &:not(:first-child) {
+        margin-top: 2em;
+    }
+  }
+
   h1,
   .h1,
   h2,
@@ -476,6 +505,11 @@ a {
 body:not(.g-4) .staffOnly,
 body:not(.g-2) .guestOnly,
 body.g-2 .memOnly,
-.hidden {
+.hidden,
+.newstext,
+#submenu,
+#userlinks,
+.wrapmini,
+a[href=""] {
   display: none !important;
 }

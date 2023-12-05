@@ -1,44 +1,4 @@
 /*******************************
-    Testing Only
-********************************/
-.git--test {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000; }
-  .git--test-toggle {
-    height: var(--size--menu-max);
-    display: flex;
-    align-items: center;
-    font-size: var(--size--font-xs);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 0 15px;
-    color: var(--text--primary); }
-  .git--test-box {
-    display: none;
-    position: fixed;
-    left: var(--size--menu-max);
-    bottom: var(--size--menu-max);
-    background: var(--bg--primary);
-    flex-wrap: wrap;
-    gap: 5px 15px;
-    padding: 10px;
-    font-size: var(--size--font-xs);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--text--primary); }
-    .git--test-box > b {
-      flex: 0 0 100%; }
-    .git--test-box.is-open {
-      display: flex; }
-    .git--test-box select {
-      font-size: var(--size--font-md);
-      font-weight: normal; }
-
-/*******************************
     Global
 ********************************/
 body {
@@ -153,7 +113,8 @@ button {
   width: 32px;
   height: 32px;
   border-radius: 2px;
-  transition-duration: 0.3s; }
+  transition-duration: 0.3s;
+  margin-left: 5px; }
   .macro--button:hover {
     background: var(--bg--primary);
     border-color: var(--text--accent);
@@ -219,6 +180,19 @@ button {
   .copyright a {
     font-weight: 900; }
 
+fieldset {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg--primary);
+  border: 0;
+  padding: var(--spacing-md); }
+  fieldset legend {
+    float: left;
+    width: calc(100% + 1px);
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.05em; }
+
 input,
 select,
 textarea {
@@ -246,12 +220,184 @@ textarea {
   textarea[type="submit"] {
     cursor: pointer; }
 
+select {
+  height: calc(var(--size--font-sm) + 22px); }
+  select option {
+    font-size: var(--size--font-md); }
+
 textarea {
   font-size: calc(var(--size--font-md) + 1px);
   line-height: 200%;
   text-transform: none;
   letter-spacing: 0;
   font-weight: normal; }
+
+p {
+  text-align: justify;
+  margin: 2em auto; }
+  p:last-child {
+    margin-bottom: 0; }
+  h1 + p,
+  .h1 + p,
+  h2 + p,
+  .h2 + p,
+  h3 + p,
+  .h3 + p,
+  h4 + p,
+  .h4 + p,
+  h5 + p,
+  .h5 + p,
+  h6 + p,
+  .h6 + p {
+    margin-top: 0; }
+
+main h1:first-child,
+main h1 + h2,
+main h1 + .h2,
+main h1 + h3,
+main h1 + .h3,
+main h1 + h4,
+main h1 + .h4,
+main h1 + h5,
+main h1 + .h5,
+main h1 + h6,
+main h1 + .h6,
+main .h1:first-child,
+main .h1 + h2,
+main .h1 + .h2,
+main .h1 + h3,
+main .h1 + .h3,
+main .h1 + h4,
+main .h1 + .h4,
+main .h1 + h5,
+main .h1 + .h5,
+main .h1 + h6,
+main .h1 + .h6,
+main h2:first-child,
+main h2 + h2,
+main h2 + .h2,
+main h2 + h3,
+main h2 + .h3,
+main h2 + h4,
+main h2 + .h4,
+main h2 + h5,
+main h2 + .h5,
+main h2 + h6,
+main h2 + .h6,
+main .h2:first-child,
+main .h2 + h2,
+main .h2 + .h2,
+main .h2 + h3,
+main .h2 + .h3,
+main .h2 + h4,
+main .h2 + .h4,
+main .h2 + h5,
+main .h2 + .h5,
+main .h2 + h6,
+main .h2 + .h6,
+main h3:first-child,
+main h3 + h2,
+main h3 + .h2,
+main h3 + h3,
+main h3 + .h3,
+main h3 + h4,
+main h3 + .h4,
+main h3 + h5,
+main h3 + .h5,
+main h3 + h6,
+main h3 + .h6,
+main .h3:first-child,
+main .h3 + h2,
+main .h3 + .h2,
+main .h3 + h3,
+main .h3 + .h3,
+main .h3 + h4,
+main .h3 + .h4,
+main .h3 + h5,
+main .h3 + .h5,
+main .h3 + h6,
+main .h3 + .h6,
+main h4:first-child,
+main h4 + h2,
+main h4 + .h2,
+main h4 + h3,
+main h4 + .h3,
+main h4 + h4,
+main h4 + .h4,
+main h4 + h5,
+main h4 + .h5,
+main h4 + h6,
+main h4 + .h6,
+main .h4:first-child,
+main .h4 + h2,
+main .h4 + .h2,
+main .h4 + h3,
+main .h4 + .h3,
+main .h4 + h4,
+main .h4 + .h4,
+main .h4 + h5,
+main .h4 + .h5,
+main .h4 + h6,
+main .h4 + .h6,
+main h5:first-child,
+main h5 + h2,
+main h5 + .h2,
+main h5 + h3,
+main h5 + .h3,
+main h5 + h4,
+main h5 + .h4,
+main h5 + h5,
+main h5 + .h5,
+main h5 + h6,
+main h5 + .h6,
+main .h5:first-child,
+main .h5 + h2,
+main .h5 + .h2,
+main .h5 + h3,
+main .h5 + .h3,
+main .h5 + h4,
+main .h5 + .h4,
+main .h5 + h5,
+main .h5 + .h5,
+main .h5 + h6,
+main .h5 + .h6,
+main h6:first-child,
+main h6 + h2,
+main h6 + .h2,
+main h6 + h3,
+main h6 + .h3,
+main h6 + h4,
+main h6 + .h4,
+main h6 + h5,
+main h6 + .h5,
+main h6 + h6,
+main h6 + .h6,
+main .h6:first-child,
+main .h6 + h2,
+main .h6 + .h2,
+main .h6 + h3,
+main .h6 + .h3,
+main .h6 + h4,
+main .h6 + .h4,
+main .h6 + h5,
+main .h6 + .h5,
+main .h6 + h6,
+main .h6 + .h6 {
+  margin-top: 1em; }
+
+main h1:not(:first-child),
+main .h1:not(:first-child),
+main h2:not(:first-child),
+main .h2:not(:first-child),
+main h3:not(:first-child),
+main .h3:not(:first-child),
+main h4:not(:first-child),
+main .h4:not(:first-child),
+main h5:not(:first-child),
+main .h5:not(:first-child),
+main h6:not(:first-child),
+main .h6:not(:first-child) {
+  margin-top: 2em; }
 
 main h1,
 main .h1,
@@ -422,5 +568,10 @@ a {
 body:not(.g-4) .staffOnly,
 body:not(.g-2) .guestOnly,
 body.g-2 .memOnly,
-.hidden {
+.hidden,
+.newstext,
+#submenu,
+#userlinks,
+.wrapmini,
+a[href=""] {
   display: none !important; }
