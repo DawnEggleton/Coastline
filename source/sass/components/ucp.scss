@@ -9,7 +9,14 @@
 #Msg {
     main {
         & > table:first-of-type {
+            margin: -30px;
             display: block;
+            width: calc(100% + 60px);
+  
+            @include mq-down(xxs) {
+              margin: 0;
+              width: 100%;
+            }
 
             & ~ * {
                 display: none;
@@ -19,24 +26,80 @@
                 display: block;
 
                 & > tr {
-                    display: flex;
-                    gap: var(--spacing-lg);
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    height: auto;
+                    grid-template-rows: max-content max-content;
+                
+                    @include mq-up(sm) {
+                        grid-template-columns: 250px auto;
+                    }
+                  
+                    @include mq-down(xxs) {
+                      margin: -10px;
+                    }
                     
                     & > td {
                         &#ucpmenu {
-                            flex: 0 0 150px;
+                            background: var(--bg--secondary);
+                            border: 1px solid var(--border--primary);
+                            position: sticky;
+                            top: var(--size--menu-max);
+                            height: max-content;
+                            z-index: 2;
+                            
+                            @include mq-up(sm) {
+                                height: calc(100vh - (2 * var(--size--menu-max)));
+                            }
 
                             .sticky {
-                                display: flex;
-                                flex-direction: column;
-                                gap: var(--spacing-sm);
                                 position: sticky;
-                                top: var(--menuHeight);
-                            }
-                            .menu-section {
-                                display: flex;
-                                flex-direction: column;
-                                gap: var(--spacing-sm);
+                                top: var(--size--menu-max);
+
+                                & > .menu-section {
+                                    transition-duration: 0s;
+                    
+                                    &.is-open {
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 5px;
+                                        height: auto;
+                                        padding: 10px 15px;
+                                    }
+
+                                    a {
+                                        display: block;
+                                        background: var(--bg--primary);
+                                        font-size: var(--size--font-sm);
+                                        text-transform: uppercase;
+                                        letter-spacing: 0.05em;
+                                        color: var(--text--primary);
+                                        padding: 5px 10px;
+                                        line-height: 160%;
+                                        border: 1px solid var(--border--primary);
+                                        border-radius: 2px;
+                                        text-align: center;
+                                    }
+                                }
+
+                                & > b {
+                                    display: block;
+                                    background: var(--bg--primary);
+                                    font-size: var(--size--font-sm);
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.05em;
+                                    color: var(--text--primary);
+                                    padding: 5px 10px;
+                                    line-height: 160%;
+                                    border-radius: 2px;
+                                    text-align: center;
+                                    color: var(--text--primary);
+                        
+                                    &.is-open {
+                                        border-color: var(--text--accent);
+                                        background: var(--bg--secondary);
+                                    }
+                                }
                             }
                         }
                         &:nth-child(2) {
@@ -50,12 +113,35 @@
                                 padding: var(--spacing-lg);
                             }
 
+                            .pformstrip {
+                                text-transform: uppercase;
+                                @include fluid-type(18, 26, 480, 1920);
+                                font-weight: 900;
+
+                                & ~ p,
+                                & ~ .tablepad,
+                                & ~ .tablebasic,
+                                & ~ .row2 {
+                                    background: var(--bg--primary);
+                                    padding: 15px;
+                                    margin: 15px 0;
+
+                                    & > p:first-child {
+                                        margin-top: 0;
+                                    }
+                                    p:empty {
+                                        display: none;
+                                    }
+                                }
+                            }
+
                             input[type="text"],
                             input[type="file"],
                             input[type="password"],
                             textarea,
                             select {
                                 width: 100%;
+                                margin: 0;
                             }
 
                             .maintitle {
@@ -63,6 +149,25 @@
                             }
                     
                             form {
+                                input[type="submit"],
+                                input[type="button"] {
+                                    background: var(--accent-1-gradient-low);
+                                    border: 1px solid var(--bg--accent);
+                                    max-width: max-content;
+                                    margin: 10px auto 0;
+                                    text-transform: uppercase;
+                                    font-size: var(--size--font-sm);
+                                    letter-spacing: 0.05em;
+                                    padding: 7px 15px;
+                                    font-weight: 700;
+                                    border-radius: 2px;
+                                    line-height: 200%;
+
+                                    &:hover {
+                                        color: var(--text--primary);
+                                    }
+                                }
+
                                 & > table {
                                     display: block;
                         
@@ -72,15 +177,13 @@
                                         & > tr {
                                             display: flex;
                                             flex-direction: column;
-                                            gap: var(--spacing-sm);
+                                            gap: 5px;
                                             margin-bottom: var(--spacing-md);
-                    
-                                            @include mq-up(xxs) {
-                                                margin-bottom: var(--spacing-lg);
-                                            }
-                    
-                                            @include mq-up(sm) {
-                                                gap: var(--spacing-md);
+                                            background: var(--bg--primary);
+                                            padding: 10px;
+
+                                            &:last-child {
+                                                grid-column: 1 / -1;
                                             }
                         
                                             .pformleft {
@@ -90,7 +193,12 @@
                                                     line-height: 160%;
                                                     display: block;
                                                     max-width: max-content;
-                                                    padding: var(--spacing-xs) var(--spacing-sm);
+                                                    color: var(--text--primary);
+                                                    font-size: 1.1em;
+                                                    font-weight: 900 !important;
+                                                    font-size: var(--size--font-lg);
+                                                    letter-spacing: 0;
+                                                    text-transform: uppercase;
                     
                                                     & ~ br {
                                                         display: none;
@@ -134,7 +242,6 @@
             & > .pformstrip {
                 display: none;
             }
-            #field-birthday,
             #field-website,
             #field-location,
             #field-interests {
@@ -142,20 +249,40 @@
             }
             tbody {
                 display: grid !important;
-                gap: var(--spacing-lg);
+                gap: 15px;
 
                 @include mq-up(sm) {
-                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-columns: repeat(2, 1fr);
                 }
 
                 tr {
                     margin-bottom: 0 !important;
-                    grid-column: span 3;
+
+                    &:last-child {
+                        background: none;
+                    }
 
                     .pformleft {
                         display: flex;
                         flex-direction: column;
-                        gap: var(--spacing-sm);
+                        gap: 5px;
+                        font-size: var(--size--font-xs);
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                        line-height: 160%;
+                    }
+
+                    &#field-birthday,
+                    &#field_19,
+                    &#field_39,
+                    &#field_20,
+                    &#field_21,
+                    &#field_22,
+                    &#field_23,
+                    &#field_25,
+                    &#field_29,
+                    &#field_35 {
+                        grid-column: 1 / -1;
                     }
                 }
             }
@@ -224,6 +351,7 @@
                     }
                     &:last-child {
                         flex: 0 0 100%;
+                        background: none;
                     }
                     &:nth-child(2):nth-last-child(2) {
                         flex: 0 0 100% !important;
@@ -246,7 +374,7 @@
 
                     &:not(:first-child):not(:last-child) {
                         flex: 0 0 100%;
-                        padding: var(--spacing-sm);
+                        padding: 15px;
         
                         @include mq-up(sm) {
                             flex: 0 0 calc(50% - (var(--spacing-md) / 2));
@@ -260,10 +388,20 @@
                             margin: 0;
                             padding: 0 0 0 calc(var(--spacing-sm) + 20px);
                             text-align: left;
+                            font-size: var(--size--font-xs);
+                            text-transform: uppercase;
+                            letter-spacing: 0.05em;
+                            line-height: 160%;
 
                             &:first-child {
-                                padding-bottom: var(--spacing-sm);
                                 margin-top: -5px;
+                                text-transform: uppercase;
+                                font-size: var(--size--font-lg);
+                                letter-spacing: 0;
+                                
+                                b a {
+                                    font-weight: 900;
+                                }
                             }
                             
                             &:last-child {
@@ -278,13 +416,20 @@
             tr {
                 margin-bottom: 0;
                 margin-top: var(--spacing-md);
+
+                &:last-child {
+                    background: none;
+                }
             }
             .pformleft {
                 line-height: 160%;
                 text-align: left;
                 display: block;
                 max-width: max-content;
-                padding: var(--spacing-xs) var(--spacing-sm);
+                text-transform: uppercase;
+                font-size: var(--size--font-lg);
+                letter-spacing: 0;
+                font-weight: 900;
             }
         }
     }
@@ -299,6 +444,9 @@
             max-width: max-content;
             padding: var(--spacing-xs) var(--spacing-sm);
         }
+    }
+    tr:last-child {
+        background: none !important;
     }
 }
 //Edit Password & Email
@@ -425,6 +573,29 @@
                                 @include mq-up(md) {
                                     flex: 0 0 calc((100% / 3) - calc(var(--spacing-md) * 2 / 3));
                                 }
+
+                                &.dlight {
+                                    text-transform: uppercase;
+                                    font-size: var(--size--font-xs);
+                                    letter-spacing: 0.05em;
+                                    font-weight: 600;
+                                    line-height: 160%;
+
+                                    a {
+                                        color: var(--text--secondary);
+                                        font-size: var(--size--font-sm);
+                                        line-height: 160%;
+                                    }
+
+                                    &.alert-unread {
+                                        background: var(--accent-2-gradient-low);
+                                        border: 1px solid var(--bg--accent-alt);
+                                    }
+    
+                                    &.alert-read {
+                                        background: var(--bg--primary);
+                                    }
+                                }
         
                                 & > td {
                                     margin: 0;
@@ -463,6 +634,11 @@
 //Forum & Topic Subscriptions
 #UserCP.code-50,
 #UserCP.code-26 {
+    #ucpcontent {
+        select {
+            max-width: 250px;
+        }
+    }
     #ucpcontent .tableborder {
         & > table {
             display: block;
@@ -479,6 +655,11 @@
                     &:not(.pformstrip) {
                         flex: 0 0 100%;
                         padding: var(--spacing-sm);
+                        background: var(--bg--primary);
+                        text-transform: uppercase;
+                        font-size: var(--size--font-xs);
+                        letter-spacing: 0.15em;
+                        line-height: 160%;
         
                         @include mq-up(sm) {
                             flex: 0 0 calc(50% - (var(--spacing-md) / 2));
@@ -500,10 +681,17 @@
                                 display: flex;
                                 flex-direction: column;
                                 line-height: 200%;
+                                font-size: 0;
 
-                                b:first-of-type {
-                                    padding-bottom: var(--spacing-sm);
-                                    margin-top: -5px;
+                                b:first-of-type,
+                                a:first-of-type {
+                                    font-size: var(--size--font-lg);
+                                    letter-spacing: 0;
+                                    line-height: 160%;
+                                    font-weight: 900;
+                                }
+                                a:not(:first-of-type) {
+                                    display: none;
                                 }
     
                                 br {
@@ -543,6 +731,14 @@
                         td {
                             width: 100%;
                             padding: 0;
+
+                            &.row3:only-child,
+                            &.row1:only-child {
+                                font-size: var(--size--font-lg);
+                                text-align: left;
+                                text-transform: none;
+                                font-weight: 700;
+                            }
                         }
                     }
                 }
@@ -675,6 +871,9 @@
             }
         }
     }
+    .fancy-input {
+        margin: 0 auto;
+    }
 }
 //Email Settings
 #UserCP.code-02 {
@@ -714,6 +913,90 @@
                 }
             }
         }
+        & > form {
+            & > .tableborder {
+                & > table {
+                    border-collapse: collapse;
+
+                    & > tbody {
+                        display: grid;
+                        gap: 15px;
+
+                        @include mq-up(sm) {
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+
+                        & > tr {
+                            &:first-child {
+                                display: none;
+                            }
+                            &:not(.dlight):not(.hlight) {
+                                grid-column: 1/ -1;
+                            }
+                            &.dlight,
+                            &.hlight {
+                                display: grid;
+                                background: var(--bg--primary);
+                                padding: 15px;
+                                font-size: var(--size--font-xs);
+                                text-transform: uppercase;
+                                letter-spacing: 0.1em;
+                                font-weight: 600;
+                                line-height: 160%;
+
+                                & > td {
+                                    &:first-child {
+                                        text-align: left;
+                                        color: var(--text--primary);
+                                        font-weight: 900;
+                                        letter-spacing: 0.2em;
+                                    }
+                                    &:nth-child(2) {
+                                        font-size: var(--size--font-lg);
+                                        line-height: 160%;
+                                    }
+                                    &:last-child {
+                                        position: absolute;
+                                        top: 0;
+                                        right: 0;
+                                    }
+                                }
+                            }
+                            &:last-child {
+                                & > td {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: start;
+                                    gap: 5px;
+
+                                    & > div {
+                                        display: flex;
+                                        float: none !important;
+                                        clear: both;
+                                        align-items: center;
+                                        justify-content: start;
+                                        gap: 5px;
+
+                                        input {
+                                            margin: 0;
+                                        }
+                                    }
+
+                                    input[name="delete"] {
+                                        margin: 0;
+                                    }
+
+                                    input[name="move"],
+                                    select[name="VID"] {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 //Send Message
@@ -728,16 +1011,12 @@
                         text-align: left;
                     }
                     &:first-child {
-                        margin-bottom: var(--spacing-md) !important;
+                        display: block;
+                        margin: 0 0 -5px 0 !important;
+                        padding-bottom: 0 !important;
 
                         .pformstrip {
-                            margin-bottom: 0;
-                            padding-bottom: 0;
-                            line-height: 160%;
-                            max-width: max-content;
-                            display: block;
-                            max-width: max-content;
-                            padding: var(--spacing-xs) var(--spacing-sm);
+                            font-size: var(--size--font-lg) !important;
                         }
                     }
                     &:nth-child(2),
@@ -772,22 +1051,25 @@
                         }
                     }
                     &:nth-last-child(2) {
+                        background: transparent !important;
                         .pformleft {
                             display: none;
                         }
                         .pformright {
                             grid-column: 1 / -1;
                             padding: 0;
-                            justify-content: center;
-
-                            br {
-                                display: none;
-                            }
+                            justify-content: start;
+                            gap: 15px;
+                            flex-wrap: wrap;
                         }
+                    }
+                    &:last-child {
+                        background: transparent !important;
                     }
 
                     &#code-buttons {
                         display: block;
+                        padding: var(--spacing-md);
 
                         .pformleft {
                             display: none;
@@ -806,14 +1088,14 @@
                             #bbcode-buttons {
                                 display: flex;
                                 flex-wrap: wrap;
-                                gap: 5px;
+                                gap: var(--spacing-xs);
 
                                 input,
                                 select {
                                     margin: 0;
                                     width: auto;
                                     cursor: pointer;
-                                    font-size: 1rem;
+                                    font-size: var(--size--font-sm);
                                     line-height: 160%;
                                 }
 
@@ -854,7 +1136,8 @@
 #Msg.code-03 {
     #ucpcontent {
         & > .tableborder {
-            & + div {
+            & + div,
+            & > .titlemedium {
                 display: none;
             }
         }
@@ -871,22 +1154,56 @@
                 flex-direction: column;
 
                 tr {
+                    background: var(--bg--primary);
+
                     &:nth-child(2n + 1) {
                         display: flex;
                         flex-direction: column;
                         gap: var(--spacing-sm);
                         padding: var(--spacing-lg);
+                        background: var(--bg--secondary);
+                        border-bottom: 1px solid var(--border--primary);
 
                         td {
                             padding: 0;
                             width: 100%;
+
+                            &:first-child {
+                                @include fluid-type(22, 36, 480, 1920);
+                                text-transform: uppercase;
+                                color: var(--text--accent);
+
+                                a {
+                                    font-weight: 900;
+                                }
+                            }
+
+                            &:last-child {
+                                line-height: 100%;
+                                font-size: var(--size--font-xs);
+                                text-transform: uppercase;
+                                letter-spacing: 0.15em;
+                                font-weight: 600;
+
+                                i {
+                                    font-size: var(--size--font-md);
+                                    background: var(--bg--primary);
+                                    border: 1px solid var(--border--primary);
+                                    width: 30px;
+                                    height: 30px;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    text-align: center;
+                                }
+                            }
                         }
                     }
 
                     &:nth-child(2n) {
                         display: block;
                         padding: var(--spacing-lg);
-                        margin: var(--spacing-md) 0 var(--spacing-lg);
+                        margin: 0 0 var(--spacing-lg);
 
                         td {
                             display: block;

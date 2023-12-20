@@ -15,6 +15,7 @@ if($('body#UserCP').length > 0) {
     <a href="user-boardset.html">Board</a>
     <a href="user-alertset.html">Alerts</a>
     <a href="user-emailset.html">Emails</a>`;
+    initAccordion();
 
     // If using menu replacement in live skin, remove the above and uncomment the below:
     /*

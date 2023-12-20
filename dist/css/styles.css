@@ -3601,7 +3601,7 @@ a[href=""] {
   --spacing-lg: 30px;
   --spacing-xl: 60px;
   --menuHeight: var(--size--menu-max);
-  --storeImageWidth: 16px; }
+  --storeImageWidth: 24px; }
 
 /***** Online List ******/
 #Online main > .tableborder:nth-of-type(2) {
@@ -4664,7 +4664,14 @@ a[href=""] {
 ********************************/
 #UserCP main > table:first-of-type,
 #Msg main > table:first-of-type {
-  display: block; }
+  margin: -30px;
+  display: block;
+  width: calc(100% + 60px); }
+  @media (max-width: 480px) {
+    #UserCP main > table:first-of-type,
+    #Msg main > table:first-of-type {
+      margin: 0;
+      width: 100%; } }
   #UserCP main > table:first-of-type ~ *,
   #Msg main > table:first-of-type ~ * {
     display: none; }
@@ -4673,44 +4680,93 @@ a[href=""] {
     display: block; }
     #UserCP main > table:first-of-type > tbody > tr,
     #Msg main > table:first-of-type > tbody > tr {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      gap: var(--spacing-lg); }
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+      height: auto;
+      -ms-grid-rows: -webkit-max-content -webkit-max-content;
+      -ms-grid-rows: max-content max-content;
+      grid-template-rows: -webkit-max-content -webkit-max-content;
+      grid-template-rows: max-content max-content; }
+      @media (min-width: 769px) {
+        #UserCP main > table:first-of-type > tbody > tr,
+        #Msg main > table:first-of-type > tbody > tr {
+          -ms-grid-columns: 250px auto;
+          grid-template-columns: 250px auto; } }
+      @media (max-width: 480px) {
+        #UserCP main > table:first-of-type > tbody > tr,
+        #Msg main > table:first-of-type > tbody > tr {
+          margin: -10px; } }
       #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu,
       #Msg main > table:first-of-type > tbody > tr > td#ucpmenu {
-        -webkit-box-flex: 0;
-        -webkit-flex: 0 0 150px;
-            -ms-flex: 0 0 150px;
-                flex: 0 0 150px; }
+        background: var(--bg--secondary);
+        border: 1px solid var(--border--primary);
+        position: -webkit-sticky;
+        position: sticky;
+        top: var(--size--menu-max);
+        height: -webkit-max-content;
+        height: -moz-max-content;
+        height: max-content;
+        z-index: 2; }
+        @media (min-width: 769px) {
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpmenu {
+            height: calc(100vh - (2 * var(--size--menu-max))); } }
         #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu .sticky,
         #Msg main > table:first-of-type > tbody > tr > td#ucpmenu .sticky {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-              -ms-flex-direction: column;
-                  flex-direction: column;
-          gap: var(--spacing-sm);
           position: -webkit-sticky;
           position: sticky;
-          top: var(--menuHeight); }
-        #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu .menu-section,
-        #Msg main > table:first-of-type > tbody > tr > td#ucpmenu .menu-section {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-              -ms-flex-direction: column;
-                  flex-direction: column;
-          gap: var(--spacing-sm); }
+          top: var(--size--menu-max); }
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section {
+            -webkit-transition-duration: 0s;
+                 -o-transition-duration: 0s;
+                    transition-duration: 0s; }
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section.is-open,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section.is-open {
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -webkit-flex-direction: column;
+                  -ms-flex-direction: column;
+                      flex-direction: column;
+              gap: 5px;
+              height: auto;
+              padding: 10px 15px; }
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section a,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section a {
+              display: block;
+              background: var(--bg--primary);
+              font-size: var(--size--font-sm);
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+              color: var(--text--primary);
+              padding: 5px 10px;
+              line-height: 160%;
+              border: 1px solid var(--border--primary);
+              border-radius: 2px;
+              text-align: center; }
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > b,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > b {
+            display: block;
+            background: var(--bg--primary);
+            font-size: var(--size--font-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text--primary);
+            padding: 5px 10px;
+            line-height: 160%;
+            border-radius: 2px;
+            text-align: center;
+            color: var(--text--primary); }
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > b.is-open,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > b.is-open {
+              border-color: var(--text--accent);
+              background: var(--bg--secondary); }
       #UserCP main > table:first-of-type > tbody > tr > td:nth-child(2),
       #Msg main > table:first-of-type > tbody > tr > td:nth-child(2) {
         display: none; }
@@ -4725,6 +4781,48 @@ a[href=""] {
           #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent,
           #Msg main > table:first-of-type > tbody > tr > td#ucpcontent {
             padding: var(--spacing-lg); } }
+        #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip,
+        #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip {
+          text-transform: uppercase;
+          font-size: 18px;
+          font-weight: 900; }
+          @media only screen and (min-width: 480px) {
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip {
+              font-size: calc(18px + 8 * (100vw - 480px) / (1920 - 480)); } }
+          @media only screen and (min-width: 1920px) {
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip {
+              font-size: 26px; } }
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ p,
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablepad,
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablebasic,
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .row2,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ p,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablepad,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablebasic,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .row2 {
+            background: var(--bg--primary);
+            padding: 15px;
+            margin: 15px 0; }
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ p > p:first-child,
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablepad > p:first-child,
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablebasic > p:first-child,
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .row2 > p:first-child,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ p > p:first-child,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablepad > p:first-child,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablebasic > p:first-child,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .row2 > p:first-child {
+              margin-top: 0; }
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ p p:empty,
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablepad p:empty,
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablebasic p:empty,
+            #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .row2 p:empty,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ p p:empty,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablepad p:empty,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .tablebasic p:empty,
+            #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .pformstrip ~ .row2 p:empty {
+              display: none; }
         #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent input[type="text"],
         #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent input[type="file"],
         #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent input[type="password"],
@@ -4735,10 +4833,33 @@ a[href=""] {
         #Msg main > table:first-of-type > tbody > tr > td#ucpcontent input[type="password"],
         #Msg main > table:first-of-type > tbody > tr > td#ucpcontent textarea,
         #Msg main > table:first-of-type > tbody > tr > td#ucpcontent select {
-          width: 100%; }
+          width: 100%;
+          margin: 0; }
         #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent .maintitle,
         #Msg main > table:first-of-type > tbody > tr > td#ucpcontent .maintitle {
           display: none; }
+        #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form input[type="submit"],
+        #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form input[type="button"],
+        #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form input[type="submit"],
+        #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form input[type="button"] {
+          background: var(--accent-1-gradient-low);
+          border: 1px solid var(--bg--accent);
+          max-width: -webkit-max-content;
+          max-width: -moz-max-content;
+          max-width: max-content;
+          margin: 10px auto 0;
+          text-transform: uppercase;
+          font-size: var(--size--font-sm);
+          letter-spacing: 0.05em;
+          padding: 7px 15px;
+          font-weight: 700;
+          border-radius: 2px;
+          line-height: 200%; }
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form input[type="submit"]:hover,
+          #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form input[type="button"]:hover,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form input[type="submit"]:hover,
+          #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form input[type="button"]:hover {
+            color: var(--text--primary); }
         #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table,
         #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form > table {
           display: block; }
@@ -4756,16 +4877,13 @@ a[href=""] {
               -webkit-flex-direction: column;
                   -ms-flex-direction: column;
                       flex-direction: column;
-              gap: var(--spacing-sm);
-              margin-bottom: var(--spacing-md); }
-              @media (min-width: 481px) {
-                #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr,
-                #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
-                  margin-bottom: var(--spacing-lg); } }
-              @media (min-width: 769px) {
-                #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr,
-                #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
-                  gap: var(--spacing-md); } }
+              gap: 5px;
+              margin-bottom: var(--spacing-md);
+              background: var(--bg--primary);
+              padding: 10px; }
+              #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr:last-child,
+              #Msg main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr:last-child {
+                grid-column: 1 / -1; }
               #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft b,
               #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft strong,
               #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft label,
@@ -4777,7 +4895,12 @@ a[href=""] {
                 max-width: -webkit-max-content;
                 max-width: -moz-max-content;
                 max-width: max-content;
-                padding: var(--spacing-xs) var(--spacing-sm); }
+                color: var(--text--primary);
+                font-size: 1.1em;
+                font-weight: 900 !important;
+                font-size: var(--size--font-lg);
+                letter-spacing: 0;
+                text-transform: uppercase; }
                 #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft b ~ br,
                 #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft strong ~ br,
                 #UserCP main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft label ~ br,
@@ -4807,7 +4930,6 @@ a[href=""] {
 #UserCP.code-01 #ucpcontent form > .pformstrip {
   display: none; }
 
-#UserCP.code-01 #ucpcontent form #field-birthday,
 #UserCP.code-01 #ucpcontent form #field-website,
 #UserCP.code-01 #ucpcontent form #field-location,
 #UserCP.code-01 #ucpcontent form #field-interests {
@@ -4816,15 +4938,15 @@ a[href=""] {
 #UserCP.code-01 #ucpcontent form tbody {
   display: -ms-grid !important;
   display: grid !important;
-  gap: var(--spacing-lg); }
+  gap: 15px; }
   @media (min-width: 769px) {
     #UserCP.code-01 #ucpcontent form tbody {
-      -ms-grid-columns: (1fr)[6];
-      grid-template-columns: repeat(6, 1fr); } }
+      -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr); } }
   #UserCP.code-01 #ucpcontent form tbody tr {
-    margin-bottom: 0 !important;
-    -ms-grid-column-span: 3;
-    grid-column: span 3; }
+    margin-bottom: 0 !important; }
+    #UserCP.code-01 #ucpcontent form tbody tr:last-child {
+      background: none; }
     #UserCP.code-01 #ucpcontent form tbody tr .pformleft {
       display: -webkit-box;
       display: -webkit-flex;
@@ -4835,7 +4957,13 @@ a[href=""] {
       -webkit-flex-direction: column;
           -ms-flex-direction: column;
               flex-direction: column;
-      gap: var(--spacing-sm); }
+      gap: 5px;
+      font-size: var(--size--font-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 160%; }
+    #UserCP.code-01 #ucpcontent form tbody tr#field-birthday, #UserCP.code-01 #ucpcontent form tbody tr#field_19, #UserCP.code-01 #ucpcontent form tbody tr#field_39, #UserCP.code-01 #ucpcontent form tbody tr#field_20, #UserCP.code-01 #ucpcontent form tbody tr#field_21, #UserCP.code-01 #ucpcontent form tbody tr#field_22, #UserCP.code-01 #ucpcontent form tbody tr#field_23, #UserCP.code-01 #ucpcontent form tbody tr#field_25, #UserCP.code-01 #ucpcontent form tbody tr#field_29, #UserCP.code-01 #ucpcontent form tbody tr#field_35 {
+      grid-column: 1 / -1; }
 
 #UserCP.code-24 p {
   text-align: center;
@@ -4897,7 +5025,8 @@ a[href=""] {
       -webkit-box-flex: 0;
       -webkit-flex: 0 0 100%;
           -ms-flex: 0 0 100%;
-              flex: 0 0 100%; }
+              flex: 0 0 100%;
+      background: none; }
     #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:nth-child(2):nth-last-child(2) {
       -webkit-box-flex: 0 !important;
       -webkit-flex: 0 0 100% !important;
@@ -4917,7 +5046,7 @@ a[href=""] {
       -webkit-flex: 0 0 100%;
           -ms-flex: 0 0 100%;
               flex: 0 0 100%;
-      padding: var(--spacing-sm); }
+      padding: 15px; }
       @media (min-width: 769px) {
         #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:not(:first-child):not(:last-child) {
           -webkit-box-flex: 0;
@@ -4927,16 +5056,26 @@ a[href=""] {
       #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:not(:first-child):not(:last-child) > td {
         margin: 0;
         padding: 0 0 0 calc(var(--spacing-sm) + 20px);
-        text-align: left; }
+        text-align: left;
+        font-size: var(--size--font-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 160%; }
         #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:not(:first-child):not(:last-child) > td:first-child {
-          padding-bottom: var(--spacing-sm);
-          margin-top: -5px; }
+          margin-top: -5px;
+          text-transform: uppercase;
+          font-size: var(--size--font-lg);
+          letter-spacing: 0; }
+          #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:not(:first-child):not(:last-child) > td:first-child b a {
+            font-weight: 900; }
         #UserCP.code-54 #ucpcontent .tableborder:first-child table > tbody > tr:not(:first-child):not(:last-child) > td:last-child {
           position: absolute; }
 
 #UserCP.code-54 #ucpcontent .tableborder:not(:first-child) tr {
   margin-bottom: 0;
   margin-top: var(--spacing-md); }
+  #UserCP.code-54 #ucpcontent .tableborder:not(:first-child) tr:last-child {
+    background: none; }
 
 #UserCP.code-54 #ucpcontent .tableborder:not(:first-child) .pformleft {
   line-height: 160%;
@@ -4945,7 +5084,10 @@ a[href=""] {
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
-  padding: var(--spacing-xs) var(--spacing-sm); }
+  text-transform: uppercase;
+  font-size: var(--size--font-lg);
+  letter-spacing: 0;
+  font-weight: 900; }
 
 #UserCP.code-52 .row2 + table .pformleft {
   line-height: 160%;
@@ -4955,6 +5097,9 @@ a[href=""] {
   max-width: -moz-max-content;
   max-width: max-content;
   padding: var(--spacing-xs) var(--spacing-sm); }
+
+#UserCP.code-52 tr:last-child {
+  background: none !important; }
 
 #UserCP.code-28 form[name="form1"] > table > tbody > tr > td strong,
 #UserCP.code-28 form[name="form1"] > table > tbody > tr > td b,
@@ -5097,6 +5242,21 @@ a[href=""] {
             -webkit-flex: 0 0 calc((100% / 3) - calc(var(--spacing-md) * 2 / 3));
                 -ms-flex: 0 0 calc((100% / 3) - calc(var(--spacing-md) * 2 / 3));
                     flex: 0 0 calc((100% / 3) - calc(var(--spacing-md) * 2 / 3)); } }
+        #UserCP.code-alerts #ucpcontent > form > .tableborder > table > tbody > tr:not(:first-child):not(:last-child).dlight {
+          text-transform: uppercase;
+          font-size: var(--size--font-xs);
+          letter-spacing: 0.05em;
+          font-weight: 600;
+          line-height: 160%; }
+          #UserCP.code-alerts #ucpcontent > form > .tableborder > table > tbody > tr:not(:first-child):not(:last-child).dlight a {
+            color: var(--text--secondary);
+            font-size: var(--size--font-sm);
+            line-height: 160%; }
+          #UserCP.code-alerts #ucpcontent > form > .tableborder > table > tbody > tr:not(:first-child):not(:last-child).dlight.alert-unread {
+            background: var(--accent-2-gradient-low);
+            border: 1px solid var(--bg--accent-alt); }
+          #UserCP.code-alerts #ucpcontent > form > .tableborder > table > tbody > tr:not(:first-child):not(:last-child).dlight.alert-read {
+            background: var(--bg--primary); }
         #UserCP.code-alerts #ucpcontent > form > .tableborder > table > tbody > tr:not(:first-child):not(:last-child) > td {
           margin: 0;
           padding: 0 0 0 calc(var(--spacing-sm) + 20px);
@@ -5115,6 +5275,10 @@ a[href=""] {
 
 #UserCP.code-alerts #ucpcontent .pagination ~ br {
   display: none; }
+
+#UserCP.code-50 #ucpcontent select,
+#UserCP.code-26 #ucpcontent select {
+  max-width: 250px; }
 
 #UserCP.code-50 #ucpcontent .tableborder > table,
 #UserCP.code-26 #ucpcontent .tableborder > table {
@@ -5144,7 +5308,12 @@ a[href=""] {
         -webkit-flex: 0 0 100%;
             -ms-flex: 0 0 100%;
                 flex: 0 0 100%;
-        padding: var(--spacing-sm); }
+        padding: var(--spacing-sm);
+        background: var(--bg--primary);
+        text-transform: uppercase;
+        font-size: var(--size--font-xs);
+        letter-spacing: 0.15em;
+        line-height: 160%; }
         @media (min-width: 769px) {
           #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip),
           #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) {
@@ -5180,11 +5349,19 @@ a[href=""] {
           -webkit-flex-direction: column;
               -ms-flex-direction: column;
                   flex-direction: column;
-          line-height: 200%; }
+          line-height: 200%;
+          font-size: 0; }
           #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) b:first-of-type,
-          #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) b:first-of-type {
-            padding-bottom: var(--spacing-sm);
-            margin-top: -5px; }
+          #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) a:first-of-type,
+          #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) b:first-of-type,
+          #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) a:first-of-type {
+            font-size: var(--size--font-lg);
+            letter-spacing: 0;
+            line-height: 160%;
+            font-weight: 900; }
+          #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) a:not(:first-of-type),
+          #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) a:not(:first-of-type) {
+            display: none; }
           #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) br,
           #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr:not(.pformstrip) > td:nth-child(2) br {
             display: none; }
@@ -5217,6 +5394,13 @@ a[href=""] {
         #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip td {
           width: 100%;
           padding: 0; }
+          #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr.pformstrip td.row3:only-child, #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr.pformstrip td.row1:only-child,
+          #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip td.row3:only-child,
+          #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip td.row1:only-child {
+            font-size: var(--size--font-lg);
+            text-align: left;
+            text-transform: none;
+            font-weight: 700; }
 
 #UserCP.code-26 #ucpcontent > .pformstrip span {
   display: none; }
@@ -5292,6 +5476,9 @@ a[href=""] {
 #UserCP.code-alerts_settings tr:nth-last-child(4) .pformstrip {
   padding-top: var(--spacing-md); }
 
+#UserCP.code-alerts_settings .fancy-input {
+  margin: 0 auto; }
+
 #UserCP.code-02 #ucpcontent form > table > tbody > tr {
   display: -ms-grid !important;
   display: grid !important;
@@ -5311,22 +5498,90 @@ a[href=""] {
 #Msg.code-01 #ucpcontent > table > tbody > tr > td > form {
   display: none; }
 
+#Msg.code-01 #ucpcontent > form > .tableborder > table {
+  border-collapse: collapse; }
+  #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody {
+    display: -ms-grid;
+    display: grid;
+    gap: 15px; }
+    @media (min-width: 769px) {
+      #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody {
+        -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr); } }
+    #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr:first-child {
+      display: none; }
+    #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr:not(.dlight):not(.hlight) {
+      grid-column: 1/ -1; }
+    #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr.dlight, #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr.hlight {
+      display: -ms-grid;
+      display: grid;
+      background: var(--bg--primary);
+      padding: 15px;
+      font-size: var(--size--font-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      line-height: 160%; }
+      #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr.dlight > td:first-child, #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr.hlight > td:first-child {
+        text-align: left;
+        color: var(--text--primary);
+        font-weight: 900;
+        letter-spacing: 0.2em; }
+      #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr.dlight > td:nth-child(2), #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr.hlight > td:nth-child(2) {
+        font-size: var(--size--font-lg);
+        line-height: 160%; }
+      #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr.dlight > td:last-child, #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr.hlight > td:last-child {
+        position: absolute;
+        top: 0;
+        right: 0; }
+    #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr:last-child > td {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: start;
+      -webkit-justify-content: start;
+          -ms-flex-pack: start;
+              justify-content: start;
+      gap: 5px; }
+      #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr:last-child > td > div {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        float: none !important;
+        clear: both;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: start;
+        -webkit-justify-content: start;
+            -ms-flex-pack: start;
+                justify-content: start;
+        gap: 5px; }
+        #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr:last-child > td > div input {
+          margin: 0; }
+      #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr:last-child > td input[name="delete"] {
+        margin: 0; }
+      #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr:last-child > td input[name="move"],
+      #Msg.code-01 #ucpcontent > form > .tableborder > table > tbody > tr:last-child > td select[name="VID"] {
+        display: none; }
+
 #Msg.code-04 form > table > tbody > tr {
   margin-bottom: var(--spacing-md); }
   #Msg.code-04 form > table > tbody > tr .pformstrip {
     text-align: left; }
   #Msg.code-04 form > table > tbody > tr:first-child {
-    margin-bottom: var(--spacing-md) !important; }
+    display: block;
+    margin: 0 0 -5px 0 !important;
+    padding-bottom: 0 !important; }
     #Msg.code-04 form > table > tbody > tr:first-child .pformstrip {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      line-height: 160%;
-      max-width: -webkit-max-content;
-      max-width: -moz-max-content;
-      max-width: max-content;
-      display: block;
-      max-width: max-content;
-      padding: var(--spacing-xs) var(--spacing-sm); }
+      font-size: var(--size--font-lg) !important; }
   #Msg.code-04 form > table > tbody > tr:nth-child(2), #Msg.code-04 form > table > tbody > tr:nth-child(4), #Msg.code-04 form > table > tbody > tr:nth-child(5), #Msg.code-04 form > table > tbody > tr:nth-child(6), #Msg.code-04 form > table > tbody > tr:nth-last-child(3), #Msg.code-04 form > table > tbody > tr#code-buttons-header, #Msg.code-04 form > table > tbody > tr#enter-your-post-header {
     display: none !important; }
   #Msg.code-04 form > table > tbody > tr:nth-child(3) .pformleft {
@@ -5343,19 +5598,26 @@ a[href=""] {
       padding: 0; }
     #Msg.code-04 form > table > tbody > tr:nth-child(7) .pformright {
       padding: 0; }
-  #Msg.code-04 form > table > tbody > tr:nth-last-child(2) .pformleft {
-    display: none; }
-  #Msg.code-04 form > table > tbody > tr:nth-last-child(2) .pformright {
-    grid-column: 1 / -1;
-    padding: 0;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
-    #Msg.code-04 form > table > tbody > tr:nth-last-child(2) .pformright br {
+  #Msg.code-04 form > table > tbody > tr:nth-last-child(2) {
+    background: transparent !important; }
+    #Msg.code-04 form > table > tbody > tr:nth-last-child(2) .pformleft {
       display: none; }
+    #Msg.code-04 form > table > tbody > tr:nth-last-child(2) .pformright {
+      grid-column: 1 / -1;
+      padding: 0;
+      -webkit-box-pack: start;
+      -webkit-justify-content: start;
+          -ms-flex-pack: start;
+              justify-content: start;
+      gap: 15px;
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap; }
+  #Msg.code-04 form > table > tbody > tr:last-child {
+    background: transparent !important; }
   #Msg.code-04 form > table > tbody > tr#code-buttons {
-    display: block; }
+    display: block;
+    padding: var(--spacing-md); }
     #Msg.code-04 form > table > tbody > tr#code-buttons .pformleft {
       display: none; }
     #Msg.code-04 form > table > tbody > tr#code-buttons .pformright {
@@ -5373,13 +5635,13 @@ a[href=""] {
         -webkit-flex-wrap: wrap;
             -ms-flex-wrap: wrap;
                 flex-wrap: wrap;
-        gap: 5px; }
+        gap: var(--spacing-xs); }
         #Msg.code-04 form > table > tbody > tr#code-buttons .pformright #bbcode-buttons input,
         #Msg.code-04 form > table > tbody > tr#code-buttons .pformright #bbcode-buttons select {
           margin: 0;
           width: auto;
           cursor: pointer;
-          font-size: 1rem;
+          font-size: var(--size--font-sm);
           line-height: 160%; }
         #Msg.code-04 form > table > tbody > tr#code-buttons .pformright #bbcode-buttons > a,
         #Msg.code-04 form > table > tbody > tr#code-buttons .pformright #bbcode-buttons > br {
@@ -5398,7 +5660,8 @@ a[href=""] {
         -webkit-box-sizing: border-box;
                 box-sizing: border-box; }
 
-#Msg.code-03 #ucpcontent > .tableborder + div {
+#Msg.code-03 #ucpcontent > .tableborder + div,
+#Msg.code-03 #ucpcontent > .tableborder > .titlemedium {
   display: none; }
 
 #Msg.code-03 #ucpcontent .msg-normal > table {
@@ -5417,35 +5680,76 @@ a[href=""] {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column; }
-    #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-              flex-direction: column;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-lg); }
-      #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td {
-        padding: 0;
-        width: 100%; }
-    #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n) {
-      display: block;
-      padding: var(--spacing-lg);
-      margin: var(--spacing-md) 0 var(--spacing-lg); }
-      #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n) td {
+    #Msg.code-03 #ucpcontent .msg-normal > table tbody tr {
+      background: var(--bg--primary); }
+      #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-lg);
+        background: var(--bg--secondary);
+        border-bottom: 1px solid var(--border--primary); }
+        #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td {
+          padding: 0;
+          width: 100%; }
+          #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child {
+            font-size: 22px;
+            text-transform: uppercase;
+            color: var(--text--accent); }
+            @media only screen and (min-width: 480px) {
+              #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child {
+                font-size: calc(22px + 14 * (100vw - 480px) / (1920 - 480)); } }
+            @media only screen and (min-width: 1920px) {
+              #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child {
+                font-size: 36px; } }
+            #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child a {
+              font-weight: 900; }
+          #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:last-child {
+            line-height: 100%;
+            font-size: var(--size--font-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600; }
+            #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:last-child i {
+              font-size: var(--size--font-md);
+              background: var(--bg--primary);
+              border: 1px solid var(--border--primary);
+              width: 30px;
+              height: 30px;
+              display: -webkit-inline-box;
+              display: -webkit-inline-flex;
+              display: -ms-inline-flexbox;
+              display: inline-flex;
+              -webkit-box-align: center;
+              -webkit-align-items: center;
+                  -ms-flex-align: center;
+                      align-items: center;
+              -webkit-box-pack: center;
+              -webkit-justify-content: center;
+                  -ms-flex-pack: center;
+                      justify-content: center;
+              text-align: center; }
+      #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n) {
         display: block;
-        width: 100%;
-        padding: 0;
-        text-align: justify;
-        line-height: 200%; }
-        #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n) td:first-child {
-          display: none; }
-    #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:last-child {
-      display: none; }
+        padding: var(--spacing-lg);
+        margin: 0 0 var(--spacing-lg); }
+        #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n) td {
+          display: block;
+          width: 100%;
+          padding: 0;
+          text-align: justify;
+          line-height: 200%; }
+          #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n) td:first-child {
+            display: none; }
+      #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:last-child {
+        display: none; }
 
 /*******************************
     Mod CP
@@ -5454,47 +5758,95 @@ a[href=""] {
     Store
 ********************************/
 #store main > table:first-of-type {
-  display: block; }
+  margin: -30px;
+  display: block;
+  width: calc(100% + 60px); }
+  @media (max-width: 480px) {
+    #store main > table:first-of-type {
+      margin: 0;
+      width: 100%; } }
   #store main > table:first-of-type ~ * {
     display: none; }
   #store main > table:first-of-type > tbody {
     display: block; }
     #store main > table:first-of-type > tbody > tr {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      gap: var(--spacing-lg); }
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+      height: auto;
+      -ms-grid-rows: -webkit-max-content -webkit-max-content;
+      -ms-grid-rows: max-content max-content;
+      grid-template-rows: -webkit-max-content -webkit-max-content;
+      grid-template-rows: max-content max-content; }
+      @media (min-width: 769px) {
+        #store main > table:first-of-type > tbody > tr {
+          -ms-grid-columns: 250px auto;
+          grid-template-columns: 250px auto; } }
+      @media (max-width: 480px) {
+        #store main > table:first-of-type > tbody > tr {
+          margin: -10px; } }
       #store main > table:first-of-type > tbody > tr > td#ucpmenu {
-        -webkit-box-flex: 0;
-        -webkit-flex: 0 0 150px;
-            -ms-flex: 0 0 150px;
-                flex: 0 0 150px; }
+        background: var(--bg--secondary);
+        border: 1px solid var(--border--primary);
+        position: -webkit-sticky;
+        position: sticky;
+        top: var(--size--menu-max);
+        height: -webkit-max-content;
+        height: -moz-max-content;
+        height: max-content;
+        z-index: 2; }
+        @media (min-width: 769px) {
+          #store main > table:first-of-type > tbody > tr > td#ucpmenu {
+            height: calc(100vh - (2 * var(--size--menu-max))); } }
         #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-              -ms-flex-direction: column;
-                  flex-direction: column;
-          gap: var(--spacing-sm);
           position: -webkit-sticky;
           position: sticky;
-          top: var(--menuHeight); }
-        #store main > table:first-of-type > tbody > tr > td#ucpmenu .menu-section {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-              -ms-flex-direction: column;
-                  flex-direction: column;
-          gap: var(--spacing-sm); }
+          top: var(--size--menu-max); }
+          #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section {
+            -webkit-transition-duration: 0s;
+                 -o-transition-duration: 0s;
+                    transition-duration: 0s; }
+            #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section.is-open {
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -webkit-flex-direction: column;
+                  -ms-flex-direction: column;
+                      flex-direction: column;
+              gap: 5px;
+              height: auto;
+              padding: 10px 15px; }
+            #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section a {
+              display: block;
+              background: var(--bg--primary);
+              font-size: var(--size--font-sm);
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+              color: var(--text--primary);
+              padding: 5px 10px;
+              line-height: 160%;
+              border: 1px solid var(--border--primary);
+              border-radius: 2px;
+              text-align: center; }
+          #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > b {
+            display: block;
+            background: var(--bg--primary);
+            font-size: var(--size--font-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text--primary);
+            padding: 5px 10px;
+            line-height: 160%;
+            border-radius: 2px;
+            text-align: center;
+            color: var(--text--primary); }
+            #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > b.is-open {
+              border-color: var(--text--accent);
+              background: var(--bg--secondary); }
       #store main > table:first-of-type > tbody > tr > td:nth-child(2) {
         display: none; }
       #store main > table:first-of-type > tbody > tr > td#ucpcontent {
@@ -5575,7 +5927,9 @@ a[href=""] {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-align: left; }
+  text-align: left;
+  background: var(--bg--primary);
+  padding: 15px; }
   #store.store-home #ucpcontent > table > tbody > tr:not(:nth-child(4)) {
     margin-top: var(--spacing-lg); }
   #store.store-home #ucpcontent > table > tbody > tr td {
@@ -5587,7 +5941,15 @@ a[href=""] {
       max-width: -webkit-max-content;
       max-width: -moz-max-content;
       max-width: max-content;
-      margin-bottom: var(--spacing-sm); }
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase; }
+      @media only screen and (min-width: 480px) {
+        #store.store-home #ucpcontent > table > tbody > tr td a {
+          font-size: calc(18px + 10 * (100vw - 480px) / (1920 - 480)); } }
+      @media only screen and (min-width: 1920px) {
+        #store.store-home #ucpcontent > table > tbody > tr td a {
+          font-size: 28px; } }
       #store.store-home #ucpcontent > table > tbody > tr td a + br {
         display: none; }
   #store.store-home #ucpcontent > table > tbody > tr:nth-child(1), #store.store-home #ucpcontent > table > tbody > tr:nth-child(2), #store.store-home #ucpcontent > table > tbody > tr:nth-child(3) {
@@ -5654,20 +6016,34 @@ a[href=""] {
                 align-items: center; }
         #store.store-shop #ucpcontent > table > tbody > tr:last-child a {
           display: block;
+          z-index: 1;
+          background: var(--accent-1-gradient-low);
+          border: 1px solid var(--bg--accent);
           max-width: -webkit-max-content;
           max-width: -moz-max-content;
           max-width: max-content;
-          margin: 0 0 0 auto;
-          padding: var(--spacing-sm);
-          z-index: 1; }
+          text-transform: uppercase;
+          font-size: var(--size--font-sm);
+          letter-spacing: 0.05em;
+          padding: 7px 15px;
+          font-weight: 700;
+          border-radius: 2px;
+          line-height: 200%; }
+          #store.store-shop #ucpcontent > table > tbody > tr:last-child a:hover {
+            color: var(--text--primary); }
         #store.store-shop #ucpcontent > table > tbody > tr:last-child > td {
           display: block;
           text-align: left; }
           #store.store-shop #ucpcontent > table > tbody > tr:last-child > td:nth-child(2) {
-            text-align: center; }
+            text-align: center;
+            text-transform: uppercase;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            font-weight: 600; }
           #store.store-shop #ucpcontent > table > tbody > tr:last-child > td:last-child {
             text-align: right; }
       #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) {
+        background: var(--bg--primary);
         padding: var(--spacing-md);
         display: -ms-grid;
         display: grid;
@@ -5686,19 +6062,28 @@ a[href=""] {
                         -ms-grid-row-align: center;
                     align-self: center; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(2) {
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: var(--size--font-lg);
             -ms-grid-column-span: 3;
             grid-column: span 3;
             line-height: 160%;
             max-width: -webkit-max-content;
             max-width: -moz-max-content;
             max-width: max-content;
-            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md); }
+            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md);
+            color: var(--text--accent); }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(3) {
             grid-column: 1 / -1;
-            padding: var(--spacing-sm) 0 var(--spacing-md); }
+            padding: var(--spacing-sm) 0 var(--spacing-md);
+            text-align: justify; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(4), #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(5) {
             -ms-grid-column-span: 2;
-            grid-column: span 2; }
+            grid-column: span 2;
+            text-transform: uppercase;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            font-weight: 600; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(4)::before {
             content: '$'; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(5) {
@@ -5707,30 +6092,64 @@ a[href=""] {
               content: ' In Stock'; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child {
             grid-column: 1 / -1;
-            padding: var(--spacing-md) 0 0; }
+            padding: var(--spacing-md) 0 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: end;
+            -webkit-justify-content: end;
+                -ms-flex-pack: end;
+                    justify-content: end; }
             #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child a {
               display: block;
+              z-index: 1;
+              background: var(--accent-1-gradient-low);
+              border: 1px solid var(--bg--accent);
               max-width: -webkit-max-content;
               max-width: -moz-max-content;
               max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
-              z-index: 1; }
+              text-transform: uppercase;
+              font-size: var(--size--font-sm);
+              letter-spacing: 0.05em;
+              padding: 7px 15px;
+              font-weight: 700;
+              border-radius: 2px;
+              line-height: 200%; }
+              #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child a:hover {
+                color: var(--text--primary); }
+          #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child) {
+            -ms-grid-column-align: end;
+                justify-self: end; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child), #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child {
             -ms-grid-column-span: 2;
             grid-column: span 2;
             padding: var(--spacing-md) 0 0;
             font-size: 0; }
             #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child) a, #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a {
+              display: block;
+              z-index: 1;
+              background: var(--accent-1-gradient-low);
+              border: 1px solid var(--bg--accent);
               max-width: -webkit-max-content;
               max-width: -moz-max-content;
               max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
-              z-index: 1;
-              font-size: 1rem; }
-          #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a::before {
-            content: 'Buy '; }
+              text-transform: uppercase;
+              font-size: var(--size--font-sm);
+              letter-spacing: 0.05em;
+              padding: 7px 15px;
+              font-weight: 700;
+              border-radius: 2px;
+              line-height: 200%; }
+              #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child) a:hover, #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a:hover {
+                color: var(--text--primary); }
+          #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex; }
+            #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a::before {
+              content: 'Buy '; }
 
 #store.store-inventory #ucpcontent > table {
   display: block; }
@@ -5777,10 +6196,18 @@ a[href=""] {
            object-position: center; }
       #store.store-inventory #ucpcontent > table > tbody > tr:first-child {
         grid-column: 1 / -1;
-        display: -ms-grid;
-        display: grid; }
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        text-transform: uppercase;
+        font-size: var(--size--font-xs);
+        letter-spacing: 0.15em;
+        font-weight: 600; }
         #store.store-inventory #ucpcontent > table > tbody > tr:first-child > td {
-          width: 100%;
+          width: -webkit-max-content;
+          width: -moz-max-content;
+          width: max-content;
           padding: 0; }
           #store.store-inventory #ucpcontent > table > tbody > tr:first-child > td:first-child {
             line-height: 160%;
@@ -5793,15 +6220,16 @@ a[href=""] {
       #store.store-inventory #ucpcontent > table > tbody > tr:nth-child(3), #store.store-inventory #ucpcontent > table > tbody > tr:nth-child(2) {
         display: none; }
       #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) {
+        background: var(--bg--primary);
         padding: var(--spacing-md);
         display: -ms-grid;
         display: grid;
         -ms-grid-columns: var(--storeImageWidth) calc(100% - var(--storeImageWidth) - var(--spacing-md));
         grid-template-columns: var(--storeImageWidth) calc(100% - var(--storeImageWidth) - var(--spacing-md));
-        -ms-grid-rows: -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content auto;
-        -ms-grid-rows: max-content max-content max-content max-content auto;
-        grid-template-rows: -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content auto;
-        grid-template-rows: max-content max-content max-content max-content auto;
+        -ms-grid-rows: -webkit-max-content -webkit-max-content auto -webkit-max-content;
+        -ms-grid-rows: max-content max-content auto max-content;
+        grid-template-rows: -webkit-max-content -webkit-max-content auto -webkit-max-content;
+        grid-template-rows: max-content max-content auto max-content;
         gap: var(--spacing-md); }
         #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td {
           padding: 0;
@@ -5816,11 +6244,15 @@ a[href=""] {
             -webkit-order: 2;
                 -ms-flex-order: 2;
                     order: 2;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: var(--size--font-lg);
             line-height: 160%;
             max-width: -webkit-max-content;
             max-width: -moz-max-content;
             max-width: max-content;
-            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md); }
+            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md);
+            color: var(--text--accent); }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:not(:first-child):not(:nth-child(2)) {
             grid-column: 1 / -1; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(3) {
@@ -5842,7 +6274,11 @@ a[href=""] {
                 -ms-flex-order: 3;
                     order: 3;
             text-align: left;
-            margin-bottom: calc(-1 * var(--spacing-xs)); }
+            margin-bottom: calc(-1 * var(--spacing-xs));
+            text-transform: uppercase;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            font-weight: 600; }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(4)::after {
               content: ' Owned'; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child {
@@ -5865,12 +6301,21 @@ a[href=""] {
             padding: var(--spacing-md) 0 0; }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child a {
               display: block;
+              z-index: 1;
+              background: var(--accent-1-gradient-low);
+              border: 1px solid var(--bg--accent);
               max-width: -webkit-max-content;
               max-width: -moz-max-content;
               max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
-              z-index: 1; }
+              text-transform: uppercase;
+              font-size: var(--size--font-sm);
+              letter-spacing: 0.05em;
+              padding: 7px 15px;
+              font-weight: 700;
+              border-radius: 2px;
+              line-height: 200%; }
+              #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child a:hover {
+                color: var(--text--primary); }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child br {
               display: none; }
 
@@ -5958,17 +6403,19 @@ a[href=""] {
 #store.store-do_staff_inventory #ucpcontent > table {
   display: block; }
   #store.store-do_staff_inventory #ucpcontent > table > tbody {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-    gap: var(--spacing-xs); }
-    @media (min-width: 481px) {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1];
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--spacing-md); }
+    @media (min-width: 769px) {
       #store.store-do_staff_inventory #ucpcontent > table > tbody {
-        gap: var(--spacing-md); } }
+        -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1025px) {
+      #store.store-do_staff_inventory #ucpcontent > table > tbody {
+        -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr); } }
     #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
       display: -webkit-box;
       display: -webkit-flex;
@@ -5977,25 +6424,25 @@ a[href=""] {
       -webkit-flex-wrap: wrap;
           -ms-flex-wrap: wrap;
               flex-wrap: wrap;
-      height: -webkit-max-content;
-      height: -moz-max-content;
-      height: max-content;
       -webkit-box-flex: 0;
       -webkit-flex: 0 0 100%;
           -ms-flex: 0 0 100%;
               flex: 0 0 100%; }
+      #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
+        background: var(--bg--primary);
+        padding: 15px; }
       @media (min-width: 769px) {
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
           -webkit-box-flex: 0;
-          -webkit-flex: 0 0 calc(50% - ( var(--spacing-md) / 2));
-              -ms-flex: 0 0 calc(50% - ( var(--spacing-md) / 2));
-                  flex: 0 0 calc(50% - ( var(--spacing-md) / 2)); } }
+          -webkit-flex: 0 0 calc(50% - ( var(--spacing-sm) / 2));
+              -ms-flex: 0 0 calc(50% - ( var(--spacing-sm) / 2));
+                  flex: 0 0 calc(50% - ( var(--spacing-sm) / 2)); } }
       @media (min-width: 1025px) {
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
           -webkit-box-flex: 0;
-          -webkit-flex: 0 0 calc((100% / 3) - ( var(--spacing-lg) * 2 / 3));
-              -ms-flex: 0 0 calc((100% / 3) - ( var(--spacing-lg) * 2 / 3));
-                  flex: 0 0 calc((100% / 3) - ( var(--spacing-lg) * 2 / 3)); } }
+          -webkit-flex: 0 0 calc((100% / 3) - ( var(--spacing-sm) * 2 / 3));
+              -ms-flex: 0 0 calc((100% / 3) - ( var(--spacing-sm) * 2 / 3));
+                  flex: 0 0 calc((100% / 3) - ( var(--spacing-sm) * 2 / 3)); } }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr img {
         width: var(--storeImageWidth);
         height: var(--storeImageWidth);
@@ -6011,18 +6458,23 @@ a[href=""] {
         text-align: left; }
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:first-child {
           -webkit-box-flex: 0;
-          -webkit-flex: 0 0 calc(var(--spacing-lg) + var(--storeImageWidth));
-              -ms-flex: 0 0 calc(var(--spacing-lg) + var(--storeImageWidth));
-                  flex: 0 0 calc(var(--spacing-lg) + var(--storeImageWidth));
-          padding: var(--spacing-sm) 0 0 var(--spacing-sm); }
-          @media (min-width: 481px) {
-            #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:first-child {
-              padding: var(--spacing-md) 0 0 var(--spacing-md); } }
+          -webkit-flex: 0 0 calc(var(--spacing-sm) + var(--storeImageWidth));
+              -ms-flex: 0 0 calc(var(--spacing-sm) + var(--storeImageWidth));
+                  flex: 0 0 calc(var(--spacing-sm) + var(--storeImageWidth)); }
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(2) {
           -webkit-box-flex: 0;
-          -webkit-flex: 0 0 calc(100% - (var(--spacing-lg) + var(--storeImageWidth) + 10px));
-              -ms-flex: 0 0 calc(100% - (var(--spacing-lg) + var(--storeImageWidth) + 10px));
-                  flex: 0 0 calc(100% - (var(--spacing-lg) + var(--storeImageWidth) + 10px)); }
+          -webkit-flex: 0 0 calc(100% - (var(--spacing-sm) + var(--storeImageWidth) + 10px));
+              -ms-flex: 0 0 calc(100% - (var(--spacing-sm) + var(--storeImageWidth) + 10px));
+                  flex: 0 0 calc(100% - (var(--spacing-sm) + var(--storeImageWidth) + 10px));
+          text-transform: uppercase;
+          font-weight: 900;
+          font-size: var(--size--font-lg);
+          line-height: 160%;
+          max-width: -webkit-max-content;
+          max-width: -moz-max-content;
+          max-width: max-content;
+          padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md);
+          color: var(--text--accent); }
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(3) {
           -webkit-box-flex: 0;
           -webkit-flex: 0 0 calc(100% - var(--spacing-sm));
@@ -6043,12 +6495,18 @@ a[href=""] {
           -webkit-box-flex: 0;
           -webkit-flex: 0 0 100%;
               -ms-flex: 0 0 100%;
-                  flex: 0 0 100%; }
+                  flex: 0 0 100%;
+          -webkit-align-self: end;
+              -ms-flex-item-align: end;
+                      -ms-grid-row-align: end;
+                  align-self: end;
+          margin-top: 5px; }
           #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(5) .input-wrap::after {
             content: 'Delete'; }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:first-child, #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:nth-last-child(2):not(:nth-child(2)) {
         display: none; }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:last-child {
+        grid-column: 1 / -1;
         -webkit-box-flex: 0;
         -webkit-flex: 0 0 100%;
             -ms-flex: 0 0 100%;

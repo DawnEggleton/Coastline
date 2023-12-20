@@ -2,26 +2,76 @@
     Store
 ********************************/
 #store main > table:first-of-type {
-  display: block; }
+  margin: -30px;
+  display: block;
+  width: calc(100% + 60px); }
+  @media (max-width: 480px) {
+    #store main > table:first-of-type {
+      margin: 0;
+      width: 100%; } }
   #store main > table:first-of-type ~ * {
     display: none; }
   #store main > table:first-of-type > tbody {
     display: block; }
     #store main > table:first-of-type > tbody > tr {
-      display: flex;
-      gap: var(--spacing-lg); }
+      display: grid;
+      grid-template-columns: 1fr;
+      height: auto;
+      grid-template-rows: max-content max-content; }
+      @media (min-width: 769px) {
+        #store main > table:first-of-type > tbody > tr {
+          grid-template-columns: 250px auto; } }
+      @media (max-width: 480px) {
+        #store main > table:first-of-type > tbody > tr {
+          margin: -10px; } }
       #store main > table:first-of-type > tbody > tr > td#ucpmenu {
-        flex: 0 0 150px; }
+        background: var(--bg--secondary);
+        border: 1px solid var(--border--primary);
+        position: sticky;
+        top: var(--size--menu-max);
+        height: max-content;
+        z-index: 2; }
+        @media (min-width: 769px) {
+          #store main > table:first-of-type > tbody > tr > td#ucpmenu {
+            height: calc(100vh - (2 * var(--size--menu-max))); } }
         #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacing-sm);
           position: sticky;
-          top: var(--menuHeight); }
-        #store main > table:first-of-type > tbody > tr > td#ucpmenu .menu-section {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacing-sm); }
+          top: var(--size--menu-max); }
+          #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section {
+            transition-duration: 0s; }
+            #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section.is-open {
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
+              height: auto;
+              padding: 10px 15px; }
+            #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > .menu-section a {
+              display: block;
+              background: var(--bg--primary);
+              font-size: var(--size--font-sm);
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+              color: var(--text--primary);
+              padding: 5px 10px;
+              line-height: 160%;
+              border: 1px solid var(--border--primary);
+              border-radius: 2px;
+              text-align: center; }
+          #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > b {
+            display: block;
+            background: var(--bg--primary);
+            font-size: var(--size--font-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text--primary);
+            padding: 5px 10px;
+            line-height: 160%;
+            border-radius: 2px;
+            text-align: center;
+            color: var(--text--primary); }
+            #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky > b.is-open {
+              border-color: var(--text--accent);
+              background: var(--bg--secondary); }
       #store main > table:first-of-type > tbody > tr > td:nth-child(2) {
         display: none; }
       #store main > table:first-of-type > tbody > tr > td#ucpcontent {
@@ -78,7 +128,9 @@
 #store.store-home #ucpcontent > table > tbody > tr {
   display: flex;
   flex-direction: column;
-  text-align: left; }
+  text-align: left;
+  background: var(--bg--primary);
+  padding: 15px; }
   #store.store-home #ucpcontent > table > tbody > tr:not(:nth-child(4)) {
     margin-top: var(--spacing-lg); }
   #store.store-home #ucpcontent > table > tbody > tr td {
@@ -88,7 +140,15 @@
       display: block;
       line-height: 160%;
       max-width: max-content;
-      margin-bottom: var(--spacing-sm); }
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase; }
+      @media only screen and (min-width: 480px) {
+        #store.store-home #ucpcontent > table > tbody > tr td a {
+          font-size: calc(18px + 10 * (100vw - 480px) / (1920 - 480)); } }
+      @media only screen and (min-width: 1920px) {
+        #store.store-home #ucpcontent > table > tbody > tr td a {
+          font-size: 28px; } }
       #store.store-home #ucpcontent > table > tbody > tr td a + br {
         display: none; }
   #store.store-home #ucpcontent > table > tbody > tr:nth-child(1), #store.store-home #ucpcontent > table > tbody > tr:nth-child(2), #store.store-home #ucpcontent > table > tbody > tr:nth-child(3) {
@@ -129,18 +189,32 @@
         align-items: center; }
         #store.store-shop #ucpcontent > table > tbody > tr:last-child a {
           display: block;
+          z-index: 1;
+          background: var(--accent-1-gradient-low);
+          border: 1px solid var(--bg--accent);
           max-width: max-content;
-          margin: 0 0 0 auto;
-          padding: var(--spacing-sm);
-          z-index: 1; }
+          text-transform: uppercase;
+          font-size: var(--size--font-sm);
+          letter-spacing: 0.05em;
+          padding: 7px 15px;
+          font-weight: 700;
+          border-radius: 2px;
+          line-height: 200%; }
+          #store.store-shop #ucpcontent > table > tbody > tr:last-child a:hover {
+            color: var(--text--primary); }
         #store.store-shop #ucpcontent > table > tbody > tr:last-child > td {
           display: block;
           text-align: left; }
           #store.store-shop #ucpcontent > table > tbody > tr:last-child > td:nth-child(2) {
-            text-align: center; }
+            text-align: center;
+            text-transform: uppercase;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            font-weight: 600; }
           #store.store-shop #ucpcontent > table > tbody > tr:last-child > td:last-child {
             text-align: right; }
       #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) {
+        background: var(--bg--primary);
         padding: var(--spacing-md);
         display: grid;
         grid-template-columns: var(--storeImageWidth) 1fr 1fr var(--storeImageWidth);
@@ -153,15 +227,24 @@
             height: var(--storeImageWidth);
             align-self: center; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(2) {
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: var(--size--font-lg);
             grid-column: span 3;
             line-height: 160%;
             max-width: max-content;
-            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md); }
+            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md);
+            color: var(--text--accent); }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(3) {
             grid-column: 1 / -1;
-            padding: var(--spacing-sm) 0 var(--spacing-md); }
+            padding: var(--spacing-sm) 0 var(--spacing-md);
+            text-align: justify; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(4), #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(5) {
-            grid-column: span 2; }
+            grid-column: span 2;
+            text-transform: uppercase;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            font-weight: 600; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(4)::before {
             content: '$'; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(5) {
@@ -170,25 +253,49 @@
               content: ' In Stock'; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child {
             grid-column: 1 / -1;
-            padding: var(--spacing-md) 0 0; }
+            padding: var(--spacing-md) 0 0;
+            display: flex;
+            justify-content: end; }
             #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child a {
               display: block;
+              z-index: 1;
+              background: var(--accent-1-gradient-low);
+              border: 1px solid var(--bg--accent);
               max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
-              z-index: 1; }
+              text-transform: uppercase;
+              font-size: var(--size--font-sm);
+              letter-spacing: 0.05em;
+              padding: 7px 15px;
+              font-weight: 700;
+              border-radius: 2px;
+              line-height: 200%; }
+              #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child a:hover {
+                color: var(--text--primary); }
+          #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child) {
+            justify-self: end; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child), #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child {
             grid-column: span 2;
             padding: var(--spacing-md) 0 0;
             font-size: 0; }
             #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child) a, #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a {
-              max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
+              display: block;
               z-index: 1;
-              font-size: 1rem; }
-          #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a::before {
-            content: 'Buy '; }
+              background: var(--accent-1-gradient-low);
+              border: 1px solid var(--bg--accent);
+              max-width: max-content;
+              text-transform: uppercase;
+              font-size: var(--size--font-sm);
+              letter-spacing: 0.05em;
+              padding: 7px 15px;
+              font-weight: 700;
+              border-radius: 2px;
+              line-height: 200%; }
+              #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child) a:hover, #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a:hover {
+                color: var(--text--primary); }
+          #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child {
+            display: flex; }
+            #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a::before {
+              content: 'Buy '; }
 
 #store.store-inventory #ucpcontent > table {
   display: block; }
@@ -218,9 +325,13 @@
         object-position: center; }
       #store.store-inventory #ucpcontent > table > tbody > tr:first-child {
         grid-column: 1 / -1;
-        display: grid; }
+        display: flex;
+        text-transform: uppercase;
+        font-size: var(--size--font-xs);
+        letter-spacing: 0.15em;
+        font-weight: 600; }
         #store.store-inventory #ucpcontent > table > tbody > tr:first-child > td {
-          width: 100%;
+          width: max-content;
           padding: 0; }
           #store.store-inventory #ucpcontent > table > tbody > tr:first-child > td:first-child {
             line-height: 160%;
@@ -231,10 +342,11 @@
       #store.store-inventory #ucpcontent > table > tbody > tr:nth-child(3), #store.store-inventory #ucpcontent > table > tbody > tr:nth-child(2) {
         display: none; }
       #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) {
+        background: var(--bg--primary);
         padding: var(--spacing-md);
         display: grid;
         grid-template-columns: var(--storeImageWidth) calc(100% - var(--storeImageWidth) - var(--spacing-md));
-        grid-template-rows: max-content max-content max-content max-content auto;
+        grid-template-rows: max-content max-content auto max-content;
         gap: var(--spacing-md); }
         #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td {
           padding: 0;
@@ -243,9 +355,13 @@
             order: 1; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(2) {
             order: 2;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: var(--size--font-lg);
             line-height: 160%;
             max-width: max-content;
-            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md); }
+            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md);
+            color: var(--text--accent); }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:not(:first-child):not(:nth-child(2)) {
             grid-column: 1 / -1; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(3) {
@@ -258,7 +374,11 @@
             flex: 0 0 100%;
             order: 3;
             text-align: left;
-            margin-bottom: calc(-1 * var(--spacing-xs)); }
+            margin-bottom: calc(-1 * var(--spacing-xs));
+            text-transform: uppercase;
+            font-size: var(--size--font-xs);
+            letter-spacing: 0.15em;
+            font-weight: 600; }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(4)::after {
               content: ' Owned'; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child {
@@ -269,10 +389,19 @@
             padding: var(--spacing-md) 0 0; }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child a {
               display: block;
+              z-index: 1;
+              background: var(--accent-1-gradient-low);
+              border: 1px solid var(--bg--accent);
               max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
-              z-index: 1; }
+              text-transform: uppercase;
+              font-size: var(--size--font-sm);
+              letter-spacing: 0.05em;
+              padding: 7px 15px;
+              font-weight: 700;
+              border-radius: 2px;
+              line-height: 200%; }
+              #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child a:hover {
+                color: var(--text--primary); }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child br {
               display: none; }
 
@@ -351,23 +480,28 @@
 #store.store-do_staff_inventory #ucpcontent > table {
   display: block; }
   #store.store-do_staff_inventory #ucpcontent > table > tbody {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-xs); }
-    @media (min-width: 481px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--spacing-md); }
+    @media (min-width: 769px) {
       #store.store-do_staff_inventory #ucpcontent > table > tbody {
-        gap: var(--spacing-md); } }
+        grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1025px) {
+      #store.store-do_staff_inventory #ucpcontent > table > tbody {
+        grid-template-columns: repeat(3, 1fr); } }
     #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
       display: flex;
       flex-wrap: wrap;
-      height: max-content;
       flex: 0 0 100%; }
+      #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
+        background: var(--bg--primary);
+        padding: 15px; }
       @media (min-width: 769px) {
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
-          flex: 0 0 calc(50% - ( var(--spacing-md) / 2)); } }
+          flex: 0 0 calc(50% - ( var(--spacing-sm) / 2)); } }
       @media (min-width: 1025px) {
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
-          flex: 0 0 calc((100% / 3) - ( var(--spacing-lg) * 2 / 3)); } }
+          flex: 0 0 calc((100% / 3) - ( var(--spacing-sm) * 2 / 3)); } }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr img {
         width: var(--storeImageWidth);
         height: var(--storeImageWidth);
@@ -378,13 +512,16 @@
         height: max-content;
         text-align: left; }
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:first-child {
-          flex: 0 0 calc(var(--spacing-lg) + var(--storeImageWidth));
-          padding: var(--spacing-sm) 0 0 var(--spacing-sm); }
-          @media (min-width: 481px) {
-            #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:first-child {
-              padding: var(--spacing-md) 0 0 var(--spacing-md); } }
+          flex: 0 0 calc(var(--spacing-sm) + var(--storeImageWidth)); }
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(2) {
-          flex: 0 0 calc(100% - (var(--spacing-lg) + var(--storeImageWidth) + 10px)); }
+          flex: 0 0 calc(100% - (var(--spacing-sm) + var(--storeImageWidth) + 10px));
+          text-transform: uppercase;
+          font-weight: 900;
+          font-size: var(--size--font-lg);
+          line-height: 160%;
+          max-width: max-content;
+          padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md);
+          color: var(--text--accent); }
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(3) {
           flex: 0 0 calc(100% - var(--spacing-sm));
           text-align: justify; }
@@ -396,12 +533,15 @@
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(4) {
           display: none; }
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(5) {
-          flex: 0 0 100%; }
+          flex: 0 0 100%;
+          align-self: end;
+          margin-top: 5px; }
           #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(5) .input-wrap::after {
             content: 'Delete'; }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:first-child, #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:nth-last-child(2):not(:nth-child(2)) {
         display: none; }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:last-child {
+        grid-column: 1 / -1;
         flex: 0 0 100%;
         border: none; }
         #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:last-child td {
